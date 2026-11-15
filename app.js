@@ -613,7 +613,6 @@ function renderCandidateCharts() {
     const ages = document.getElementById('age-charts');
     renderAgeChart(ages, 'Âge de tous les candidats', candidateStats.ages.all, candidateStats.age_candidates.all);
     renderAgeChart(ages, "Âge des candidats ayant atteint l'épreuve d'orientation", candidateStats.ages.orientation, candidateStats.age_candidates.orientation);
-    renderAgeRanges(ages);
     renderFinaleCharts();
     renderChoiceCharts();
 
@@ -641,56 +640,6 @@ function renderCandidateCharts() {
         charts.appendChild(section);
         renderPie(pair, gender === 'F' ? 'Premières éliminées' : 'Premiers éliminés', groupAges(firstOuts.ages[gender].counts), 'pie-comparison-chart');
         renderPie(pair, 'Toutes les participations', groupAges(candidateStats.ages.all[gender].counts), 'pie-comparison-chart');
-    }
-}
-
-function renderAgeRanges(container) {
-    const card = chartCard(container, 'Âges minimum, moyen et maximum');
-    const groups = [
-        ['Tous les candidats', candidateStats.ages.all.all],
-        ['Tous — femmes', candidateStats.ages.all.F],
-        ['Tous — hommes', candidateStats.ages.all.H],
-        ['Orientation — ensemble', candidateStats.ages.orientation.all],
-        ['Orientation — femmes', candidateStats.ages.orientation.F],
-        ['Orientation — hommes', candidateStats.ages.orientation.H]
-    ];
-    const knownAges = groups.flatMap(([, stats]) => Object.keys(stats.counts).map(Number));
-    if (!knownAges.length) {
-        card.append('Aucun âge disponible.');
-        return;
-    }
-    const min = d3.min(knownAges), max = d3.max(knownAges);
-    const position = age => max === min ? 50 : (age - min) / (max - min) * 100;
-    const note = document.createElement('p');
-    note.className = 'chart-note';
-    note.textContent = `Échelle commune : ${min} à ${max} ans. Le point indique la moyenne ; les extrémités indiquent les âges minimum et maximum.`;
-    card.appendChild(note);
-    for (const [label, stats] of groups) {
-        const row = document.createElement('div');
-        row.className = 'age-range-row';
-        const name = document.createElement('strong');
-        name.textContent = label;
-        const ages = Object.keys(stats.counts).map(Number);
-        const value = document.createElement('span');
-        if (!ages.length) {
-            value.textContent = 'Aucun âge connu';
-            row.append(name, value);
-        } else {
-            const low = d3.min(ages), high = d3.max(ages);
-            const track = document.createElement('div');
-            track.className = 'age-range-track';
-            const line = document.createElement('div');
-            line.className = 'age-range-line';
-            line.style.left = `${position(low)}%`;
-            line.style.width = `${position(high) - position(low)}%`;
-            const dot = document.createElement('div');
-            dot.className = 'age-range-average';
-            dot.style.left = `${position(stats.average)}%`;
-            track.append(line, dot);
-            value.textContent = `${low} / ${stats.average.toFixed(1).replace('.', ',')} / ${high} ans (n = ${stats.total})`;
-            row.append(name, track, value);
-        }
-        card.appendChild(row);
     }
 }
 

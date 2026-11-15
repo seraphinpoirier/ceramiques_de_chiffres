@@ -417,10 +417,6 @@
         .age-hit-area { cursor: pointer; }
         .age-hit-area:hover, .age-hit-area:focus, .age-hit-area.selected { fill: rgba(0, 0, 0, 0.12); outline: none; }
         .chart-note { color: #526457; font-size: 0.9em; margin: 10px 0 16px; }
-        .age-range-row { display: grid; grid-template-columns: minmax(150px, 1fr) 2fr minmax(190px, 1fr); align-items: center; gap: 15px; margin: 18px 0; text-align: left; font-size: 0.9em; }
-        .age-range-track { height: 20px; position: relative; background: #e6ece2; border-radius: 10px; }
-        .age-range-line { position: absolute; top: 8px; height: 4px; background: #2d7d4f; }
-        .age-range-average { position: absolute; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: #58355e; transform: translateX(-50%); }
         .finale-note { grid-column: 1 / -1; margin: 0; }
         .percentage-row { display: grid; grid-template-columns: minmax(110px, 1fr) 2fr auto; gap: 10px; align-items: center; width: 100%; padding: 8px 4px; border: 0; background: transparent; text-align: left; cursor: pointer; font: inherit; font-size: 0.85em; }
         .percentage-row:hover, .percentage-row:focus { background: #e6ece2; outline: 2px solid #2d7d4f; }
@@ -445,7 +441,6 @@
             .age-chart-graph, .age-details { width: 100%; }
             .pie-comparison { grid-template-columns: 1fr; }
             .pie-comparison-chart + .pie-comparison-chart { border-left: 0; border-top: 1px solid #dce7d7; padding-top: 24px; }
-            .age-range-row { grid-template-columns: 1fr; gap: 5px; }
         }
 
         .stats-svg { width: 100%; height: auto; font-size: 12px; }
