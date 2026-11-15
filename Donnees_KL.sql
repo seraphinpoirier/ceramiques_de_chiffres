@@ -44,9 +44,23 @@ CREATE TABLE IF NOT EXISTS Retours (
     annee INTEGER,
     saison TEXT NOT NULL,
     place INTEGER,
+    aban BOOLEAN,
     source TEXT NOT NULL CHECK (source IN ('ALLSTARS', 'CLASSIQUES')),
     UNIQUE (id_candidat, saison),
     FOREIGN KEY (id_candidat) REFERENCES Candidats(id_candidat)
+);
+
+-- All Stars appearances include participants whose original identity is unknown.
+CREATE TABLE IF NOT EXISTS AllStars (
+    saison TEXT NOT NULL,
+    nom TEXT NOT NULL,
+    genre TEXT,
+    age INTEGER,
+    tribu TEXT,
+    ori BOOLEAN,
+    pot BOOLEAN,
+    aban BOOLEAN,
+    place INTEGER
 );
 
 -- Statistics view: Department representation

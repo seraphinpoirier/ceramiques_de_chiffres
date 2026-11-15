@@ -156,8 +156,12 @@ def load_return_data():
         sheet = wb[sheet_name]
         rows = sheet.iter_rows(values_only=True)
         headers = {name: index for index, name in enumerate(next(rows))}
-        required = ('ANNEE', 'SAISON', 'GENRE', 'NOM', 'PLACE',
-                    'INITIALE' if sheet_name == 'ALLSTARS' else 'CB?')
+        required = ('ANNEE', 'SAISON', 'GENRE', 'NOM', 'PLACE', 'ABAN?',
+                    'INITIALE' if sheet_name == 'ALLSTARS' else 'SAISON ORIGINALE')
+        if sheet_name == 'CLASSIQUES':
+            required += ('CB?',)
+        else:
+            required += ('AGE', 'TRIBU', 'ORI?', 'POT?')
         missing = [name for name in required if name not in headers]
         if missing:
             raise ValueError(f"{sheet_name}: missing columns {missing}")
@@ -166,15 +170,23 @@ def load_return_data():
                 continue
             if sheet_name == 'CLASSIQUES' and normalized(row[headers['CB?']]) != 'o':
                 continue
+            place = row[headers['PLACE']]
+            if place not in (None, '?') and not isinstance(place, int):
+                raise ValueError(f"{sheet_name} ligne {line}: classement invalide {place!r}")
             returns.append({
                 'source': sheet_name,
                 'line': line,
                 'annee': row[headers['ANNEE']],
                 'saison': row[headers['SAISON']],
-                'initiale': row[headers['INITIALE']] if sheet_name == 'ALLSTARS' else None,
+                'initiale': row[headers['INITIALE' if sheet_name == 'ALLSTARS' else 'SAISON ORIGINALE']],
                 'genre': row[headers['GENRE']],
                 'nom': row[headers['NOM']],
-                'place': row[headers['PLACE']],
+                'place': place if isinstance(place, int) else None,
+                'aban': int(bool(row[headers['ABAN?']])),
+                'age': int(str(row[headers['AGE']]).strip()) if sheet_name == 'ALLSTARS' and row[headers['AGE']] is not None else None,
+                'tribu': row[headers['TRIBU']] if sheet_name == 'ALLSTARS' else None,
+                'ori': int(bool(row[headers['ORI?']])) if sheet_name == 'ALLSTARS' else 0,
+                'pot': int(bool(row[headers['POT?']])) if sheet_name == 'ALLSTARS' else 0,
             })
     wb.close()
     return returns
@@ -183,24 +195,21 @@ def load_return_data():
 def link_returns(conn, returns):
     """Link only unambiguous identities; report every unlinked source row."""
     by_origin = defaultdict(list)
-    by_name = defaultdict(list)
     for candidate_id, name, season, gender in conn.execute(
         'SELECT id_candidat, nom, saison, genre FROM Candidats'
     ):
         candidate = (candidate_id, gender)
         by_origin[(normalized(name), normalized(season))].append(candidate)
-        by_name[normalized(name)].append(candidate)
 
     unmatched = []
     for appearance in returns:
         name = normalized(appearance['nom'])
         season = normalized(appearance['saison'])
         origin = normalized(appearance['initiale'])
-        if not name or not season or (appearance['source'] == 'ALLSTARS' and not origin):
+        if not name or not season or not origin:
             unmatched.append((appearance, 'nom ou saison manquant'))
             continue
-        matches = (by_origin[(name, origin)] if appearance['source'] == 'ALLSTARS'
-                   else by_name[name])
+        matches = by_origin[(name, origin)]
         if len(matches) != 1:
             unmatched.append((appearance, 'aucune correspondance' if not matches else 'correspondance ambiguë'))
             continue
@@ -209,8 +218,8 @@ def link_returns(conn, returns):
             unmatched.append((appearance, 'genre différent'))
             continue
         conn.execute(
-            'INSERT INTO Retours (id_candidat, annee, saison, place, source) VALUES (?, ?, ?, ?, ?)',
-            (candidate_id, appearance['annee'], appearance['saison'], appearance['place'], appearance['source']),
+            'INSERT INTO Retours (id_candidat, annee, saison, place, aban, source) VALUES (?, ?, ?, ?, ?, ?)',
+            (candidate_id, appearance['annee'], appearance['saison'], appearance['place'], appearance['aban'], appearance['source']),
         )
     return unmatched
 
@@ -323,6 +332,12 @@ def create_and_populate_database():
         cand_count += 1
     
     print(f"  Inserted {cand_count} candidates")
+    conn.executemany(
+        'INSERT INTO AllStars (saison, nom, genre, age, tribu, ori, pot, aban, place) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [(r['saison'], r['nom'], str(r['genre'] or '').strip().upper() or None,
+          r['age'], r['tribu'], r['ori'], r['pot'], r['aban'], r['place'])
+         for r in returns if r['source'] == 'ALLSTARS'],
+    )
     unmatched = link_returns(conn, returns)
     print(f"  Linked {len(returns) - len(unmatched)} returns; {len(unmatched)} unlinked")
     

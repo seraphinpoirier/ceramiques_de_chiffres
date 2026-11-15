@@ -102,9 +102,9 @@ class CandidateStatsTests(unittest.TestCase):
                 'SELECT age, genre FROM Candidats WHERE ori = 1').fetchall())
             expected_details = {
                 'all': [dict(row) for row in conn.execute(
-                    'SELECT nom, saison, place, genre, age FROM Candidats WHERE age IS NOT NULL ORDER BY saison, nom')],
+                    'SELECT nom, saison, place, genre, age, aban FROM Candidats WHERE age IS NOT NULL ORDER BY saison, nom')],
                 'orientation': [dict(row) for row in conn.execute(
-                    'SELECT nom, saison, place, genre, age FROM Candidats WHERE age IS NOT NULL AND ori = 1 ORDER BY saison, nom')],
+                    'SELECT nom, saison, place, genre, age, aban FROM Candidats WHERE age IS NOT NULL AND ori = 1 ORDER BY saison, nom')],
             }
             expected_finales = finale_stats(conn)
             expected_eliminations = elimination_stats(conn)
@@ -151,48 +151,83 @@ class ReturneeTests(unittest.TestCase):
         self.conn = sqlite3.connect(':memory:')
         self.addCleanup(self.conn.close)
         self.conn.executescript('''
-            CREATE TABLE Candidats (id_candidat INTEGER PRIMARY KEY, nom TEXT, saison TEXT, genre TEXT, place INTEGER);
+            CREATE TABLE Candidats (id_candidat INTEGER PRIMARY KEY, nom TEXT, saison TEXT, genre TEXT, place INTEGER, aban INTEGER DEFAULT 0);
             CREATE TABLE Retours (id_retour INTEGER PRIMARY KEY, id_candidat INTEGER, annee INTEGER,
-                                  saison TEXT, place INTEGER, source TEXT);
+                                  saison TEXT, place INTEGER, aban INTEGER DEFAULT 0, source TEXT);
         ''')
 
     def test_links_by_name_and_origin_and_reports_ambiguous_or_missing(self):
-        self.conn.executemany('INSERT INTO Candidats VALUES (?, ?, ?, ?, ?)', [
+        self.conn.executemany('INSERT INTO Candidats (id_candidat, nom, saison, genre, place) VALUES (?, ?, ?, ?, ?)', [
             (1, 'Élodie', 'Saison A', 'F', 3),
             (2, 'Élodie', 'Saison B', 'F', 4),
             (3, 'Alex', 'Saison C', 'H', 2),
         ])
         def appearance(name, season, origin, source='ALLSTARS', gender='F'):
             return {'nom': name, 'saison': season, 'initiale': origin, 'source': source,
-                    'genre': gender, 'annee': 2020, 'place': 5, 'line': 2}
+                    'genre': gender, 'annee': 2020, 'place': 5, 'aban': 0, 'line': 2}
         rows = [
             appearance(' elodie ', 'Retour', ' SAISON A '),
             appearance('Élodie', 'Retour', 'inconnue'),
+            appearance('Élodie', 'Autre', 'Saison B', 'CLASSIQUES'),
             appearance('Élodie', 'Autre', None, 'CLASSIQUES'),
             appearance('Alex', 'Retour', 'Saison C'),
         ]
         unmatched = load_data.link_returns(self.conn, rows)
         self.assertEqual(self.conn.execute('SELECT id_candidat, saison, place FROM Retours').fetchall(),
-                         [(1, 'Retour', 5)])
+                         [(1, 'Retour', 5), (2, 'Autre', 5)])
         self.assertEqual([reason for _, reason in unmatched],
-                         ['aucune correspondance', 'correspondance ambiguë', 'genre différent'])
+                         ['aucune correspondance', 'nom ou saison manquant', 'genre différent'])
 
-    def test_fifth_place_ties_and_all_placements(self):
+    def test_top_five_returnees_with_ties_and_placements(self):
         for gender in ('F', 'H'):
-            for index, count in enumerate([4, 3, 2, 1, 1, 1, 0]):
+            for index, count in enumerate([5, 4, 3, 2, 2, 2, 1, 0]):
                 candidate_id = (1 if gender == 'F' else 10) + index
-                self.conn.execute('INSERT INTO Candidats VALUES (?, ?, ?, ?, ?)',
+                self.conn.execute('INSERT INTO Candidats (id_candidat, nom, saison, genre, place) VALUES (?, ?, ?, ?, ?)',
                                   (candidate_id, f'{gender}{index}', 'Initiale', gender, 8))
                 for year in range(count):
                     self.conn.execute('INSERT INTO Retours (id_candidat, annee, saison, place, source) VALUES (?, ?, ?, ?, ?)',
                                       (candidate_id, 2000 + year, f'Retour {year}', year + 1, 'ALLSTARS'))
         result = returnee_stats(self.conn)
         for gender in ('F', 'H'):
-            self.assertEqual([candidate['retours'] for candidate in result[gender]], [4, 3, 2, 1, 1, 1])
+            self.assertEqual([candidate['retours'] for candidate in result[gender]], [5, 4, 3, 2, 2, 2])
             self.assertEqual(result[gender][0]['participations'], [
-                {'saison': 'Initiale', 'place': 8, 'initiale': True},
-                *[{'saison': f'Retour {i}', 'place': i + 1, 'initiale': False} for i in range(4)],
+                {'saison': 'Initiale', 'place': 8, 'aban': 0, 'initiale': True},
+                *[{'saison': f'Retour {i}', 'place': i + 1, 'aban': 0, 'initiale': False} for i in range(5)],
             ])
+
+    def test_abandonment_is_preserved_in_returnee_appearances(self):
+        self.conn.execute("INSERT INTO Candidats (id_candidat, nom, saison, genre, place, aban) VALUES (1, 'Freddy', 'Palau', 'H', 10, 0)")
+        self.conn.execute("INSERT INTO Retours (id_candidat, saison, place, aban, source) VALUES (1, 'La Légende', 21, 1, 'ALLSTARS')")
+        self.assertEqual(returnee_stats(self.conn)['H'][0]['participations'][1]['aban'], 1)
+
+    def test_allstars_stats_include_unlinked_appearances_and_source_flags(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            workbook = Path(temp_dir) / 'source.xlsx'
+            shutil.copy2(ROOT / 'data' / 'donnees_kohlanta.xlsx', workbook)
+            with patch.object(load_data, 'XLSX_CANDIDATES', workbook):
+                source_rows = [r for r in load_data.load_return_data() if r['source'] == 'ALLSTARS']
+        with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
+            conn.row_factory = sqlite3.Row
+            allstars = conn.execute('SELECT * FROM AllStars').fetchall()
+            freddy = conn.execute("SELECT place, aban FROM AllStars WHERE nom = 'Freddy' AND saison = 'La Légende'").fetchone()
+            expected_outs = [dict(row) for row in first_outs(conn, 'AllStars')]
+            expected_finales = finale_stats(conn, 'AllStars')
+        with (ROOT / 'candidate_stats.json').open(encoding='utf-8') as f:
+            actual = json.load(f)['allstars']
+        self.assertEqual(Counter((r['saison'], r['nom'], r['place'], r['aban']) for r in source_rows),
+                         Counter((r['saison'], r['nom'], r['place'], r['aban']) for r in allstars))
+        self.assertEqual(tuple(freddy), (21, 1))
+        self.assertEqual(actual['first_outs']['candidates'], expected_outs)
+        self.assertEqual(actual['first_outs']['ages'], json.loads(json.dumps(age_stats(expected_outs))))
+        self.assertEqual(actual['finales'], expected_finales)
+        for key, predicate in [('orientation', lambda c: c['ori'] == 1), ('winners', lambda c: c['place'] == 1)]:
+            for gender in ('F', 'H'):
+                self.assertEqual(actual['gender'][key][gender], sum(predicate(c) and c['genre'] == gender for c in allstars))
+
+    def test_incomplete_allstars_finale_is_excluded(self):
+        self.conn.execute('CREATE TABLE AllStars (saison TEXT, nom TEXT, genre TEXT, age INTEGER, place INTEGER, aban INTEGER)')
+        self.conn.execute("INSERT INTO AllStars VALUES ('Incomplète', 'A', 'F', 30, 1, 0)")
+        self.assertEqual(finale_stats(self.conn, 'AllStars'), [])
 
     def test_generated_returnees_match_database(self):
         with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
@@ -212,7 +247,7 @@ class ReturneeTests(unittest.TestCase):
         reported_lines = {int(line) for line in re.findall(r'^Ligne (\d+) :', report, re.MULTILINE)}
         expected = Counter(
             (load_data.normalized(row[headers['NOM']]), load_data.normalized(row[headers['INITIALE']]),
-             load_data.normalized(row[headers['SAISON']]), row[headers['PLACE']])
+             load_data.normalized(row[headers['SAISON']]), row[headers['PLACE']] if isinstance(row[headers['PLACE']], int) else None)
             for line, row in enumerate(rows[1:], start=2) if line not in reported_lines
         )
         with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:

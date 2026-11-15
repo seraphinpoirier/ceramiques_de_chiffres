@@ -1,7 +1,6 @@
 Participations non liées à un candidat existant
 
 ALLSTARS :
-Ligne 10 : Tony | saison : Retour des Héros | saison initiale : Bocas del Toro | aucune correspondance
 Ligne 16 : Betty-Lise | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
 Ligne 17 : Frank | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
 Ligne 19 : Gwendal | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
@@ -9,10 +8,6 @@ Ligne 20 : Djamel | saison : Choc des Héros | saison initiale : Champion | aucu
 Ligne 22 : Frédérique | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
 Ligne 23 : Taïg | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
 Ligne 24 : Myriam | saison : Choc des Héros | saison initiale : Champion | aucune correspondance
-Ligne 59 : Chantal | saison : Combat des Héros | saison initiale : Johor | aucune correspondance
-Ligne 93 : Phil | saison : La Légende | saison initiale : Malaisie | aucune correspondance
-Ligne 97 : Claude | saison : La Légende | saison initiale : Raja Ampat | aucune correspondance
 
 CLASSIQUES :
-Ligne 59 : Frédéric | saison : La Tribu Maudite | saison initiale : non renseignée | correspondance ambiguë
-Ligne 525 : Jessica | saison : Île des Héros | saison initiale : non renseignée | correspondance ambiguë
+Aucune.

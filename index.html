@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(155deg, #f8f6ec 0%, #e8f1e7 52%, #f7f3e7 100%);
+            background: linear-gradient(155deg, #eef7fa 0%, #e8f1e7 52%, #e4f2f8 100%);
             min-height: 100vh;
             color: #333;
         }
@@ -55,6 +55,11 @@
             border: 1px solid #e1e9db;
             border-top: 4px solid #739a68;
         }
+        .section > summary { cursor: pointer; color: #2d7d4f; }
+        .section > summary h2 { display: inline-flex; margin-left: 8px; }
+        .section > summary:focus-visible { outline: 3px solid #247aa1; outline-offset: 4px; }
+        .introduction p, .introduction li { line-height: 1.65; margin-bottom: 12px; }
+        .introduction ul { padding-left: 24px; }
 
         .section h2 {
             font-size: 1.8em;
@@ -378,7 +383,7 @@
         .returnee-group h3 { color: #2d7d4f; margin-bottom: 12px; }
         .returnee-card { background: #f8faf5; border: 1px solid #e1e9db; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
         .returnee-card h4 { color: #2d7d4f; margin-bottom: 8px; }
-        .returnee-card ul { padding-left: 20px; line-height: 1.6; }
+        .returnee-card p { line-height: 1.6; }
 
         .chart-bars {
             display: flex;
@@ -617,8 +622,26 @@
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>📍 D'où viennent les candidats ?</h2>
+        <details class="section" open>
+            <summary><h2>Koh-Lanta, c'est quoi ?</h2></summary>
+            <div class="introduction">
+                <p>Koh-Lanta est une émission de télé-réalité diffusée par TF1 où une vingtaine de candidats sont envoyés sur une île déserte pour y survivre pendant environ 40 jours. Au cours de ces quarante jours, ils devront relever différentes épreuves physiques pour garder leur place dans l'aventure.</p>
+                <p>Les épreuves sont généralement divisées en deux types: des épreuves de confort, qui permettent de gagner un avantage dans l'aventure (nourriture, outils,...) et les épreuves d'immunité qui permettent de se protéger de l'élimination.</p>
+                <p>Après une épreuve d'immunité a lieu un Conseil, dans lequel les aventuriers décident de qui éliminer.</p>
+                <p>L'émission se décompose en plusieurs étapes.</p>
+                <ul>
+                    <li>Les équipes : Au début de l'émission, les candidats sont divisés en équipes (aussi appelées tribus), souvent deux (jaunes et rouges) mais parfois plus (jusqu'à 4). Pendant cette phase, les épreuves sont disputés en groupe. La victoire à l'épreuve d'immunité permet de n'éliminer personne dans son équipe, la défaite force l'équipe à se séparer de l'un de ses membres.</li>
+                    <li>La réunification : Au milieu de la saison, les candiats restants fusionnent en une seule équipe, la tribu blanche. Avant cela, chaque tribu envoie un ambassadeur pour se mettre d'accord sur l'élimination de l'un des candidats restants.</li>
+                    <li>L'orientation : Quand il ne reste plus que 4 ou 5 candidats, l'épreuve d'orientation a lieu pour l'accès à la finale. Trois poignards sont cachés dans la nature et les plus rapides à les trouver gagnent le droit d'accéder à la finale.</li>
+                    <li>La finale : décomposée en deux parties. La première est l'épreuve des poteaux: les candidats restants doivent tenir le plus longtemps possible sur des poteaux. La personne gagnant les poteaux a le droit de choisir qui elle veut affronter pour le dernier conseil, qui déterminera le gagnant. Les candidats éliminés sont les seuls à voter. La personne recevant le plus de voix est déclarée gagnante.</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+
+    <div class="container">
+        <details class="section" open>
+            <summary><h2>📍 D'où viennent les candidats ?</h2></summary>
             <div class="section-description">
                 Les origines géographiques des candidats et candidates de l'émission ne reflètent pas forcément la réalité démographique française.
             </div>
@@ -785,58 +808,68 @@
                 <span>Hachuré : plusieurs tribus</span>
                 <span>Pointillé : aucun candidat (couleur dominante de la région)</span>
             </div>
-        </div>
+        </details>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Les revenants</h2>
-            <p class="section-description">Les cinq femmes et les cinq hommes ayant effectué le plus de retours, avec les ex æquo. Chaque liste montre la saison initiale et les retours identifiés, dans l'ordre des saisons. Les participations non identifiées sont exclues.</p>
+        <details class="section" open>
+            <summary><h2>Les revenants</h2></summary>
+            <p class="section-description">Les cinq femmes et les cinq hommes ayant effectué le plus de retours sont regroupés par nombre de participations identifiées, avec les ex æquo à la cinquième place. Les participations non identifiées sont exclues.</p>
             <div id="returnee-charts" class="gender-charts-container"></div>
-        </div>
+        </details>
+    </div>
+
+    <div class="container">
+        <details class="section" open>
+            <summary><h2>Statistiques des All Stars</h2></summary>
+            <p class="section-description">Toutes les participations de la feuille ALLSTARS sont comptées, même lorsqu'elles ne sont pas reliées à une saison initiale. Les premiers éliminés sont les candidats non-abandonnants les moins bien classés par tribu des saisons à deux ou trois tribus. Leurs âges sont regroupés par tranche et par genre ; les âges inconnus sont exclus. Les finales incomplètes ne sont pas comptées.</p>
+            <div id="allstar-age-charts" class="gender-charts-container"></div>
+            <div id="allstar-gender-charts" class="gender-charts-container"></div>
+            <div id="allstar-finale-charts" class="gender-charts-container"></div>
+        </details>
     </div>
 
     <!-- New section: Et les femmes ? -->
     <div class="container">
-        <div class="section">
-            <h2>👩 Et les femmes ?</h2>
+        <details class="section" open>
+            <summary><h2>👩 Et les femmes ?</h2></summary>
             <p class="section-description">Analyse de la parité entre les candidats et candidates de Koh-Lanta</p>
             
             <div id="gender-charts" class="gender-charts-container"></div>
-        </div>
+        </details>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Hommes et femmes en finale</h2>
+        <details class="section" open>
+            <summary><h2>Hommes et femmes en finale</h2></summary>
             <p class="section-description">Après l'épreuve des poteaux, il ne reste que deux candidat-e-s. Ceux précédemment éliminés votent pour déterminer le-a gagnant-e.</p>
             <p class="section-description">Seuls les candidats classés 1er ou 2e sont retenus. La saison « Totem Maudit » est exclue car sa finale comptait trois personnes. 🏅 indique les gagnant-e-s ; les égalités sont comptées séparément.</p>
             <div id="finale-charts" class="gender-charts-container"></div>
-        </div>
+        </details>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Choix ou performance ?</h2>
+        <details class="section" open>
+            <summary><h2>Choix ou performance ?</h2></summary>
             <p class="section-description">À l'orientation, les candidats qui n'atteignent pas les poteaux sont éliminés sur une épreuve de performance. Les troisièmes au classement sont généralement éliminés par le choix d'un autre candidat, et les éliminations aux ambassadeurs résultent d'un choix entre candidats. Cela fait-il une différence ? Le classement inclut aussi « Totem Maudit », dont la finale comptait trois personnes.</p>
             <div id="choice-charts" class="gender-charts-container"></div>
-        </div>
+        </details>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Le jeu de l'âge</h2>
+        <details class="section" open>
+            <summary><h2>Le jeu de l'âge</h2></summary>
             <p class="section-description">Une étude de la répartition des âges dans Koh-Lanta. Les barres empilées indiquent le nombre de candidats à chaque âge, réparti par genre. Survolez ou sélectionnez un âge pour afficher les candidats, leur saison et leur classement. Cliquez pour garder la sélection. Les moyennes portent sur les candidats dont l'âge est connu.</p>
             <div id="age-charts" class="age-charts-container"></div>
-        </div>
+        </details>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Qui part en premier ?</h2>
+        <details class="section" open>
+            <summary><h2>Qui part en premier ?</h2></summary>
             <p class="section-description">Concentrons-nous sur les premiers éliminés de l'aventure. Est considéré comme premier éliminé tout aventurier qui a été éliminé au premier conseil de son équipe (donc pas sur un abandon). On ne prend pas en compte les saisons avec 4 équipes initiales. Pour chaque équipe des saisons à deux ou trois tribus, on retient le candidat non-abandonnant le moins bien classé. Les répartitions par tranche d'âge excluent les âges inconnus. Pour chaque genre, les premiers éliminés sont comparés à l'ensemble des participations de ce genre. Ces répartitions ne représentent pas directement une probabilité d'élimination.</p>
             <div id="first-out-charts" class="gender-charts-container"></div>
-        </div>
+        </details>
     </div>
 
     <div class="footer">

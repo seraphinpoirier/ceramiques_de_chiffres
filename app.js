@@ -44,7 +44,7 @@ async function loadData() {
         candidateStats = await candidateResponse.json();
     } catch (error) {
         console.error('Error loading data:', error);
-        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts, #returnee-charts').forEach(container => {
+        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts, #returnee-charts, #allstar-age-charts, #allstar-gender-charts, #allstar-finale-charts').forEach(container => {
             container.textContent = 'Impossible de charger les données. Vérifiez que les fichiers JSON sont disponibles.';
         });
         throw error;
@@ -525,14 +525,13 @@ function renderMap(containerId, geojson, type) {
     svg.call(zoom);
 }
 
-function renderGenderCharts() {
-    const container = document.getElementById('gender-charts');
-    if (!container || !genderStats || Object.keys(genderStats).length === 0) {
+function renderGenderCharts(container = document.getElementById('gender-charts'), statsData = genderStats, definitions = null) {
+    if (!container || !statsData || Object.keys(statsData).length === 0) {
         console.warn('Cannot render gender charts');
         return;
     }
 
-    const chartDefinitions = [
+    const chartDefinitions = definitions || [
         {
             key: 'overall',
             title: 'Ensemble des candidats',
@@ -556,7 +555,7 @@ function renderGenderCharts() {
     ];
 
     chartDefinitions.forEach(def => {
-        const stats = genderStats[def.key];
+        const stats = statsData[def.key];
         if (!stats) return;
 
         const chart = document.createElement('div');
@@ -564,7 +563,7 @@ function renderGenderCharts() {
         
         const h = stats.H || 0;
         const f = stats.F || 0;
-        const total = stats.total || 0;
+        const total = stats.total == null ? h + f : stats.total;
         
         const hPercent = total > 0 ? ((h / total) * 100).toFixed(1) : 0;
         const fPercent = total > 0 ? ((f / total) * 100).toFixed(1) : 0;
@@ -616,6 +615,7 @@ function renderCandidateCharts() {
     renderFinaleCharts();
     renderChoiceCharts();
     renderReturnees();
+    renderAllStarCharts();
 
     const firstOuts = candidateStats.first_outs;
     const charts = document.getElementById('first-out-charts');
@@ -646,36 +646,55 @@ function renderCandidateCharts() {
 
 function renderReturnees() {
     const container = document.getElementById('returnee-charts');
-    for (const [gender, label] of [['F', 'Femmes'], ['H', 'Hommes']]) {
+    const candidates = [...candidateStats.returnees.F, ...candidateStats.returnees.H];
+    const counts = [...new Set(candidates.map(candidate => candidate.participations.length))].sort((a, b) => b - a);
+    for (const count of counts) {
         const group = document.createElement('section');
         group.className = 'returnee-group';
         const heading = document.createElement('h3');
-        heading.textContent = label;
+        heading.textContent = `${count} saisons`;
         group.appendChild(heading);
-        const candidates = candidateStats.returnees[gender];
-        if (!candidates.length) {
-            const empty = document.createElement('p');
-            empty.textContent = 'Aucun retour identifié.';
-            group.appendChild(empty);
-        }
-        for (const candidate of candidates) {
+        for (const candidate of candidates.filter(candidate => candidate.participations.length === count)
+            .sort((a, b) => a.nom.localeCompare(b.nom, 'fr'))) {
             const card = document.createElement('article');
             card.className = 'returnee-card';
             const name = document.createElement('h4');
-            name.textContent = `${candidate.nom} — ${candidate.retours} retour${candidate.retours > 1 ? 's' : ''}`;
-            const appearances = document.createElement('ul');
-            for (const participation of candidate.participations) {
-                const item = document.createElement('li');
-                const place = participation.place == null ? 'classement inconnu' :
-                    participation.place === 1 ? (gender === 'F' ? '1re' : '1er') : `${participation.place}e`;
-                item.textContent = `${participation.saison}${participation.initiale ? ' (saison initiale)' : ''} : ${place}`;
-                appearances.appendChild(item);
-            }
+            name.textContent = candidate.nom;
+            const appearances = document.createElement('p');
+            const italic = document.createElement('em');
+            italic.textContent = candidate.participations.map(participation =>
+                `${participation.saison} (${formatPlacement({ ...participation, aban: false })})${participation.aban ? ' (abandon)' : ''}`
+            ).join(', ');
+            appearances.appendChild(italic);
             card.append(name, appearances);
             group.appendChild(card);
         }
         container.appendChild(group);
     }
+    if (!counts.length) container.textContent = 'Aucun retour identifié.';
+}
+
+function formatPlacement(candidate) {
+    const place = candidate.place == null ? 'classement inconnu' :
+        `${candidate.place === 1 ? '🏅 ' : ''}${candidate.place === 1 ? '1re' : `${candidate.place}e`} place`;
+    return `${place}${candidate.aban ? ' (abandon)' : ''}`;
+}
+
+function renderAllStarCharts() {
+    const stats = candidateStats.allstars;
+    const ages = document.getElementById('allstar-age-charts');
+    renderPie(ages, 'Âges des premières éliminées', groupAges(stats.first_outs.ages.F.counts));
+    renderPie(ages, 'Âges des premiers éliminés', groupAges(stats.first_outs.ages.H.counts));
+    renderGenderCharts(document.getElementById('allstar-gender-charts'), stats.gender, [
+        { key: 'orientation', title: 'Orientation', subtitle: '(participations à l’orientation)' },
+        { key: 'winners', title: 'Gagnants', subtitle: '(premières places renseignées)' }
+    ]);
+    const finals = stats.finales;
+    renderFinaleBars(document.getElementById('allstar-finale-charts'), 'Composition des finales', [
+        { label: 'H / H', color: GENDER_COLORS.H, finals: finals.filter(f => f.candidates.every(c => c.genre === 'H')) },
+        { label: 'F / F', color: GENDER_COLORS.F, finals: finals.filter(f => f.candidates.every(c => c.genre === 'F')) },
+        { label: 'F / H', color: '#b67b22', finals: finals.filter(f => f.candidates.some(c => c.genre === 'F') && f.candidates.some(c => c.genre === 'H')) }
+    ], finals.length);
 }
 
 function renderFinaleCharts() {
@@ -872,8 +891,7 @@ function renderAgeChart(container, title, stats, candidates) {
         const list = document.createElement('ul');
         for (const candidate of matches) {
             const item = document.createElement('li');
-            const placement = candidate.place == null ? 'classement inconnu' : `${candidate.place}e`;
-            item.textContent = `${candidate.nom} — ${candidate.saison} — ${placement}`;
+            item.textContent = `${candidate.nom} — ${candidate.saison} — ${formatPlacement(candidate)}`;
             list.appendChild(item);
         }
         details.appendChild(list);

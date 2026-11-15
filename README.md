@@ -22,14 +22,23 @@ classiques, y compris les cartes. Les autres participations restent incluses.
 
 La catégorie « Les revenants » est distincte de ces analyses : elle compte les
 retours de `ALLSTARS` liés par nom et saison initiale, ainsi que les retours
-`CB? = O` des saisons classiques lorsque le nom identifie une seule personne.
+`CB? = O` des saisons classiques grâce à leur colonne `SAISON ORIGINALE`.
 La comparaison ignore la casse, les accents et les espaces superflus ; les
-correspondances ambiguës ou de genre différent ne sont pas attribuées. Le
+correspondances sans saison initiale, ambiguës ou de genre différent ne sont pas attribuées. Le
 fichier `candidats_non_identifies.txt` est régénéré au chargement et liste
 ces participations non liées, notamment les saisons initiales de `ALLSTARS`.
-Le classement montre les cinq premières personnes par genre et toutes les
-égalités à la cinquième place ; pour chacune, il indique le classement initial
-et celui de chaque retour lié. Les participations non liées en sont exclues.
+La liste regroupe par nombre de participations les cinq premières personnes par
+genre et toutes les égalités à la cinquième place. Elle indique le classement
+et les abandons connus ; les participations non liées en sont exclues.
+
+Les statistiques All Stars utilisent toutes les lignes de la feuille
+`ALLSTARS`, y compris les personnes non liées à une saison initiale. Elles
+reprennent les mêmes règles pour les premiers éliminés et les finales à deux :
+les saisons sans deux ou trois tribus initiales, ainsi que les finales dont le
+classement n'est pas renseigné, ne sont pas comptées dans ces graphiques.
+L'orientation et les victoires sont comptées selon les données renseignées.
+Deux camemberts montrent les tranches d'âge des premiers éliminés par genre,
+en excluant les âges inconnus.
 
 Les graphiques d'âge comptent les participations dont l'âge est connu ; leurs
 barres empilent les genres et leurs moyennes utilisent le même périmètre,

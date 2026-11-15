@@ -3,7 +3,7 @@
     "total_population": 68094280,
     "total_candidates": 524,
     "total_departments": 100,
-    "generated_date": "2026-11-15 17:02:11",
+    "generated_date": "2026-11-15 18:17:07",
     "data_source": "Donnees_KL.db (replaces Excel files)",
     "note": "Generated from database queries instead of Excel files"
   },
@@ -1735,7 +1735,7 @@
           "season": "Île des Héros"
         },
         {
-          "name": "Chantel",
+          "name": "Chantal",
           "season": "Johor"
         },
         {
@@ -2361,7 +2361,7 @@
           "season": "Johor"
         },
         {
-          "name": "Philippe",
+          "name": "Phil",
           "season": "Malaisie"
         },
         {
