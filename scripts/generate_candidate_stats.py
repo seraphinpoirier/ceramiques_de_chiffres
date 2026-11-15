@@ -95,6 +95,35 @@ def elimination_stats(conn):
     return result
 
 
+def returnee_stats(conn):
+    """Rank candidates by linked returns, including ties at fifth place."""
+    conn.row_factory = sqlite3.Row
+    result = {'F': [], 'H': []}
+    for gender in result:
+        candidates = conn.execute("""
+            SELECT c.id_candidat, c.nom, c.saison, c.place, COUNT(r.id_retour) AS retours
+            FROM Candidats c JOIN Retours r ON r.id_candidat = c.id_candidat
+            WHERE c.genre = ?
+            GROUP BY c.id_candidat
+            ORDER BY retours DESC, c.nom, c.saison
+        """, (gender,)).fetchall()
+        cutoff = candidates[4]['retours'] if len(candidates) >= 5 else 0
+        for candidate in candidates:
+            if candidate['retours'] < cutoff:
+                break
+            appearances = [{'saison': candidate['saison'], 'place': candidate['place'], 'initiale': True}]
+            appearances.extend({
+                'saison': row['saison'], 'place': row['place'], 'initiale': False,
+            } for row in conn.execute("""
+                SELECT saison, place FROM Retours WHERE id_candidat = ?
+                ORDER BY annee, saison
+            """, (candidate['id_candidat'],)))
+            result[gender].append({
+                'nom': candidate['nom'], 'retours': candidate['retours'], 'participations': appearances,
+            })
+    return result
+
+
 def generate_candidate_stats():
     with sqlite3.connect(PROJECT_DIR / 'Donnees_KL.db') as conn:
         conn.row_factory = sqlite3.Row
@@ -103,6 +132,7 @@ def generate_candidate_stats():
         eliminated = first_outs(conn)
         finales = finale_stats(conn)
         eliminations = elimination_stats(conn)
+        returnees = returnee_stats(conn)
     gender = Counter(candidate['genre'] for candidate in eliminated)
     output = {
         'ages': {'all': age_stats(candidates), 'orientation': age_stats(orientation)},
@@ -112,6 +142,7 @@ def generate_candidate_stats():
         },
         'finales': finales,
         'eliminations': eliminations,
+        'returnees': returnees,
         'first_outs': {
             'gender': {
                 'F': gender['F'], 'H': gender['H'],

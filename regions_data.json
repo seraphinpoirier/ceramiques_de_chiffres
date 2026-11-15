@@ -1,9 +1,9 @@
 {
   "metadata": {
     "total_population": 68094280,
-    "total_candidates": 426,
+    "total_candidates": 524,
     "total_regions": 18,
-    "generated_date": "2026-11-15 13:19:45",
+    "generated_date": "2026-11-15 17:02:11",
     "data_source": "Donnees_KL.db (replaces Excel files)",
     "note": "Generated from database queries instead of Excel files"
   },
@@ -11,13 +11,17 @@
     "Auvergne-Rhône-Alpes": {
       "population_2023": 8205557,
       "population_percentage": 12.05,
-      "candidate_count": 50,
-      "candidate_percentage": 11.74,
-      "gap_percentage": -0.31,
+      "candidate_count": 67,
+      "candidate_percentage": 12.79,
+      "gap_percentage": 0.74,
       "candidates": [
         {
           "name": "Adrien",
           "season": "Palawan"
+        },
+        {
+          "name": "Ahmad",
+          "season": "Île des Héros"
         },
         {
           "name": "Alain",
@@ -32,8 +36,16 @@
           "season": "4 Terres"
         },
         {
+          "name": "Alexis",
+          "season": "Pacifique"
+        },
+        {
           "name": "Alicia",
           "season": "Les Chasseurs d'Immunité"
+        },
+        {
+          "name": "Amélie",
+          "season": "Panama"
         },
         {
           "name": "Audrey",
@@ -52,6 +64,10 @@
           "season": "Johor"
         },
         {
+          "name": "Bernard",
+          "season": "Nicoya"
+        },
+        {
           "name": "Candice",
           "season": "Armes Secrètes"
         },
@@ -68,6 +84,10 @@
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Catherine",
+          "season": "Panama"
+        },
+        {
           "name": "Clarisse",
           "season": "Reliques du destin"
         },
@@ -82,6 +102,10 @@
         {
           "name": "Céline",
           "season": "Revanche des 4 Terres"
+        },
+        {
+          "name": "Delphine",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Emilie",
@@ -116,12 +140,20 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Isabelle",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Jean-Charles",
           "season": "Totem Maudit"
         },
         {
           "name": "Joaquina",
           "season": "4 Terres"
+        },
+        {
+          "name": "Jérôme",
+          "season": "Pacifique"
         },
         {
           "name": "Karine",
@@ -152,6 +184,10 @@
           "season": "Vanuatu"
         },
         {
+          "name": "Marie",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Marine",
           "season": "Fidji"
         },
@@ -160,12 +196,20 @@
           "season": "Palau"
         },
         {
+          "name": "Mario-Nelson",
+          "season": "Panama"
+        },
+        {
           "name": "Maxime",
           "season": "Les Chasseurs d'Immunité"
         },
         {
           "name": "Maxime",
           "season": "Fidji"
+        },
+        {
+          "name": "Michèle",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Mickaël",
@@ -196,6 +240,14 @@
           "season": "Viêtnam"
         },
         {
+          "name": "Philippe",
+          "season": "Panama"
+        },
+        {
+          "name": "Philippe",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Pierre-Marie",
           "season": "Revanche des 4 Terres"
         },
@@ -214,15 +266,31 @@
         {
           "name": "Teheiura",
           "season": "Raja Ampat"
+        },
+        {
+          "name": "Thierry",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Vicky",
+          "season": "Panama"
+        },
+        {
+          "name": "Xavier",
+          "season": "Nicoya"
+        },
+        {
+          "name": "Éric",
+          "season": "Île des Héros"
         }
       ]
     },
     "Bourgogne-Franche-Comté": {
       "population_2023": 2802670,
       "population_percentage": 4.12,
-      "candidate_count": 13,
-      "candidate_percentage": 3.05,
-      "gap_percentage": -1.06,
+      "candidate_count": 15,
+      "candidate_percentage": 2.86,
+      "gap_percentage": -1.25,
       "candidates": [
         {
           "name": "Babeth",
@@ -273,6 +341,14 @@
           "season": "Palawan"
         },
         {
+          "name": "Raphaël",
+          "season": "Panama"
+        },
+        {
+          "name": "Régis",
+          "season": "Île des Héros"
+        },
+        {
           "name": "Sandrine",
           "season": "Île au trésor"
         }
@@ -281,10 +357,14 @@
     "Bretagne": {
       "population_2023": 3449370,
       "population_percentage": 5.07,
-      "candidate_count": 14,
-      "candidate_percentage": 3.29,
-      "gap_percentage": -1.78,
+      "candidate_count": 19,
+      "candidate_percentage": 3.63,
+      "gap_percentage": -1.44,
       "candidates": [
+        {
+          "name": "Alexandra",
+          "season": "Île des Héros"
+        },
         {
           "name": "Aliséa",
           "season": "Guerre des Chefs"
@@ -296,6 +376,10 @@
         {
           "name": "Benoît",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Benoît",
+          "season": "Île des Héros"
         },
         {
           "name": "Béatrice",
@@ -310,8 +394,16 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Gaël",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Guillaume",
           "season": "Reliques du destin"
+        },
+        {
+          "name": "Guillaume",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Géraldine",
@@ -320,6 +412,10 @@
         {
           "name": "Lili",
           "season": "Totem Maudit"
+        },
+        {
+          "name": "Linda",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Marvyn",
@@ -346,9 +442,9 @@
     "Centre-Val de Loire": {
       "population_2023": 2587031,
       "population_percentage": 3.8,
-      "candidate_count": 6,
-      "candidate_percentage": 1.41,
-      "gap_percentage": -2.39,
+      "candidate_count": 8,
+      "candidate_percentage": 1.53,
+      "gap_percentage": -2.27,
       "candidates": [
         {
           "name": "André",
@@ -371,8 +467,16 @@
           "season": "Le Feu Sacré"
         },
         {
+          "name": "Richard",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Romain",
           "season": "Fidji"
+        },
+        {
+          "name": "William",
+          "season": "Aventuriers de Koh-Lanta"
         }
       ]
     },
@@ -380,8 +484,8 @@
       "population_2023": 355486,
       "population_percentage": 0.52,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.05,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.14,
       "candidates": [
         {
           "name": "Pauline",
@@ -396,9 +500,9 @@
     "Grand Est": {
       "population_2023": 5563378,
       "population_percentage": 8.17,
-      "candidate_count": 26,
-      "candidate_percentage": 6.1,
-      "gap_percentage": -2.07,
+      "candidate_count": 32,
+      "candidate_percentage": 6.11,
+      "gap_percentage": -2.06,
       "candidates": [
         {
           "name": "Alain",
@@ -437,6 +541,10 @@
           "season": "Caramoan"
         },
         {
+          "name": "Claudia",
+          "season": "Île des Héros"
+        },
+        {
           "name": "David",
           "season": "Les Chasseurs d'Immunité"
         },
@@ -469,8 +577,16 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Mathieu",
+          "season": "Pacifique"
+        },
+        {
           "name": "Maxime",
           "season": "Revanche des 4 Terres"
+        },
+        {
+          "name": "Michel",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Mohamed",
@@ -481,12 +597,24 @@
           "season": "Les Chasseurs d'Immunité"
         },
         {
+          "name": "Nathalie",
+          "season": "Panama"
+        },
+        {
           "name": "Pascal",
           "season": "Palau"
         },
         {
+          "name": "Pierre",
+          "season": "Pacifique"
+        },
+        {
           "name": "Quentin",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Sam",
+          "season": "Île des Héros"
         },
         {
           "name": "Steve",
@@ -525,9 +653,9 @@
     "Hauts-de-France": {
       "population_2023": 5992194,
       "population_percentage": 8.8,
-      "candidate_count": 30,
-      "candidate_percentage": 7.04,
-      "gap_percentage": -1.76,
+      "candidate_count": 33,
+      "candidate_percentage": 6.3,
+      "gap_percentage": -2.5,
       "candidates": [
         {
           "name": "Alexandre",
@@ -562,6 +690,10 @@
           "season": "Totem Maudit"
         },
         {
+          "name": "Françoise",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Freddy",
           "season": "Palau"
         },
@@ -572,6 +704,10 @@
         {
           "name": "Gilles",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Jacky",
+          "season": "Nicoya"
         },
         {
           "name": "Laurent",
@@ -634,6 +770,10 @@
           "season": "Palawan"
         },
         {
+          "name": "Véronique",
+          "season": "Pacifique"
+        },
+        {
           "name": "Wendy",
           "season": "Thaïlande"
         },
@@ -663,8 +803,8 @@
       "population_2023": 360630,
       "population_percentage": 0.53,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.06,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.15,
       "candidates": [
         {
           "name": "Alexandra",
@@ -687,9 +827,9 @@
     "Normandie": {
       "population_2023": 3345842,
       "population_percentage": 4.91,
-      "candidate_count": 16,
-      "candidate_percentage": 3.76,
-      "gap_percentage": -1.16,
+      "candidate_count": 18,
+      "candidate_percentage": 3.44,
+      "gap_percentage": -1.48,
       "candidates": [
         {
           "name": "Alexandre",
@@ -736,12 +876,20 @@
           "season": "Totem Maudit"
         },
         {
+          "name": "Joseph",
+          "season": "Île des Héros"
+        },
+        {
           "name": "Margot",
           "season": "Johor"
         },
         {
           "name": "Philippe",
           "season": "Malaisie"
+        },
+        {
+          "name": "Romuald",
+          "season": "Panama"
         },
         {
           "name": "Sébastien",
@@ -760,13 +908,17 @@
     "Nouvelle-Aquitaine": {
       "population_2023": 6150451,
       "population_percentage": 9.03,
-      "candidate_count": 41,
-      "candidate_percentage": 9.62,
-      "gap_percentage": 0.59,
+      "candidate_count": 50,
+      "candidate_percentage": 9.54,
+      "gap_percentage": 0.51,
       "candidates": [
         {
           "name": "Alain",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Antoine",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Antonin",
@@ -787,6 +939,10 @@
         {
           "name": "Caroline",
           "season": "Reliques du destin"
+        },
+        {
+          "name": "Caroline",
+          "season": "Pacifique"
         },
         {
           "name": "Chloé",
@@ -813,6 +969,10 @@
           "season": "Reliques du destin"
         },
         {
+          "name": "David",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Diane",
           "season": "4 Terres"
         },
@@ -825,12 +985,20 @@
           "season": "Vanuatu"
         },
         {
+          "name": "Francis",
+          "season": "Pacifique"
+        },
+        {
           "name": "Franck",
           "season": "Totem Maudit"
         },
         {
           "name": "François",
           "season": "4 Terres"
+        },
+        {
+          "name": "Gilles",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Gérard",
@@ -865,6 +1033,10 @@
           "season": "Armes Secrètes"
         },
         {
+          "name": "Marianne",
+          "season": "Nicoya"
+        },
+        {
           "name": "Marie",
           "season": "Armes Secrètes"
         },
@@ -881,8 +1053,16 @@
           "season": "Vanuatu"
         },
         {
+          "name": "Nelly",
+          "season": "Nicoya"
+        },
+        {
           "name": "Nicolas",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Nicolas",
+          "season": "Nicoya"
         },
         {
           "name": "Pascale",
@@ -895,6 +1075,10 @@
         {
           "name": "Sylviane",
           "season": "Armes Secrètes"
+        },
+        {
+          "name": "Sylvie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Sébastien",
@@ -933,9 +1117,9 @@
     "Occitanie": {
       "population_2023": 6124653,
       "population_percentage": 8.99,
-      "candidate_count": 41,
-      "candidate_percentage": 9.62,
-      "gap_percentage": 0.63,
+      "candidate_count": 45,
+      "candidate_percentage": 8.59,
+      "gap_percentage": -0.41,
       "candidates": [
         {
           "name": "Alain",
@@ -966,6 +1150,10 @@
           "season": "Cambodge"
         },
         {
+          "name": "Clémence",
+          "season": "Pacifique"
+        },
+        {
           "name": "Corentin",
           "season": "Cambodge"
         },
@@ -976,6 +1164,10 @@
         {
           "name": "Cynthiana",
           "season": "Revanche des 4 Terres"
+        },
+        {
+          "name": "Céline",
+          "season": "Nicoya"
         },
         {
           "name": "Erick",
@@ -1004,6 +1196,10 @@
         {
           "name": "Jade",
           "season": "Palawan"
+        },
+        {
+          "name": "Jean-Bernard",
+          "season": "Panama"
         },
         {
           "name": "Jessica",
@@ -1086,6 +1282,10 @@
           "season": "Malaisie"
         },
         {
+          "name": "Vidéli",
+          "season": "Panama"
+        },
+        {
           "name": "Véronique",
           "season": "Viêtnam"
         },
@@ -1106,9 +1306,9 @@
     "Pays de la Loire": {
       "population_2023": 3907156,
       "population_percentage": 5.74,
-      "candidate_count": 15,
-      "candidate_percentage": 3.52,
-      "gap_percentage": -2.22,
+      "candidate_count": 17,
+      "candidate_percentage": 3.24,
+      "gap_percentage": -2.49,
       "candidates": [
         {
           "name": "Benjamin",
@@ -1159,6 +1359,10 @@
           "season": "Cambodge"
         },
         {
+          "name": "Maud",
+          "season": "Nicoya"
+        },
+        {
           "name": "Nathanaël",
           "season": "La Tribu Maudite"
         },
@@ -1169,15 +1373,19 @@
         {
           "name": "Sarah",
           "season": "La Tribu Maudite"
+        },
+        {
+          "name": "Valérie",
+          "season": "Île des Héros"
         }
       ]
     },
     "Provence-Alpes-Côte d'Azur": {
       "population_2023": 5218960,
       "population_percentage": 7.66,
-      "candidate_count": 48,
-      "candidate_percentage": 11.27,
-      "gap_percentage": 3.6,
+      "candidate_count": 60,
+      "candidate_percentage": 11.45,
+      "gap_percentage": 3.79,
       "candidates": [
         {
           "name": "Adrien",
@@ -1208,6 +1416,10 @@
           "season": "Le Feu Sacré"
         },
         {
+          "name": "Béatrice",
+          "season": "Nicoya"
+        },
+        {
           "name": "Carole",
           "season": "4 Terres"
         },
@@ -1224,12 +1436,20 @@
           "season": "Palau"
         },
         {
+          "name": "Christine",
+          "season": "Pacifique"
+        },
+        {
           "name": "Clémence",
           "season": "Reliques du destin"
         },
         {
           "name": "Corinne",
           "season": "Johor"
+        },
+        {
+          "name": "Eliane",
+          "season": "Pacifique"
         },
         {
           "name": "Fabienne",
@@ -1248,8 +1468,28 @@
           "season": "Cambodge"
         },
         {
+          "name": "Guillaume",
+          "season": "Panama"
+        },
+        {
+          "name": "Géraldine",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Hada",
           "season": "Cambodge"
+        },
+        {
+          "name": "Harry",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
+          "name": "Hélène",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Isabelle",
+          "season": "Nicoya"
         },
         {
           "name": "Jean-Bernard",
@@ -1258,6 +1498,10 @@
         {
           "name": "Jean-Luc",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Jean-Luc",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Jean-Pierre",
@@ -1290,6 +1534,10 @@
         {
           "name": "Laurence",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Linda",
+          "season": "Panama"
         },
         {
           "name": "Maria",
@@ -1332,6 +1580,10 @@
           "season": "Totem Maudit"
         },
         {
+          "name": "Pierre",
+          "season": "Nicoya"
+        },
+        {
           "name": "Rodolphe",
           "season": "Palau"
         },
@@ -1342,6 +1594,10 @@
         {
           "name": "Sara",
           "season": "Malaisie"
+        },
+        {
+          "name": "Sophie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Steeve",
@@ -1376,17 +1632,25 @@
     "Île-de-France": {
       "population_2023": 12463067,
       "population_percentage": 18.3,
-      "candidate_count": 89,
-      "candidate_percentage": 20.89,
-      "gap_percentage": 2.59,
+      "candidate_count": 121,
+      "candidate_percentage": 23.09,
+      "gap_percentage": 4.79,
       "candidates": [
         {
           "name": "Abdellah",
           "season": "Viêtnam"
         },
         {
+          "name": "Adonis",
+          "season": "Nicoya"
+        },
+        {
           "name": "Adrien",
           "season": "4 Terres"
+        },
+        {
+          "name": "Alban",
+          "season": "Panama"
         },
         {
           "name": "Alexandra",
@@ -1397,6 +1661,10 @@
           "season": "Raja Ampat"
         },
         {
+          "name": "Alexandra",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Alexandre",
           "season": "La Tribu Maudite"
         },
@@ -1405,8 +1673,16 @@
           "season": "Guerre des Chefs"
         },
         {
+          "name": "Alexandre",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Ali",
           "season": "Palawan"
+        },
+        {
+          "name": "Amel",
+          "season": "Nicoya"
         },
         {
           "name": "Amir",
@@ -1425,6 +1701,10 @@
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Aude",
+          "season": "Pacifique"
+        },
+        {
           "name": "Boris",
           "season": "Viêtnam"
         },
@@ -1437,12 +1717,24 @@
           "season": "Île au trésor"
         },
         {
+          "name": "Candice",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Caroline",
+          "season": "Nicoya"
+        },
+        {
           "name": "Cassandre",
           "season": "Thaïlande"
         },
         {
           "name": "Charles",
           "season": "Malaisie"
+        },
+        {
+          "name": "Charlotte",
+          "season": "Île des Héros"
         },
         {
           "name": "Christopher",
@@ -1459,6 +1751,10 @@
         {
           "name": "Claude",
           "season": "Viêtnam"
+        },
+        {
+          "name": "Coumba",
+          "season": "Pacifique"
         },
         {
           "name": "Cyril",
@@ -1485,8 +1781,16 @@
           "season": "Totem Maudit"
         },
         {
+          "name": "Delphine",
+          "season": "Île des Héros"
+        },
+        {
           "name": "Filomène",
           "season": "Palawan"
+        },
+        {
+          "name": "François-Xavier",
+          "season": "Nicoya"
         },
         {
           "name": "Freddy",
@@ -1509,8 +1813,16 @@
           "season": "Palawan"
         },
         {
+          "name": "Guénaëlle",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Ilyesse",
           "season": "La Tribu Maudite"
+        },
+        {
+          "name": "Inès",
+          "season": "Île des Héros"
         },
         {
           "name": "Irya",
@@ -1529,6 +1841,10 @@
           "season": "Johor"
         },
         {
+          "name": "Jimmy",
+          "season": "Nicoya"
+        },
+        {
           "name": "Joana",
           "season": "Revanche des 4 Terres"
         },
@@ -1539,6 +1855,10 @@
         {
           "name": "Julie",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Julie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Jérémy",
@@ -1601,6 +1921,10 @@
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Marie-Cécile",
+          "season": "Pacifique"
+        },
+        {
           "name": "Marie-Laure",
           "season": "Palawan"
         },
@@ -1649,6 +1973,18 @@
           "season": "Vanuatu"
         },
         {
+          "name": "Mohamed",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Moundir",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Moussa",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Myriam",
           "season": "Palau"
         },
@@ -1659,6 +1995,10 @@
         {
           "name": "Namadia",
           "season": "Malaisie"
+        },
+        {
+          "name": "Naoil",
+          "season": "Île des Héros"
         },
         {
           "name": "Naouel",
@@ -1681,16 +2021,40 @@
           "season": "Reliques du destin"
         },
         {
+          "name": "Odile",
+          "season": "Panama"
+        },
+        {
           "name": "Olga",
           "season": "Totem Maudit"
+        },
+        {
+          "name": "Patricia",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
+          "name": "Romain",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Rudy",
           "season": "Le Feu Sacré"
         },
         {
+          "name": "Sabira",
+          "season": "Panama"
+        },
+        {
+          "name": "Sakhone",
+          "season": "Pacifique"
+        },
+        {
           "name": "Samuel",
           "season": "4 Terres"
+        },
+        {
+          "name": "Sandra",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Shanice",
@@ -1701,12 +2065,28 @@
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Sophie",
+          "season": "Panama"
+        },
+        {
           "name": "Steve",
           "season": "Thaïlande"
         },
         {
+          "name": "Stéphane",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Stéphanie",
           "season": "Totem Maudit"
+        },
+        {
+          "name": "Sylvie",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Sébastien",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Tania",
@@ -1723,6 +2103,10 @@
         {
           "name": "Valérie",
           "season": "Caramoan"
+        },
+        {
+          "name": "Valérie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Vincent",

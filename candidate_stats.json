@@ -3,85 +3,87 @@
     "all": {
       "all": {
         "counts": {
-          "18": 1,
-          "19": 3,
-          "20": 13,
-          "21": 11,
-          "22": 11,
-          "23": 20,
-          "24": 19,
-          "25": 21,
-          "26": 18,
-          "27": 14,
-          "28": 22,
-          "29": 11,
-          "30": 15,
-          "31": 13,
-          "32": 19,
-          "33": 14,
-          "34": 15,
-          "35": 18,
-          "36": 16,
-          "37": 13,
-          "38": 13,
+          "18": 2,
+          "19": 4,
+          "20": 16,
+          "21": 14,
+          "22": 18,
+          "23": 23,
+          "24": 24,
+          "25": 27,
+          "26": 21,
+          "27": 22,
+          "28": 26,
+          "29": 18,
+          "30": 17,
+          "31": 15,
+          "32": 23,
+          "33": 16,
+          "34": 16,
+          "35": 21,
+          "36": 20,
+          "37": 16,
+          "38": 15,
           "39": 15,
-          "40": 13,
-          "41": 10,
+          "40": 18,
+          "41": 12,
           "42": 5,
-          "43": 9,
-          "44": 6,
+          "43": 12,
+          "44": 8,
           "45": 10,
-          "46": 2,
-          "47": 7,
+          "46": 3,
+          "47": 8,
           "48": 4,
           "49": 5,
-          "50": 5,
-          "51": 4,
+          "50": 6,
+          "51": 6,
           "52": 8,
           "53": 3,
-          "54": 2,
+          "54": 3,
           "55": 3,
-          "56": 5,
-          "57": 3,
-          "59": 1,
+          "56": 6,
+          "57": 4,
+          "58": 3,
+          "59": 2,
           "60": 2,
           "62": 2,
           "63": 1,
           "65": 1
         },
-        "total": 426,
-        "average": 34.06572769953052
+        "total": 524,
+        "average": 33.786259541984734
       },
       "F": {
         "counts": {
           "18": 1,
-          "19": 2,
-          "20": 5,
-          "21": 6,
-          "22": 7,
-          "23": 8,
-          "24": 12,
-          "25": 13,
-          "26": 10,
-          "27": 6,
-          "28": 11,
-          "29": 6,
-          "30": 2,
-          "31": 5,
-          "32": 10,
+          "19": 3,
+          "20": 6,
+          "21": 8,
+          "22": 11,
+          "23": 10,
+          "24": 13,
+          "25": 18,
+          "26": 12,
+          "27": 11,
+          "28": 14,
+          "29": 7,
+          "30": 3,
+          "31": 7,
+          "32": 12,
           "33": 8,
-          "34": 9,
-          "35": 15,
-          "36": 6,
-          "37": 8,
+          "34": 10,
+          "35": 17,
+          "36": 9,
+          "37": 11,
           "38": 8,
           "39": 8,
-          "40": 6,
-          "41": 5,
+          "40": 9,
+          "41": 6,
           "42": 2,
-          "43": 2,
+          "43": 3,
           "44": 3,
           "45": 7,
+          "46": 1,
           "47": 3,
           "48": 1,
           "49": 3,
@@ -91,125 +93,132 @@
           "53": 2,
           "54": 1,
           "55": 2,
-          "57": 1,
+          "57": 2,
+          "58": 2,
           "59": 1,
           "62": 1
         },
-        "total": 214,
-        "average": 33.40654205607477
+        "total": 264,
+        "average": 33.01136363636363
       },
       "H": {
         "counts": {
+          "18": 1,
           "19": 1,
-          "20": 8,
-          "21": 5,
-          "22": 4,
-          "23": 12,
-          "24": 7,
-          "25": 8,
-          "26": 8,
-          "27": 8,
-          "28": 11,
-          "29": 5,
-          "30": 13,
+          "20": 10,
+          "21": 6,
+          "22": 7,
+          "23": 13,
+          "24": 11,
+          "25": 9,
+          "26": 9,
+          "27": 11,
+          "28": 12,
+          "29": 11,
+          "30": 14,
           "31": 8,
-          "32": 9,
-          "33": 6,
+          "32": 11,
+          "33": 8,
           "34": 6,
-          "35": 3,
-          "36": 10,
+          "35": 4,
+          "36": 11,
           "37": 5,
-          "38": 5,
+          "38": 7,
           "39": 7,
-          "40": 7,
-          "41": 5,
+          "40": 9,
+          "41": 6,
           "42": 3,
-          "43": 7,
-          "44": 3,
+          "43": 9,
+          "44": 5,
           "45": 3,
           "46": 2,
-          "47": 4,
+          "47": 5,
           "48": 3,
           "49": 2,
-          "50": 2,
-          "51": 2,
+          "50": 3,
+          "51": 4,
           "52": 5,
           "53": 1,
-          "54": 1,
+          "54": 2,
           "55": 1,
-          "56": 5,
+          "56": 6,
           "57": 2,
+          "58": 1,
+          "59": 1,
           "60": 2,
           "62": 1,
           "63": 1,
           "65": 1
         },
-        "total": 212,
-        "average": 34.7311320754717
+        "total": 260,
+        "average": 34.573076923076925
       }
     },
     "orientation": {
       "all": {
         "counts": {
           "19": 2,
-          "20": 1,
+          "20": 2,
           "21": 3,
-          "22": 5,
+          "22": 6,
           "23": 4,
-          "24": 3,
-          "25": 4,
-          "26": 5,
-          "27": 2,
-          "28": 8,
-          "29": 5,
+          "24": 4,
+          "25": 6,
+          "26": 6,
+          "27": 3,
+          "28": 10,
+          "29": 6,
           "30": 5,
-          "31": 3,
-          "32": 4,
+          "31": 4,
+          "32": 6,
           "33": 3,
-          "34": 2,
-          "35": 1,
+          "34": 3,
+          "35": 2,
           "36": 2,
-          "37": 6,
-          "38": 2,
+          "37": 7,
+          "38": 3,
           "39": 1,
-          "40": 4,
+          "40": 6,
           "41": 4,
           "42": 1,
           "43": 4,
           "44": 1,
           "45": 1,
           "46": 1,
-          "47": 1,
+          "47": 2,
           "48": 1,
           "50": 1,
           "52": 2,
           "55": 1,
           "56": 1,
+          "58": 1,
+          "59": 1,
           "60": 1
         },
-        "total": 95,
-        "average": 32.873684210526314
+        "total": 117,
+        "average": 32.99145299145299
       },
       "F": {
         "counts": {
           "19": 1,
+          "20": 1,
           "21": 1,
           "22": 3,
           "23": 2,
           "24": 3,
-          "25": 3,
+          "25": 5,
           "26": 3,
           "27": 1,
-          "28": 5,
+          "28": 6,
           "29": 3,
-          "31": 1,
-          "32": 1,
+          "31": 2,
+          "32": 3,
           "33": 1,
-          "34": 1,
+          "34": 2,
           "35": 1,
           "36": 1,
-          "37": 6,
-          "40": 1,
+          "37": 7,
+          "40": 2,
           "41": 1,
           "43": 1,
           "44": 1,
@@ -218,41 +227,46 @@
           "50": 1,
           "55": 1
         },
-        "total": 45,
-        "average": 31.533333333333335
+        "total": 55,
+        "average": 31.327272727272728
       },
       "H": {
         "counts": {
           "19": 1,
           "20": 1,
           "21": 2,
-          "22": 2,
+          "22": 3,
           "23": 2,
+          "24": 1,
           "25": 1,
-          "26": 2,
-          "27": 1,
-          "28": 3,
-          "29": 2,
+          "26": 3,
+          "27": 2,
+          "28": 4,
+          "29": 3,
           "30": 5,
           "31": 2,
           "32": 3,
           "33": 2,
           "34": 1,
+          "35": 1,
           "36": 1,
-          "38": 2,
+          "38": 3,
           "39": 1,
-          "40": 3,
+          "40": 4,
           "41": 3,
           "42": 1,
           "43": 3,
           "46": 1,
+          "47": 1,
           "48": 1,
           "52": 2,
           "56": 1,
+          "58": 1,
+          "59": 1,
           "60": 1
         },
-        "total": 50,
-        "average": 34.08
+        "total": 62,
+        "average": 34.46774193548387
       }
     }
   },
@@ -572,6 +586,244 @@
         "place": 19,
         "genre": "F",
         "age": "35 "
+      },
+      {
+        "nom": "David",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 10,
+        "genre": "H",
+        "age": 24
+      },
+      {
+        "nom": "Françoise",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 5,
+        "genre": "F",
+        "age": 41
+      },
+      {
+        "nom": "Gaël",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 13,
+        "genre": "H",
+        "age": 18
+      },
+      {
+        "nom": "Gilles",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 1,
+        "genre": "H",
+        "age": 35
+      },
+      {
+        "nom": "Guillaume",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 15,
+        "genre": "H",
+        "age": 24
+      },
+      {
+        "nom": "Guénaëlle",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 2,
+        "genre": "F",
+        "age": 25
+      },
+      {
+        "nom": "Géraldine",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 8,
+        "genre": "F",
+        "age": 27
+      },
+      {
+        "nom": "Harry",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 12,
+        "genre": "H",
+        "age": 44
+      },
+      {
+        "nom": "Jean-Luc",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 14,
+        "genre": "H",
+        "age": 50
+      },
+      {
+        "nom": "Marie",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 16,
+        "genre": "F",
+        "age": 22
+      },
+      {
+        "nom": "Michèle",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 7,
+        "genre": "F",
+        "age": 58
+      },
+      {
+        "nom": "Patricia",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 3,
+        "genre": "F",
+        "age": 31
+      },
+      {
+        "nom": "Romain",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 4,
+        "genre": "H",
+        "age": 27
+      },
+      {
+        "nom": "Sandra",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 11,
+        "genre": "F",
+        "age": 19
+      },
+      {
+        "nom": "Stéphane",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 9,
+        "genre": "H",
+        "age": 24
+      },
+      {
+        "nom": "William",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 6,
+        "genre": "H",
+        "age": 32
+      },
+      {
+        "nom": "Alexandra",
+        "saison": "Bocas del Toro",
+        "place": 18,
+        "genre": "F",
+        "age": 27
+      },
+      {
+        "nom": "Alexandre",
+        "saison": "Bocas del Toro",
+        "place": 11,
+        "genre": "H",
+        "age": 22
+      },
+      {
+        "nom": "Antoine",
+        "saison": "Bocas del Toro",
+        "place": 4,
+        "genre": "H",
+        "age": 58
+      },
+      {
+        "nom": "Candice",
+        "saison": "Bocas del Toro",
+        "place": 17,
+        "genre": "F",
+        "age": 23
+      },
+      {
+        "nom": "Delphine",
+        "saison": "Bocas del Toro",
+        "place": 1,
+        "genre": "F",
+        "age": 32
+      },
+      {
+        "nom": "Hélène",
+        "saison": "Bocas del Toro",
+        "place": 6,
+        "genre": "F",
+        "age": 27
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Bocas del Toro",
+        "place": 1,
+        "genre": "F",
+        "age": 40
+      },
+      {
+        "nom": "Julie",
+        "saison": "Bocas del Toro",
+        "place": 14,
+        "genre": "F",
+        "age": 22
+      },
+      {
+        "nom": "Linda",
+        "saison": "Bocas del Toro",
+        "place": 13,
+        "genre": "F",
+        "age": 25
+      },
+      {
+        "nom": "Michel",
+        "saison": "Bocas del Toro",
+        "place": 16,
+        "genre": "H",
+        "age": 41
+      },
+      {
+        "nom": "Moundir",
+        "saison": "Bocas del Toro",
+        "place": 5,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Moussa",
+        "saison": "Bocas del Toro",
+        "place": 3,
+        "genre": "H",
+        "age": 22
+      },
+      {
+        "nom": "Philippe",
+        "saison": "Bocas del Toro",
+        "place": 12,
+        "genre": "H",
+        "age": 43
+      },
+      {
+        "nom": "Richard",
+        "saison": "Bocas del Toro",
+        "place": 10,
+        "genre": "H",
+        "age": 32
+      },
+      {
+        "nom": "Sophie",
+        "saison": "Bocas del Toro",
+        "place": 15,
+        "genre": "F",
+        "age": 40
+      },
+      {
+        "nom": "Sylvie",
+        "saison": "Bocas del Toro",
+        "place": 9,
+        "genre": "F",
+        "age": 26
+      },
+      {
+        "nom": "Sébastien",
+        "saison": "Bocas del Toro",
+        "place": 8,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Valérie",
+        "saison": "Bocas del Toro",
+        "place": 7,
+        "genre": "F",
+        "age": 31
       },
       {
         "nom": "Bastien",
@@ -1862,6 +2114,237 @@
         "age": 36
       },
       {
+        "nom": "Adonis",
+        "saison": "Nicoya",
+        "place": 10,
+        "genre": "H",
+        "age": 33
+      },
+      {
+        "nom": "Amel",
+        "saison": "Nicoya",
+        "place": 1,
+        "genre": "F",
+        "age": 28
+      },
+      {
+        "nom": "Bernard",
+        "saison": "Nicoya",
+        "place": 3,
+        "genre": "H",
+        "age": 47
+      },
+      {
+        "nom": "Béatrice",
+        "saison": "Nicoya",
+        "place": 8,
+        "genre": "F",
+        "age": 35
+      },
+      {
+        "nom": "Caroline",
+        "saison": "Nicoya",
+        "place": 15,
+        "genre": "F",
+        "age": 28
+      },
+      {
+        "nom": "Céline",
+        "saison": "Nicoya",
+        "place": 14,
+        "genre": "F",
+        "age": 22
+      },
+      {
+        "nom": "François-Xavier",
+        "saison": "Nicoya",
+        "place": 7,
+        "genre": "H",
+        "age": 25
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Nicoya",
+        "place": 6,
+        "genre": "F",
+        "age": 36
+      },
+      {
+        "nom": "Jacky",
+        "saison": "Nicoya",
+        "place": 11,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Jimmy",
+        "saison": "Nicoya",
+        "place": 9,
+        "genre": "H",
+        "age": 22
+      },
+      {
+        "nom": "Marianne",
+        "saison": "Nicoya",
+        "place": 4,
+        "genre": "F",
+        "age": 34
+      },
+      {
+        "nom": "Maud",
+        "saison": "Nicoya",
+        "place": 5,
+        "genre": "F",
+        "age": 25
+      },
+      {
+        "nom": "Nelly",
+        "saison": "Nicoya",
+        "place": 13,
+        "genre": "F",
+        "age": 24
+      },
+      {
+        "nom": "Nicolas",
+        "saison": "Nicoya",
+        "place": 2,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Pierre",
+        "saison": "Nicoya",
+        "place": 12,
+        "genre": "H",
+        "age": 51
+      },
+      {
+        "nom": "Xavier",
+        "saison": "Nicoya",
+        "place": 16,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Alexis",
+        "saison": "Pacifique",
+        "place": 4,
+        "genre": "H",
+        "age": 28
+      },
+      {
+        "nom": "Aude",
+        "saison": "Pacifique",
+        "place": 17,
+        "genre": "F",
+        "age": 30
+      },
+      {
+        "nom": "Caroline",
+        "saison": "Pacifique",
+        "place": 14,
+        "genre": "F",
+        "age": 29
+      },
+      {
+        "nom": "Christine",
+        "saison": "Pacifique",
+        "place": 8,
+        "genre": "F",
+        "age": 35
+      },
+      {
+        "nom": "Clémence",
+        "saison": "Pacifique",
+        "place": 1,
+        "genre": "F",
+        "age": 20
+      },
+      {
+        "nom": "Coumba",
+        "saison": "Pacifique",
+        "place": 7,
+        "genre": "F",
+        "age": 22
+      },
+      {
+        "nom": "Eliane",
+        "saison": "Pacifique",
+        "place": 12,
+        "genre": "F",
+        "age": 40
+      },
+      {
+        "nom": "Francis",
+        "saison": "Pacifique",
+        "place": 2,
+        "genre": "H",
+        "age": 59
+      },
+      {
+        "nom": "Jérôme",
+        "saison": "Pacifique",
+        "place": 9,
+        "genre": "H",
+        "age": 33
+      },
+      {
+        "nom": "Marie-Cécile",
+        "saison": "Pacifique",
+        "place": 13,
+        "genre": "F",
+        "age": 21
+      },
+      {
+        "nom": "Mathieu",
+        "saison": "Pacifique",
+        "place": 16,
+        "genre": "H",
+        "age": 21
+      },
+      {
+        "nom": "Mohamed",
+        "saison": "Pacifique",
+        "place": 3,
+        "genre": "H",
+        "age": 24
+      },
+      {
+        "nom": "Pierre",
+        "saison": "Pacifique",
+        "place": 6,
+        "genre": "H",
+        "age": 51
+      },
+      {
+        "nom": "Sakhone",
+        "saison": "Pacifique",
+        "place": 10,
+        "genre": "H",
+        "age": 23
+      },
+      {
+        "nom": "Sylvie",
+        "saison": "Pacifique",
+        "place": 15,
+        "genre": "F",
+        "age": 43
+      },
+      {
+        "nom": "Thierry",
+        "saison": "Pacifique",
+        "place": 11,
+        "genre": "H",
+        "age": 38
+      },
+      {
+        "nom": "Véronique",
+        "saison": "Pacifique",
+        "place": 5,
+        "genre": "F",
+        "age": 37
+      },
+      {
         "nom": "Alexandre",
         "saison": "Palau",
         "place": 11,
@@ -2098,6 +2581,118 @@
         "place": 12,
         "genre": "F",
         "age": 50
+      },
+      {
+        "nom": "Alban",
+        "saison": "Panama",
+        "place": 6,
+        "genre": "H",
+        "age": 27
+      },
+      {
+        "nom": "Amélie",
+        "saison": "Panama",
+        "place": 5,
+        "genre": "F",
+        "age": 25
+      },
+      {
+        "nom": "Catherine",
+        "saison": "Panama",
+        "place": 8,
+        "genre": "F",
+        "age": 36
+      },
+      {
+        "nom": "Guillaume",
+        "saison": "Panama",
+        "place": 10,
+        "genre": "H",
+        "age": 20
+      },
+      {
+        "nom": "Jean-Bernard",
+        "saison": "Panama",
+        "place": 12,
+        "genre": "H",
+        "age": 54
+      },
+      {
+        "nom": "Linda",
+        "saison": "Panama",
+        "place": 2,
+        "genre": "F",
+        "age": 32
+      },
+      {
+        "nom": "Mario-Nelson",
+        "saison": "Panama",
+        "place": 16,
+        "genre": "H",
+        "age": 36
+      },
+      {
+        "nom": "Nathalie",
+        "saison": "Panama",
+        "place": 11,
+        "genre": "F",
+        "age": 28
+      },
+      {
+        "nom": "Odile",
+        "saison": "Panama",
+        "place": 9,
+        "genre": "F",
+        "age": 57
+      },
+      {
+        "nom": "Philippe",
+        "saison": "Panama",
+        "place": 1,
+        "genre": "H",
+        "age": 38
+      },
+      {
+        "nom": "Raphaël",
+        "saison": "Panama",
+        "place": 3,
+        "genre": "H",
+        "age": 40
+      },
+      {
+        "nom": "Romuald",
+        "saison": "Panama",
+        "place": 4,
+        "genre": "H",
+        "age": 26
+      },
+      {
+        "nom": "Sabira",
+        "saison": "Panama",
+        "place": 14,
+        "genre": "F",
+        "age": 23
+      },
+      {
+        "nom": "Sophie",
+        "saison": "Panama",
+        "place": 7,
+        "genre": "F",
+        "age": 27
+      },
+      {
+        "nom": "Vicky",
+        "saison": "Panama",
+        "place": 13,
+        "genre": "F",
+        "age": 26
+      },
+      {
+        "nom": "Vidéli",
+        "saison": "Panama",
+        "place": 15,
+        "genre": "H",
+        "age": 44
       },
       {
         "nom": "Alexandra",
@@ -3239,6 +3834,111 @@
         "place": 10,
         "genre": "H",
         "age": 41
+      },
+      {
+        "nom": "Ahmad",
+        "saison": "Île des Héros",
+        "place": 12,
+        "genre": "H",
+        "age": "30 "
+      },
+      {
+        "nom": "Alexandra",
+        "saison": "Île des Héros",
+        "place": 5,
+        "genre": "F",
+        "age": "46 "
+      },
+      {
+        "nom": "Benoît",
+        "saison": "Île des Héros",
+        "place": 15,
+        "genre": "H",
+        "age": "43 "
+      },
+      {
+        "nom": "Charlotte",
+        "saison": "Île des Héros",
+        "place": 10,
+        "genre": "F",
+        "age": "27 "
+      },
+      {
+        "nom": "Claudia",
+        "saison": "Île des Héros",
+        "place": 20,
+        "genre": "F",
+        "age": "21 "
+      },
+      {
+        "nom": "Delphine",
+        "saison": "Île des Héros",
+        "place": 14,
+        "genre": "F",
+        "age": "36 "
+      },
+      {
+        "nom": "Inès",
+        "saison": "Île des Héros",
+        "place": 2,
+        "genre": "F",
+        "age": "25 "
+      },
+      {
+        "nom": "Joseph",
+        "saison": "Île des Héros",
+        "place": 19,
+        "genre": "H",
+        "age": "27 "
+      },
+      {
+        "nom": "Marie",
+        "saison": "Île des Héros",
+        "place": 17,
+        "genre": "F",
+        "age": 37
+      },
+      {
+        "nom": "Naoil",
+        "saison": "Île des Héros",
+        "place": 1,
+        "genre": "F",
+        "age": "37 "
+      },
+      {
+        "nom": "Pholien",
+        "saison": "Île des Héros",
+        "place": 13,
+        "genre": "H",
+        "age": "29 "
+      },
+      {
+        "nom": "Régis",
+        "saison": "Île des Héros",
+        "place": 6,
+        "genre": "H",
+        "age": "40 "
+      },
+      {
+        "nom": "Sam",
+        "saison": "Île des Héros",
+        "place": 11,
+        "genre": "H",
+        "age": "20 "
+      },
+      {
+        "nom": "Valérie",
+        "saison": "Île des Héros",
+        "place": 18,
+        "genre": "F",
+        "age": "58 "
+      },
+      {
+        "nom": "Éric",
+        "saison": "Île des Héros",
+        "place": 7,
+        "genre": "H",
+        "age": "56 "
       }
     ],
     "orientation": [
@@ -3311,6 +4011,62 @@
         "place": 1,
         "genre": "F",
         "age": "25 "
+      },
+      {
+        "nom": "Gilles",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 1,
+        "genre": "H",
+        "age": 35
+      },
+      {
+        "nom": "Guénaëlle",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 2,
+        "genre": "F",
+        "age": 25
+      },
+      {
+        "nom": "Patricia",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 3,
+        "genre": "F",
+        "age": 31
+      },
+      {
+        "nom": "Romain",
+        "saison": "Aventuriers de Koh-Lanta",
+        "place": 4,
+        "genre": "H",
+        "age": 27
+      },
+      {
+        "nom": "Antoine",
+        "saison": "Bocas del Toro",
+        "place": 4,
+        "genre": "H",
+        "age": 58
+      },
+      {
+        "nom": "Delphine",
+        "saison": "Bocas del Toro",
+        "place": 1,
+        "genre": "F",
+        "age": 32
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Bocas del Toro",
+        "place": 1,
+        "genre": "F",
+        "age": 40
+      },
+      {
+        "nom": "Moussa",
+        "saison": "Bocas del Toro",
+        "place": 3,
+        "genre": "H",
+        "age": 22
       },
       {
         "nom": "Clémentine",
@@ -3600,6 +4356,62 @@
         "age": 37
       },
       {
+        "nom": "Amel",
+        "saison": "Nicoya",
+        "place": 1,
+        "genre": "F",
+        "age": 28
+      },
+      {
+        "nom": "Bernard",
+        "saison": "Nicoya",
+        "place": 3,
+        "genre": "H",
+        "age": 47
+      },
+      {
+        "nom": "Marianne",
+        "saison": "Nicoya",
+        "place": 4,
+        "genre": "F",
+        "age": 34
+      },
+      {
+        "nom": "Nicolas",
+        "saison": "Nicoya",
+        "place": 2,
+        "genre": "H",
+        "age": 29
+      },
+      {
+        "nom": "Alexis",
+        "saison": "Pacifique",
+        "place": 4,
+        "genre": "H",
+        "age": 28
+      },
+      {
+        "nom": "Clémence",
+        "saison": "Pacifique",
+        "place": 1,
+        "genre": "F",
+        "age": 20
+      },
+      {
+        "nom": "Francis",
+        "saison": "Pacifique",
+        "place": 2,
+        "genre": "H",
+        "age": 59
+      },
+      {
+        "nom": "Mohamed",
+        "saison": "Pacifique",
+        "place": 3,
+        "genre": "H",
+        "age": 24
+      },
+      {
         "nom": "Christina",
         "saison": "Palau",
         "place": 1,
@@ -3651,6 +4463,34 @@
       {
         "nom": "Simon",
         "saison": "Palawan",
+        "place": 4,
+        "genre": "H",
+        "age": 26
+      },
+      {
+        "nom": "Linda",
+        "saison": "Panama",
+        "place": 2,
+        "genre": "F",
+        "age": 32
+      },
+      {
+        "nom": "Philippe",
+        "saison": "Panama",
+        "place": 1,
+        "genre": "H",
+        "age": 38
+      },
+      {
+        "nom": "Raphaël",
+        "saison": "Panama",
+        "place": 3,
+        "genre": "H",
+        "age": 40
+      },
+      {
+        "nom": "Romuald",
+        "saison": "Panama",
         "place": 4,
         "genre": "H",
         "age": 26
@@ -3906,6 +4746,20 @@
         "place": 2,
         "genre": "F",
         "age": 24
+      },
+      {
+        "nom": "Inès",
+        "saison": "Île des Héros",
+        "place": 2,
+        "genre": "F",
+        "age": "25 "
+      },
+      {
+        "nom": "Naoil",
+        "saison": "Île des Héros",
+        "place": 1,
+        "genre": "F",
+        "age": "37 "
       }
     ]
   },
@@ -3945,6 +4799,44 @@
           "genre": "F",
           "age": 35,
           "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Aventuriers de Koh-Lanta",
+      "candidates": [
+        {
+          "saison": "Aventuriers de Koh-Lanta",
+          "nom": "Gilles",
+          "genre": "H",
+          "age": 35,
+          "place": 1
+        },
+        {
+          "saison": "Aventuriers de Koh-Lanta",
+          "nom": "Guénaëlle",
+          "genre": "F",
+          "age": 25,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Bocas del Toro",
+      "candidates": [
+        {
+          "saison": "Bocas del Toro",
+          "nom": "Delphine",
+          "genre": "F",
+          "age": 32,
+          "place": 1
+        },
+        {
+          "saison": "Bocas del Toro",
+          "nom": "Isabelle",
+          "genre": "F",
+          "age": 40,
+          "place": 1
         }
       ]
     },
@@ -4120,6 +5012,44 @@
       ]
     },
     {
+      "saison": "Nicoya",
+      "candidates": [
+        {
+          "saison": "Nicoya",
+          "nom": "Amel",
+          "genre": "F",
+          "age": 28,
+          "place": 1
+        },
+        {
+          "saison": "Nicoya",
+          "nom": "Nicolas",
+          "genre": "H",
+          "age": 29,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Pacifique",
+      "candidates": [
+        {
+          "saison": "Pacifique",
+          "nom": "Clémence",
+          "genre": "F",
+          "age": 20,
+          "place": 1
+        },
+        {
+          "saison": "Pacifique",
+          "nom": "Francis",
+          "genre": "H",
+          "age": 59,
+          "place": 2
+        }
+      ]
+    },
+    {
       "saison": "Palau",
       "candidates": [
         {
@@ -4154,6 +5084,25 @@
           "genre": "H",
           "age": 21,
           "place": 1
+        }
+      ]
+    },
+    {
+      "saison": "Panama",
+      "candidates": [
+        {
+          "saison": "Panama",
+          "nom": "Philippe",
+          "genre": "H",
+          "age": 38,
+          "place": 1
+        },
+        {
+          "saison": "Panama",
+          "nom": "Linda",
+          "genre": "F",
+          "age": 32,
+          "place": 2
         }
       ]
     },
@@ -4289,50 +5238,510 @@
           "place": 2
         }
       ]
+    },
+    {
+      "saison": "Île des Héros",
+      "candidates": [
+        {
+          "saison": "Île des Héros",
+          "nom": "Naoil",
+          "genre": "F",
+          "age": 37,
+          "place": 1
+        },
+        {
+          "saison": "Île des Héros",
+          "nom": "Inès",
+          "genre": "F",
+          "age": 25,
+          "place": 2
+        }
+      ]
     }
   ],
   "eliminations": {
     "orientation": {
-      "F": 17,
-      "H": 14,
+      "F": 18,
+      "H": 18,
       "unknown": 0
     },
     "third": {
-      "F": 8,
-      "H": 13,
+      "F": 9,
+      "H": 17,
       "unknown": 0
     },
     "ambassadors": {
-      "F": 6,
+      "F": 7,
       "H": 11,
       "unknown": 0
     }
   },
+  "returnees": {
+    "F": [
+      {
+        "nom": "Christina",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Palau",
+            "place": 1,
+            "initiale": true
+          },
+          {
+            "saison": "Choc des Héros",
+            "place": 9,
+            "initiale": false
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 8,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": "?",
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Clémence",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Pacifique",
+            "place": 1,
+            "initiale": true
+          },
+          {
+            "saison": "Retour des Héros",
+            "place": 9,
+            "initiale": false
+          },
+          {
+            "saison": "Combat des Héros",
+            "place": 1,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 12,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Clémentine",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Cambodge",
+            "place": 2,
+            "initiale": true
+          },
+          {
+            "saison": "Combat des Héros",
+            "place": 10,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 15,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": 8,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Coumba",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Pacifique",
+            "place": 7,
+            "initiale": true
+          },
+          {
+            "saison": "Choc des Héros",
+            "place": 4,
+            "initiale": false
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 4,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 13,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Candice",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Île au trésor",
+            "place": 5,
+            "initiale": true
+          },
+          {
+            "saison": "Combat des Héros",
+            "place": 9,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 16,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Christelle",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Caramoan",
+            "place": 1,
+            "initiale": true
+          },
+          {
+            "saison": "Retour des Héros",
+            "place": 11,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 8,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Isabelle",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Palau",
+            "place": 3,
+            "initiale": true
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 13,
+            "initiale": false
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 12,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Jade",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Palawan",
+            "place": 1,
+            "initiale": true
+          },
+          {
+            "saison": "Retour des Héros",
+            "place": 2,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 4,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Sara",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Malaisie",
+            "place": 18,
+            "initiale": true
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 10,
+            "initiale": false
+          },
+          {
+            "saison": "Île des Héros",
+            "place": 16,
+            "initiale": false
+          }
+        ]
+      }
+    ],
+    "H": [
+      {
+        "nom": "Freddy",
+        "retours": 5,
+        "participations": [
+          {
+            "saison": "Palau",
+            "place": 10,
+            "initiale": true
+          },
+          {
+            "saison": "Choc des Héros",
+            "place": 2,
+            "initiale": false
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 10,
+            "initiale": false
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 7,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 21,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": "?",
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Teheiura",
+        "retours": 4,
+        "participations": [
+          {
+            "saison": "Raja Ampat",
+            "place": 2,
+            "initiale": true
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 8,
+            "initiale": false
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 6,
+            "initiale": false
+          },
+          {
+            "saison": "Île des Héros",
+            "place": 9,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 11,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Moussa",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Bocas del Toro",
+            "place": 3,
+            "initiale": true
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 7,
+            "initiale": false
+          },
+          {
+            "saison": "Île des Héros",
+            "place": 4,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": 17,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Ugo",
+        "retours": 3,
+        "participations": [
+          {
+            "saison": "Malaisie",
+            "place": 1,
+            "initiale": true
+          },
+          {
+            "saison": "La Légende",
+            "place": 3,
+            "initiale": false
+          },
+          {
+            "saison": "La Tribu Maudite",
+            "place": 6,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": 7,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Claude",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Viêtnam",
+            "place": 2,
+            "initiale": true
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 2,
+            "initiale": false
+          },
+          {
+            "saison": "Île des Héros",
+            "place": 3,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Laurent",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Raja Ampat",
+            "place": 3,
+            "initiale": true
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 1,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 2,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Moundir",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Bocas del Toro",
+            "place": 5,
+            "initiale": true
+          },
+          {
+            "saison": "Retour des Héros",
+            "place": 12,
+            "initiale": false
+          },
+          {
+            "saison": "Nouvelle Edition",
+            "place": 4,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Patrick",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Palau",
+            "place": 2,
+            "initiale": true
+          },
+          {
+            "saison": "Revanche des Héros",
+            "place": 5,
+            "initiale": false
+          },
+          {
+            "saison": "La Légende",
+            "place": 20,
+            "initiale": false
+          }
+        ]
+      },
+      {
+        "nom": "Yassin",
+        "retours": 2,
+        "participations": [
+          {
+            "saison": "Cambodge",
+            "place": 12,
+            "initiale": true
+          },
+          {
+            "saison": "Combat des Héros",
+            "place": 7,
+            "initiale": false
+          },
+          {
+            "saison": "All Stars",
+            "place": 11,
+            "initiale": false
+          }
+        ]
+      }
+    ]
+  },
   "first_outs": {
     "gender": {
-      "F": 32,
-      "H": 11,
+      "F": 40,
+      "H": 15,
       "unknown": 0
     },
     "ages": {
       "all": {
         "counts": {
           "20": 1,
-          "22": 1,
-          "23": 3,
-          "24": 2,
-          "25": 5,
-          "28": 1,
+          "21": 1,
+          "22": 2,
+          "23": 5,
+          "24": 4,
+          "25": 6,
+          "27": 1,
+          "28": 2,
           "30": 1,
           "32": 1,
           "33": 2,
           "34": 3,
           "35": 1,
-          "36": 2,
+          "36": 3,
           "37": 1,
           "38": 1,
           "39": 3,
-          "40": 2,
+          "40": 3,
           "41": 1,
           "44": 1,
           "45": 1,
@@ -4342,18 +5751,20 @@
           "52": 2,
           "53": 1,
           "56": 1,
+          "58": 1,
           "62": 1,
           "65": 1
         },
-        "total": 43,
-        "average": 37.02325581395349
+        "total": 55,
+        "average": 35.32727272727273
       },
       "F": {
         "counts": {
-          "23": 3,
-          "24": 1,
-          "25": 4,
-          "28": 1,
+          "22": 1,
+          "23": 5,
+          "24": 2,
+          "25": 5,
+          "28": 2,
           "30": 1,
           "33": 2,
           "34": 2,
@@ -4362,7 +5773,7 @@
           "37": 1,
           "38": 1,
           "39": 3,
-          "40": 2,
+          "40": 3,
           "41": 1,
           "44": 1,
           "45": 1,
@@ -4370,27 +5781,31 @@
           "51": 1,
           "52": 1,
           "53": 1,
+          "58": 1,
           "62": 1
         },
-        "total": 32,
-        "average": 36.28125
+        "total": 40,
+        "average": 35.1
       },
       "H": {
         "counts": {
           "20": 1,
+          "21": 1,
           "22": 1,
-          "24": 1,
+          "24": 2,
           "25": 1,
+          "27": 1,
           "32": 1,
           "34": 1,
+          "36": 1,
           "50": 1,
           "51": 1,
           "52": 1,
           "56": 1,
           "65": 1
         },
-        "total": 11,
-        "average": 39.18181818181818
+        "total": 15,
+        "average": 35.93333333333333
       }
     },
     "candidates": [
@@ -4409,6 +5824,38 @@
         "genre": "F",
         "age": 25,
         "place": 20
+      },
+      {
+        "saison": "Aventuriers de Koh-Lanta",
+        "tribu": "Jaune",
+        "nom": "Marie",
+        "genre": "F",
+        "age": 22,
+        "place": 16
+      },
+      {
+        "saison": "Aventuriers de Koh-Lanta",
+        "tribu": "Rouge",
+        "nom": "Guillaume",
+        "genre": "H",
+        "age": 24,
+        "place": 15
+      },
+      {
+        "saison": "Bocas del Toro",
+        "tribu": "Rouge",
+        "nom": "Linda",
+        "genre": "F",
+        "age": 25,
+        "place": 13
+      },
+      {
+        "saison": "Bocas del Toro",
+        "tribu": "Jaune",
+        "nom": "Candice",
+        "genre": "F",
+        "age": 23,
+        "place": 17
       },
       {
         "saison": "Cambodge",
@@ -4579,6 +6026,38 @@
         "place": 16
       },
       {
+        "saison": "Nicoya",
+        "tribu": "Rouge",
+        "nom": "Nelly",
+        "genre": "F",
+        "age": 24,
+        "place": 13
+      },
+      {
+        "saison": "Nicoya",
+        "tribu": "Jaune",
+        "nom": "Caroline",
+        "genre": "F",
+        "age": 28,
+        "place": 15
+      },
+      {
+        "saison": "Pacifique",
+        "tribu": "Jaune",
+        "nom": "Mathieu",
+        "genre": "H",
+        "age": 21,
+        "place": 16
+      },
+      {
+        "saison": "Pacifique",
+        "tribu": "Rouge",
+        "nom": "Eliane",
+        "genre": "F",
+        "age": 40,
+        "place": 12
+      },
+      {
         "saison": "Palau",
         "tribu": "Bannis",
         "nom": "Joëlle",
@@ -4617,6 +6096,22 @@
         "genre": "F",
         "age": 39,
         "place": 15
+      },
+      {
+        "saison": "Panama",
+        "tribu": "Rouge",
+        "nom": "Mario-Nelson",
+        "genre": "H",
+        "age": 36,
+        "place": 16
+      },
+      {
+        "saison": "Panama",
+        "tribu": "Jaune",
+        "nom": "Sabira",
+        "genre": "F",
+        "age": 23,
+        "place": 14
       },
       {
         "saison": "Raja Ampat",
@@ -4737,6 +6232,22 @@
         "genre": "F",
         "age": 33,
         "place": 19
+      },
+      {
+        "saison": "Île des Héros",
+        "tribu": "Rouge",
+        "nom": "Joseph",
+        "genre": "H",
+        "age": "27 ",
+        "place": 19
+      },
+      {
+        "saison": "Île des Héros",
+        "tribu": "Jaune",
+        "nom": "Valérie",
+        "genre": "F",
+        "age": "58 ",
+        "place": 18
       }
     ]
   }

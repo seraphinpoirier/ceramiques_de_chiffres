@@ -9,6 +9,8 @@ import openpyxl
 import csv
 import os
 import sys
+import unicodedata
+from collections import defaultdict
 from pathlib import Path
 
 # Paths
@@ -17,6 +19,7 @@ PROJECT_DIR = Path(r"C:\Users\caren\OneDrive\Bureau\projet_kl\la_tele_en_data")
 DATA_DIR = PROJECT_DIR / "data"
 DB_PATH = PROJECT_DIR / "Donnees_KL.db"
 SQL_SCHEMA_PATH = PROJECT_DIR / "Donnees_KL.sql"
+UNMATCHED_PATH = PROJECT_DIR / "candidats_non_identifies.txt"
 
 # Source files (in data folder)
 XLSX_POPULATION = TEMP_DIR / "POPULATION_MUNICIPALE_DEPARTEMENT_FRANCE.xlsx"
@@ -106,8 +109,8 @@ def load_candidates_data():
     print("\nLoading candidates data...")
     candidates_data = []
     
-    wb = openpyxl.load_workbook(XLSX_CANDIDATES)
-    ws = wb.active
+    wb = openpyxl.load_workbook(XLSX_CANDIDATES, read_only=True, data_only=True)
+    ws = wb['CLASSIQUES']
     
     headers = [cell.value for cell in ws[1]]
     comeback_index = headers.index('CB?')
@@ -134,8 +137,97 @@ def load_candidates_data():
         }
         candidates_data.append(candidate)
     
+    wb.close()
     print(f"  Loaded {len(candidates_data)} candidates; excluded {excluded} comeback appearances")
     return candidates_data
+
+
+def normalized(value):
+    """Normalize capitalization, accents and whitespace without guessing identities."""
+    text = unicodedata.normalize('NFKD', str(value or '').casefold())
+    return ' '.join(''.join(c for c in text if not unicodedata.combining(c)).split())
+
+
+def load_return_data():
+    """Read special editions and marked returns in classic seasons."""
+    wb = openpyxl.load_workbook(XLSX_CANDIDATES, read_only=True, data_only=True)
+    returns = []
+    for sheet_name in ('ALLSTARS', 'CLASSIQUES'):
+        sheet = wb[sheet_name]
+        rows = sheet.iter_rows(values_only=True)
+        headers = {name: index for index, name in enumerate(next(rows))}
+        required = ('ANNEE', 'SAISON', 'GENRE', 'NOM', 'PLACE',
+                    'INITIALE' if sheet_name == 'ALLSTARS' else 'CB?')
+        missing = [name for name in required if name not in headers]
+        if missing:
+            raise ValueError(f"{sheet_name}: missing columns {missing}")
+        for line, row in enumerate(rows, start=2):
+            if not any(value is not None for value in row):
+                continue
+            if sheet_name == 'CLASSIQUES' and normalized(row[headers['CB?']]) != 'o':
+                continue
+            returns.append({
+                'source': sheet_name,
+                'line': line,
+                'annee': row[headers['ANNEE']],
+                'saison': row[headers['SAISON']],
+                'initiale': row[headers['INITIALE']] if sheet_name == 'ALLSTARS' else None,
+                'genre': row[headers['GENRE']],
+                'nom': row[headers['NOM']],
+                'place': row[headers['PLACE']],
+            })
+    wb.close()
+    return returns
+
+
+def link_returns(conn, returns):
+    """Link only unambiguous identities; report every unlinked source row."""
+    by_origin = defaultdict(list)
+    by_name = defaultdict(list)
+    for candidate_id, name, season, gender in conn.execute(
+        'SELECT id_candidat, nom, saison, genre FROM Candidats'
+    ):
+        candidate = (candidate_id, gender)
+        by_origin[(normalized(name), normalized(season))].append(candidate)
+        by_name[normalized(name)].append(candidate)
+
+    unmatched = []
+    for appearance in returns:
+        name = normalized(appearance['nom'])
+        season = normalized(appearance['saison'])
+        origin = normalized(appearance['initiale'])
+        if not name or not season or (appearance['source'] == 'ALLSTARS' and not origin):
+            unmatched.append((appearance, 'nom ou saison manquant'))
+            continue
+        matches = (by_origin[(name, origin)] if appearance['source'] == 'ALLSTARS'
+                   else by_name[name])
+        if len(matches) != 1:
+            unmatched.append((appearance, 'aucune correspondance' if not matches else 'correspondance ambiguë'))
+            continue
+        candidate_id, gender = matches[0]
+        if normalized(gender) != normalized(appearance['genre']):
+            unmatched.append((appearance, 'genre différent'))
+            continue
+        conn.execute(
+            'INSERT INTO Retours (id_candidat, annee, saison, place, source) VALUES (?, ?, ?, ?, ?)',
+            (candidate_id, appearance['annee'], appearance['saison'], appearance['place'], appearance['source']),
+        )
+    return unmatched
+
+
+def write_unmatched_report(unmatched):
+    with UNMATCHED_PATH.open('w', encoding='utf-8') as report:
+        report.write("Participations non liées à un candidat existant\n")
+        for source in ('ALLSTARS', 'CLASSIQUES'):
+            report.write(f"\n{source} :\n")
+            entries = [(appearance, reason) for appearance, reason in unmatched
+                       if appearance['source'] == source]
+            if not entries:
+                report.write("Aucune.\n")
+            for appearance, reason in entries:
+                origin = appearance['initiale'] or 'non renseignée'
+                report.write(f"Ligne {appearance['line']} : {appearance['nom']} | "
+                             f"saison : {appearance['saison']} | saison initiale : {origin} | {reason}\n")
 
 
 def create_and_populate_database():
@@ -146,6 +238,7 @@ def create_and_populate_database():
     population_data = load_population_data()
     regions_data, dept_region_map = load_regions_data()
     candidates_data = load_candidates_data()
+    returns = load_return_data()
     
     # Rebuild from scratch so re-runs don't duplicate rows
     if DB_PATH.exists():
@@ -153,6 +246,7 @@ def create_and_populate_database():
 
     # Create database and load schema
     conn = sqlite3.connect(DB_PATH)
+    conn.execute("PRAGMA foreign_keys = ON")
     cursor = conn.cursor()
     
     # Load and execute schema
@@ -218,20 +312,19 @@ def create_and_populate_database():
         aban = 1 if candidate['aban'] else 0
         pot = 1 if candidate['pot'] else 0
         
-        try:
-            cursor.execute(
-                """INSERT INTO Candidats 
-                   (saison, genre, nom, age, id_dept, tribu, amb, ori, aban, pot, place)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (candidate['saison'], candidate['genre'], candidate['nom'],
-                 candidate['age'], id_dept, candidate['tribu'],
-                 amb, ori, aban, pot, candidate['place'])
-            )
-            cand_count += 1
-        except Exception as e:
-            print(f"  Warning: Could not insert candidate {candidate['nom']}: {e}")
+        cursor.execute(
+            """INSERT INTO Candidats
+               (saison, genre, nom, age, id_dept, tribu, amb, ori, aban, pot, place)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (candidate['saison'], candidate['genre'], candidate['nom'],
+             candidate['age'], id_dept, candidate['tribu'],
+             amb, ori, aban, pot, candidate['place'])
+        )
+        cand_count += 1
     
     print(f"  Inserted {cand_count} candidates")
+    unmatched = link_returns(conn, returns)
+    print(f"  Linked {len(returns) - len(unmatched)} returns; {len(unmatched)} unlinked")
     
     # Update candidate counts in departments
     print("\nUpdating department candidate counts...")
@@ -244,6 +337,7 @@ def create_and_populate_database():
     
     # Commit and close
     conn.commit()
+    write_unmatched_report(unmatched)
     
     # Print summary statistics
     print("\n" + "="*60)

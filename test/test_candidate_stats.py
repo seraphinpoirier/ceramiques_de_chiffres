@@ -1,6 +1,9 @@
 import json
+import re
+import shutil
 import sqlite3
 import sys
+import tempfile
 import unittest
 from collections import Counter
 from pathlib import Path
@@ -10,7 +13,7 @@ import openpyxl
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'scripts'))
-from generate_candidate_stats import age_stats, elimination_stats, finale_stats, first_outs
+from generate_candidate_stats import age_stats, elimination_stats, finale_stats, first_outs, returnee_stats
 import load_data
 
 
@@ -120,10 +123,15 @@ class CandidateStatsTests(unittest.TestCase):
         self.assertEqual(actual['eliminations'], expected_eliminations)
 
     def test_import_excludes_only_marked_comeback_appearances(self):
-        workbook = ROOT / 'data' / 'donnees_kohlanta.xlsx'
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        workbook = Path(temp_dir.name) / 'donnees_kohlanta.xlsx'
+        shutil.copy2(ROOT / 'data' / 'donnees_kohlanta.xlsx', workbook)
         with patch.object(load_data, 'XLSX_CANDIDATES', workbook):
             imported = load_data.load_candidates_data()
-        rows = list(openpyxl.load_workbook(workbook, read_only=True, data_only=True).active.values)
+        source = openpyxl.load_workbook(workbook, read_only=True, data_only=True)
+        rows = list(source['CLASSIQUES'].values)
+        source.close()
         headers = list(rows[0])
         season, name, comeback = (headers.index(column) for column in ('SAISON', 'NOM', 'CB?'))
         expected = Counter((row[season], row[name]) for row in rows[1:]
@@ -136,6 +144,89 @@ class CandidateStatsTests(unittest.TestCase):
             self.assertEqual(actual, expected)
             for record in excluded:
                 self.assertEqual(actual[record], expected[record])
+
+
+class ReturneeTests(unittest.TestCase):
+    def setUp(self):
+        self.conn = sqlite3.connect(':memory:')
+        self.addCleanup(self.conn.close)
+        self.conn.executescript('''
+            CREATE TABLE Candidats (id_candidat INTEGER PRIMARY KEY, nom TEXT, saison TEXT, genre TEXT, place INTEGER);
+            CREATE TABLE Retours (id_retour INTEGER PRIMARY KEY, id_candidat INTEGER, annee INTEGER,
+                                  saison TEXT, place INTEGER, source TEXT);
+        ''')
+
+    def test_links_by_name_and_origin_and_reports_ambiguous_or_missing(self):
+        self.conn.executemany('INSERT INTO Candidats VALUES (?, ?, ?, ?, ?)', [
+            (1, 'Élodie', 'Saison A', 'F', 3),
+            (2, 'Élodie', 'Saison B', 'F', 4),
+            (3, 'Alex', 'Saison C', 'H', 2),
+        ])
+        def appearance(name, season, origin, source='ALLSTARS', gender='F'):
+            return {'nom': name, 'saison': season, 'initiale': origin, 'source': source,
+                    'genre': gender, 'annee': 2020, 'place': 5, 'line': 2}
+        rows = [
+            appearance(' elodie ', 'Retour', ' SAISON A '),
+            appearance('Élodie', 'Retour', 'inconnue'),
+            appearance('Élodie', 'Autre', None, 'CLASSIQUES'),
+            appearance('Alex', 'Retour', 'Saison C'),
+        ]
+        unmatched = load_data.link_returns(self.conn, rows)
+        self.assertEqual(self.conn.execute('SELECT id_candidat, saison, place FROM Retours').fetchall(),
+                         [(1, 'Retour', 5)])
+        self.assertEqual([reason for _, reason in unmatched],
+                         ['aucune correspondance', 'correspondance ambiguë', 'genre différent'])
+
+    def test_fifth_place_ties_and_all_placements(self):
+        for gender in ('F', 'H'):
+            for index, count in enumerate([4, 3, 2, 1, 1, 1, 0]):
+                candidate_id = (1 if gender == 'F' else 10) + index
+                self.conn.execute('INSERT INTO Candidats VALUES (?, ?, ?, ?, ?)',
+                                  (candidate_id, f'{gender}{index}', 'Initiale', gender, 8))
+                for year in range(count):
+                    self.conn.execute('INSERT INTO Retours (id_candidat, annee, saison, place, source) VALUES (?, ?, ?, ?, ?)',
+                                      (candidate_id, 2000 + year, f'Retour {year}', year + 1, 'ALLSTARS'))
+        result = returnee_stats(self.conn)
+        for gender in ('F', 'H'):
+            self.assertEqual([candidate['retours'] for candidate in result[gender]], [4, 3, 2, 1, 1, 1])
+            self.assertEqual(result[gender][0]['participations'], [
+                {'saison': 'Initiale', 'place': 8, 'initiale': True},
+                *[{'saison': f'Retour {i}', 'place': i + 1, 'initiale': False} for i in range(4)],
+            ])
+
+    def test_generated_returnees_match_database(self):
+        with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
+            expected = returnee_stats(conn)
+        with (ROOT / 'candidate_stats.json').open(encoding='utf-8') as f:
+            self.assertEqual(json.load(f)['returnees'], expected)
+
+    def test_allstars_rows_are_linked_or_reported(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            workbook = Path(temp_dir) / 'donnees_kohlanta.xlsx'
+            shutil.copy2(ROOT / 'data' / 'donnees_kohlanta.xlsx', workbook)
+            source = openpyxl.load_workbook(workbook, read_only=True, data_only=True)
+            rows = list(source['ALLSTARS'].values)
+            source.close()
+        headers = {name: index for index, name in enumerate(rows[0])}
+        report = (ROOT / 'candidats_non_identifies.txt').read_text(encoding='utf-8').split('CLASSIQUES :')[0]
+        reported_lines = {int(line) for line in re.findall(r'^Ligne (\d+) :', report, re.MULTILINE)}
+        expected = Counter(
+            (load_data.normalized(row[headers['NOM']]), load_data.normalized(row[headers['INITIALE']]),
+             load_data.normalized(row[headers['SAISON']]), row[headers['PLACE']])
+            for line, row in enumerate(rows[1:], start=2) if line not in reported_lines
+        )
+        with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
+            actual = Counter(
+                (load_data.normalized(name), load_data.normalized(origin), load_data.normalized(season), place)
+                for name, origin, season, place in conn.execute('''
+                    SELECT c.nom, c.saison, r.saison, r.place
+                    FROM Retours r JOIN Candidats c ON c.id_candidat = r.id_candidat
+                    WHERE r.source = 'ALLSTARS'
+                ''')
+            )
+        self.assertEqual(actual, expected)
+        for line in reported_lines:
+            self.assertIn(f"Ligne {line} : {rows[line - 1][headers['NOM']]} |", report)
 
 
 if __name__ == '__main__':

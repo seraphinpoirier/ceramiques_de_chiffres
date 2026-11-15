@@ -1,9 +1,9 @@
 {
   "metadata": {
     "total_population": 68094280,
-    "total_candidates": 426,
+    "total_candidates": 524,
     "total_departments": 100,
-    "generated_date": "2026-11-15 13:19:45",
+    "generated_date": "2026-11-15 17:02:11",
     "data_source": "Donnees_KL.db (replaces Excel files)",
     "note": "Generated from database queries instead of Excel files"
   },
@@ -11,9 +11,9 @@
     "Ain": {
       "population_2023": 679344,
       "population_percentage": 1.0,
-      "candidate_count": 7,
-      "candidate_percentage": 1.64,
-      "gap_percentage": 0.65,
+      "candidate_count": 8,
+      "candidate_percentage": 1.53,
+      "gap_percentage": 0.53,
       "candidates": [
         {
           "name": "Alexandra ",
@@ -32,6 +32,10 @@
           "season": "Le Feu Sacré"
         },
         {
+          "name": "Isabelle",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Loïc ",
           "season": "Johor"
         },
@@ -48,26 +52,34 @@
     "Aisne": {
       "population_2023": 523342,
       "population_percentage": 0.77,
-      "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.53,
+      "candidate_count": 2,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.39,
       "candidates": [
         {
           "name": "Myriam",
           "season": "Malaisie"
+        },
+        {
+          "name": "Véronique",
+          "season": "Pacifique"
         }
       ]
     },
     "Allier": {
       "population_2023": 333298,
       "population_percentage": 0.49,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.02,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": 0.08,
       "candidates": [
         {
           "name": "Marine",
           "season": "Fidji"
+        },
+        {
+          "name": "Michèle",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Océane",
@@ -78,9 +90,9 @@
     "Alpes-Maritimes": {
       "population_2023": 1128418,
       "population_percentage": 1.66,
-      "candidate_count": 12,
-      "candidate_percentage": 2.82,
-      "gap_percentage": 1.16,
+      "candidate_count": 16,
+      "candidate_percentage": 3.05,
+      "gap_percentage": 1.4,
       "candidates": [
         {
           "name": "Angélique",
@@ -99,8 +111,20 @@
           "season": "Cambodge"
         },
         {
+          "name": "Hélène",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Isabelle",
+          "season": "Nicoya"
+        },
+        {
           "name": "Laureen",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Linda",
+          "season": "Panama"
         },
         {
           "name": "Myriam",
@@ -113,6 +137,10 @@
         {
           "name": "Romain",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Sophie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Steeve",
@@ -144,8 +172,8 @@
       "population_2023": 265893,
       "population_percentage": 0.39,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.16,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.2,
       "candidates": [
         {
           "name": "Virginie",
@@ -157,8 +185,8 @@
       "population_2023": 334231,
       "population_percentage": 0.49,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.02,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.11,
       "candidates": [
         {
           "name": "Fabrice",
@@ -189,13 +217,17 @@
     "Aude": {
       "population_2023": 379648,
       "population_percentage": 0.56,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.09,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": 0.01,
       "candidates": [
         {
           "name": "Simon",
           "season": "Palawan"
+        },
+        {
+          "name": "Vidéli",
+          "season": "Panama"
         },
         {
           "name": "Émilie",
@@ -207,8 +239,8 @@
       "population_2023": 279609,
       "population_percentage": 0.41,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.18,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.22,
       "candidates": [
         {
           "name": "Jonathan",
@@ -220,8 +252,8 @@
       "population_2023": 1163810,
       "population_percentage": 1.71,
       "candidate_count": 8,
-      "candidate_percentage": 1.88,
-      "gap_percentage": 0.17,
+      "candidate_percentage": 1.53,
+      "gap_percentage": -0.18,
       "candidates": [
         {
           "name": "Amandine",
@@ -260,9 +292,9 @@
     "Bouches-du-Rhône": {
       "population_2023": 2087658,
       "population_percentage": 3.07,
-      "candidate_count": 27,
-      "candidate_percentage": 6.34,
-      "gap_percentage": 3.27,
+      "candidate_count": 28,
+      "candidate_percentage": 5.34,
+      "gap_percentage": 2.28,
       "candidates": [
         {
           "name": "Adrien",
@@ -311,6 +343,10 @@
         {
           "name": "Frédéric",
           "season": "Cambodge"
+        },
+        {
+          "name": "Harry",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Jean-Bernard",
@@ -377,9 +413,9 @@
     "Calvados": {
       "population_2023": 709441,
       "population_percentage": 1.04,
-      "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": 0.13,
+      "candidate_count": 7,
+      "candidate_percentage": 1.34,
+      "gap_percentage": 0.29,
       "candidates": [
         {
           "name": "Aurélien",
@@ -400,6 +436,14 @@
         {
           "name": "Jean",
           "season": "Les Chasseurs d'Immunité"
+        },
+        {
+          "name": "Joseph",
+          "season": "Île des Héros"
+        },
+        {
+          "name": "Romuald",
+          "season": "Panama"
         }
       ]
     },
@@ -415,8 +459,8 @@
       "population_2023": 352683,
       "population_percentage": 0.52,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.05,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.14,
       "candidates": [
         {
           "name": "Emmanuelle",
@@ -432,8 +476,8 @@
       "population_2023": 672279,
       "population_percentage": 0.99,
       "candidate_count": 7,
-      "candidate_percentage": 1.64,
-      "gap_percentage": 0.66,
+      "candidate_percentage": 1.34,
+      "gap_percentage": 0.35,
       "candidates": [
         {
           "name": "Clémence",
@@ -485,8 +529,8 @@
       "population_2023": 168306,
       "population_percentage": 0.25,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.01,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.06,
       "candidates": [
         {
           "name": "Pauline",
@@ -498,8 +542,8 @@
       "population_2023": 115527,
       "population_percentage": 0.17,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": 0.07,
+      "candidate_percentage": 0.19,
+      "gap_percentage": 0.02,
       "candidates": [
         {
           "name": "Brice",
@@ -511,8 +555,8 @@
       "population_2023": 540100,
       "population_percentage": 0.79,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.32,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.41,
       "candidates": [
         {
           "name": "Bertrand-Kamal",
@@ -527,13 +571,17 @@
     "Côtes-d'Armor": {
       "population_2023": 611859,
       "population_percentage": 0.9,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.43,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.33,
       "candidates": [
         {
           "name": "Aurélien",
           "season": "Guerre des Chefs"
+        },
+        {
+          "name": "Guillaume",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Tugdual",
@@ -544,18 +592,27 @@
     "Deux-Sèvres": {
       "population_2023": 375229,
       "population_percentage": 0.55,
-      "candidate_count": 0,
-      "candidate_percentage": 0.0,
-      "gap_percentage": -0.55,
-      "candidates": []
+      "candidate_count": 1,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.36,
+      "candidates": [
+        {
+          "name": "Nicolas",
+          "season": "Nicoya"
+        }
+      ]
     },
     "Dordogne": {
       "population_2023": 417614,
       "population_percentage": 0.61,
-      "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.38,
+      "candidate_count": 2,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.23,
       "candidates": [
+        {
+          "name": "Francis",
+          "season": "Pacifique"
+        },
         {
           "name": "Sandrine",
           "season": "Fidji"
@@ -566,8 +623,8 @@
       "population_2023": 547163,
       "population_percentage": 0.8,
       "candidate_count": 6,
-      "candidate_percentage": 1.41,
-      "gap_percentage": 0.6,
+      "candidate_percentage": 1.15,
+      "gap_percentage": 0.34,
       "candidates": [
         {
           "name": "Claire",
@@ -598,9 +655,9 @@
     "Drôme": {
       "population_2023": 524207,
       "population_percentage": 0.77,
-      "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": -0.07,
+      "candidate_count": 4,
+      "candidate_percentage": 0.76,
+      "gap_percentage": -0.01,
       "candidates": [
         {
           "name": "Philippe",
@@ -613,15 +670,19 @@
         {
           "name": "Sophie",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Thierry",
+          "season": "Pacifique"
         }
       ]
     },
     "Essonne": {
       "population_2023": 1338485,
       "population_percentage": 1.97,
-      "candidate_count": 6,
-      "candidate_percentage": 1.41,
-      "gap_percentage": -0.56,
+      "candidate_count": 10,
+      "candidate_percentage": 1.91,
+      "gap_percentage": -0.06,
       "candidates": [
         {
           "name": "Jessica",
@@ -644,6 +705,22 @@
           "season": "Palau"
         },
         {
+          "name": "Moussa",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Romain",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
+          "name": "Sabira",
+          "season": "Panama"
+        },
+        {
+          "name": "Sandra",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "William",
           "season": "Les Chasseurs d'Immunité"
         }
@@ -653,8 +730,8 @@
       "population_2023": 602714,
       "population_percentage": 0.89,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.65,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.69,
       "candidates": [
         {
           "name": "Gégé",
@@ -666,8 +743,8 @@
       "population_2023": 433129,
       "population_percentage": 0.64,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.4,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.45,
       "candidates": [
         {
           "name": "Esteban",
@@ -678,10 +755,14 @@
     "Finistère": {
       "population_2023": 933455,
       "population_percentage": 1.37,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.9,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.8,
       "candidates": [
+        {
+          "name": "Gaël",
+          "season": "Aventuriers de Koh-Lanta"
+        },
         {
           "name": "Maël",
           "season": "Revanche des 4 Terres"
@@ -696,8 +777,8 @@
       "population_2023": 770940,
       "population_percentage": 1.13,
       "candidate_count": 7,
-      "candidate_percentage": 1.64,
-      "gap_percentage": 0.51,
+      "candidate_percentage": 1.34,
+      "gap_percentage": 0.2,
       "candidates": [
         {
           "name": "Alain",
@@ -733,8 +814,8 @@
       "population_2023": 192645,
       "population_percentage": 0.28,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": 0.19,
+      "candidate_percentage": 0.38,
+      "gap_percentage": 0.1,
       "candidates": [
         {
           "name": "Aubin",
@@ -749,9 +830,9 @@
     "Gironde": {
       "population_2023": 1690493,
       "population_percentage": 2.48,
-      "candidate_count": 12,
-      "candidate_percentage": 2.82,
-      "gap_percentage": 0.33,
+      "candidate_count": 15,
+      "candidate_percentage": 2.86,
+      "gap_percentage": 0.38,
       "candidates": [
         {
           "name": "Antonin",
@@ -778,12 +859,24 @@
           "season": "Reliques du destin"
         },
         {
+          "name": "Gilles",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
           "name": "Marie",
           "season": "Armes Secrètes"
         },
         {
+          "name": "Nelly",
+          "season": "Nicoya"
+        },
+        {
           "name": "Sylviane",
           "season": "Armes Secrètes"
+        },
+        {
+          "name": "Sylvie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Vanessa",
@@ -822,17 +915,22 @@
     "Haut-Rhin": {
       "population_2023": 770738,
       "population_percentage": 1.13,
-      "candidate_count": 0,
-      "candidate_percentage": 0.0,
-      "gap_percentage": -1.13,
-      "candidates": []
+      "candidate_count": 1,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.94,
+      "candidates": [
+        {
+          "name": "Sam",
+          "season": "Île des Héros"
+        }
+      ]
     },
     "Haute-Corse": {
       "population_2023": 187180,
       "population_percentage": 0.27,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.04,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.08,
       "candidates": [
         {
           "name": "Sarah",
@@ -843,13 +941,25 @@
     "Haute-Garonne": {
       "population_2023": 1471468,
       "population_percentage": 2.16,
-      "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": -0.99,
+      "candidate_count": 8,
+      "candidate_percentage": 1.53,
+      "gap_percentage": -0.63,
       "candidates": [
+        {
+          "name": "Clémence",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Céline",
+          "season": "Nicoya"
+        },
         {
           "name": "Jade",
           "season": "Palawan"
+        },
+        {
+          "name": "Jean-Bernard",
+          "season": "Panama"
         },
         {
           "name": "Jesta",
@@ -872,10 +982,15 @@
     "Haute-Loire": {
       "population_2023": 228654,
       "population_percentage": 0.34,
-      "candidate_count": 0,
-      "candidate_percentage": 0.0,
-      "gap_percentage": -0.34,
-      "candidates": []
+      "candidate_count": 1,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.14,
+      "candidates": [
+        {
+          "name": "Éric",
+          "season": "Île des Héros"
+        }
+      ]
     },
     "Haute-Marne": {
       "population_2023": 168331,
@@ -888,9 +1003,9 @@
     "Haute-Savoie": {
       "population_2023": 861158,
       "population_percentage": 1.26,
-      "candidate_count": 11,
-      "candidate_percentage": 2.58,
-      "gap_percentage": 1.32,
+      "candidate_count": 14,
+      "candidate_percentage": 2.67,
+      "gap_percentage": 1.41,
       "candidates": [
         {
           "name": "Clarisse",
@@ -905,6 +1020,10 @@
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Delphine",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Gabin",
           "season": "Armes Secrètes"
         },
@@ -915,6 +1034,10 @@
         {
           "name": "Huw",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Jérôme",
+          "season": "Pacifique"
         },
         {
           "name": "Karine",
@@ -935,6 +1058,10 @@
         {
           "name": "Paul",
           "season": "Reliques du destin"
+        },
+        {
+          "name": "Vicky",
+          "season": "Panama"
         }
       ]
     },
@@ -942,8 +1069,8 @@
       "population_2023": 233185,
       "population_percentage": 0.34,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.11,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.15,
       "candidates": [
         {
           "name": "Cécile",
@@ -978,9 +1105,9 @@
     "Hauts-de-Seine": {
       "population_2023": 1654712,
       "population_percentage": 2.43,
-      "candidate_count": 17,
-      "candidate_percentage": 3.99,
-      "gap_percentage": 1.56,
+      "candidate_count": 25,
+      "candidate_percentage": 4.77,
+      "gap_percentage": 2.34,
       "candidates": [
         {
           "name": "Abdellah",
@@ -1003,6 +1130,10 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Coumba",
+          "season": "Pacifique"
+        },
+        {
           "name": "Cécile",
           "season": "Les Chasseurs d'Immunité"
         },
@@ -1015,8 +1146,16 @@
           "season": "Palawan"
         },
         {
+          "name": "François-Xavier",
+          "season": "Nicoya"
+        },
+        {
           "name": "Frédéric",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Julie",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Louana",
@@ -1035,8 +1174,24 @@
           "season": "Les Chasseurs d'Immunité"
         },
         {
+          "name": "Mohamed",
+          "season": "Pacifique"
+        },
+        {
           "name": "Mélanie",
           "season": "Malaisie"
+        },
+        {
+          "name": "Naoil",
+          "season": "Île des Héros"
+        },
+        {
+          "name": "Odile",
+          "season": "Panama"
+        },
+        {
+          "name": "Patricia",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Samuel",
@@ -1049,6 +1204,10 @@
         {
           "name": "Steve",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Stéphane",
+          "season": "Aventuriers de Koh-Lanta"
         }
       ]
     },
@@ -1056,8 +1215,8 @@
       "population_2023": 1230289,
       "population_percentage": 1.81,
       "candidate_count": 11,
-      "candidate_percentage": 2.58,
-      "gap_percentage": 0.78,
+      "candidate_percentage": 2.1,
+      "gap_percentage": 0.29,
       "candidates": [
         {
           "name": "Ambre",
@@ -1108,10 +1267,14 @@
     "Ille-et-Vilaine": {
       "population_2023": 1120666,
       "population_percentage": 1.65,
-      "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": -0.47,
+      "candidate_count": 7,
+      "candidate_percentage": 1.34,
+      "gap_percentage": -0.31,
       "candidates": [
+        {
+          "name": "Alexandra",
+          "season": "Île des Héros"
+        },
         {
           "name": "Aliséa",
           "season": "Guerre des Chefs"
@@ -1123,6 +1286,10 @@
         {
           "name": "Lili",
           "season": "Totem Maudit"
+        },
+        {
+          "name": "Linda",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Marvyn",
@@ -1145,30 +1312,46 @@
     "Indre-et-Loire": {
       "population_2023": 619362,
       "population_percentage": 0.91,
-      "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.67,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.34,
       "candidates": [
+        {
+          "name": "Richard",
+          "season": "Bocas del Toro"
+        },
         {
           "name": "Romain",
           "season": "Fidji"
+        },
+        {
+          "name": "William",
+          "season": "Aventuriers de Koh-Lanta"
         }
       ]
     },
     "Isère": {
       "population_2023": 1298990,
       "population_percentage": 1.91,
-      "candidate_count": 7,
-      "candidate_percentage": 1.64,
-      "gap_percentage": -0.26,
+      "candidate_count": 12,
+      "candidate_percentage": 2.29,
+      "gap_percentage": 0.38,
       "candidates": [
         {
           "name": "Alain",
           "season": "Caramoan"
         },
         {
+          "name": "Amélie",
+          "season": "Panama"
+        },
+        {
           "name": "Candice",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Catherine",
+          "season": "Panama"
         },
         {
           "name": "Emilie",
@@ -1187,8 +1370,20 @@
           "season": "Revanche des 4 Terres"
         },
         {
+          "name": "Marie",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
+          "name": "Mario-Nelson",
+          "season": "Panama"
+        },
+        {
           "name": "Mickaël",
           "season": "Malaisie"
+        },
+        {
+          "name": "Philippe",
+          "season": "Bocas del Toro"
         }
       ]
     },
@@ -1196,8 +1391,8 @@
       "population_2023": 257973,
       "population_percentage": 0.38,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.14,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.19,
       "candidates": [
         {
           "name": "Christian",
@@ -1209,8 +1404,8 @@
       "population_2023": 433570,
       "population_percentage": 0.64,
       "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": 0.54,
+      "candidate_percentage": 0.95,
+      "gap_percentage": 0.32,
       "candidates": [
         {
           "name": "Chloé",
@@ -1246,8 +1441,8 @@
       "population_2023": 774133,
       "population_percentage": 1.14,
       "candidate_count": 4,
-      "candidate_percentage": 0.94,
-      "gap_percentage": -0.2,
+      "candidate_percentage": 0.76,
+      "gap_percentage": -0.37,
       "candidates": [
         {
           "name": "Audrey",
@@ -1270,9 +1465,9 @@
     "Loire-Atlantique": {
       "population_2023": 1487570,
       "population_percentage": 2.18,
-      "candidate_count": 8,
-      "candidate_percentage": 1.88,
-      "gap_percentage": -0.31,
+      "candidate_count": 10,
+      "candidate_percentage": 1.91,
+      "gap_percentage": -0.28,
       "candidates": [
         {
           "name": "Benjamin",
@@ -1295,6 +1490,10 @@
           "season": "Caramoan"
         },
         {
+          "name": "Maud",
+          "season": "Nicoya"
+        },
+        {
           "name": "Nathanaël",
           "season": "La Tribu Maudite"
         },
@@ -1305,6 +1504,10 @@
         {
           "name": "Sarah",
           "season": "La Tribu Maudite"
+        },
+        {
+          "name": "Valérie",
+          "season": "Île des Héros"
         }
       ]
     },
@@ -1312,8 +1515,8 @@
       "population_2023": 691268,
       "population_percentage": 1.02,
       "candidate_count": 4,
-      "candidate_percentage": 0.94,
-      "gap_percentage": -0.08,
+      "candidate_percentage": 0.76,
+      "gap_percentage": -0.25,
       "candidates": [
         {
           "name": "André",
@@ -1337,8 +1540,8 @@
       "population_2023": 176473,
       "population_percentage": 0.26,
       "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": 0.45,
+      "candidate_percentage": 0.57,
+      "gap_percentage": 0.31,
       "candidates": [
         {
           "name": "Alexis",
@@ -1358,8 +1561,8 @@
       "population_2023": 333602,
       "population_percentage": 0.49,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.26,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.3,
       "candidates": [
         {
           "name": "Mehdi",
@@ -1379,8 +1582,8 @@
       "population_2023": 833776,
       "population_percentage": 1.22,
       "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": -0.05,
+      "candidate_percentage": 0.95,
+      "gap_percentage": -0.27,
       "candidates": [
         {
           "name": "Clo",
@@ -1408,8 +1611,8 @@
       "population_2023": 497522,
       "population_percentage": 0.73,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.5,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.54,
       "candidates": [
         {
           "name": "Sébastien",
@@ -1421,8 +1624,8 @@
       "population_2023": 563076,
       "population_percentage": 0.83,
       "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": -0.12,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.25,
       "candidates": [
         {
           "name": "Alain",
@@ -1442,8 +1645,8 @@
       "population_2023": 360630,
       "population_percentage": 0.53,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.06,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.15,
       "candidates": [
         {
           "name": "Alexandra",
@@ -1466,9 +1669,9 @@
     "Meurthe-et-Moselle": {
       "population_2023": 732236,
       "population_percentage": 1.08,
-      "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": 0.1,
+      "candidate_count": 9,
+      "candidate_percentage": 1.72,
+      "gap_percentage": 0.64,
       "candidates": [
         {
           "name": "Anne-Sophie",
@@ -1487,8 +1690,24 @@
           "season": "Johor"
         },
         {
+          "name": "Claudia",
+          "season": "Île des Héros"
+        },
+        {
           "name": "Ludivine",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Mathieu",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Michel",
+          "season": "Bocas del Toro"
+        },
+        {
+          "name": "Pierre",
+          "season": "Pacifique"
         }
       ]
     },
@@ -1503,13 +1722,17 @@
     "Morbihan": {
       "population_2023": 783390,
       "population_percentage": 1.15,
-      "candidate_count": 5,
-      "candidate_percentage": 1.17,
-      "gap_percentage": 0.02,
+      "candidate_count": 6,
+      "candidate_percentage": 1.15,
+      "gap_percentage": -0.01,
       "candidates": [
         {
           "name": "Benoît",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Benoît",
+          "season": "Île des Héros"
         },
         {
           "name": "Chantel",
@@ -1533,8 +1756,8 @@
       "population_2023": 1051309,
       "population_percentage": 1.54,
       "candidate_count": 6,
-      "candidate_percentage": 1.41,
-      "gap_percentage": -0.14,
+      "candidate_percentage": 1.15,
+      "gap_percentage": -0.4,
       "candidates": [
         {
           "name": "Arnaud",
@@ -1566,8 +1789,8 @@
       "population_2023": 201417,
       "population_percentage": 0.3,
       "candidate_count": 1,
-      "candidate_percentage": 0.23,
-      "gap_percentage": -0.06,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.1,
       "candidates": [
         {
           "name": "Julie",
@@ -1578,9 +1801,9 @@
     "Nord": {
       "population_2023": 2615635,
       "population_percentage": 3.84,
-      "candidate_count": 24,
-      "candidate_percentage": 5.63,
-      "gap_percentage": 1.79,
+      "candidate_count": 25,
+      "candidate_percentage": 4.77,
+      "gap_percentage": 0.93,
       "candidates": [
         {
           "name": "Alexandre",
@@ -1617,6 +1840,10 @@
         {
           "name": "Gilles",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Jacky",
+          "season": "Nicoya"
         },
         {
           "name": "Laurent",
@@ -1684,8 +1911,8 @@
       "population_2023": 829899,
       "population_percentage": 1.22,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.75,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.84,
       "candidates": [
         {
           "name": "Benoît",
@@ -1708,25 +1935,41 @@
     "Paris": {
       "population_2023": 2103778,
       "population_percentage": 3.09,
-      "candidate_count": 24,
-      "candidate_percentage": 5.63,
-      "gap_percentage": 2.54,
+      "candidate_count": 32,
+      "candidate_percentage": 6.11,
+      "gap_percentage": 3.02,
       "candidates": [
         {
           "name": "Adrien",
           "season": "4 Terres"
         },
         {
+          "name": "Alban",
+          "season": "Panama"
+        },
+        {
           "name": "Alexandra",
           "season": "Raja Ampat"
+        },
+        {
+          "name": "Alexandra",
+          "season": "Bocas del Toro"
         },
         {
           "name": "Alexandre",
           "season": "La Tribu Maudite"
         },
         {
+          "name": "Amel",
+          "season": "Nicoya"
+        },
+        {
           "name": "Boris",
           "season": "Viêtnam"
+        },
+        {
+          "name": "Caroline",
+          "season": "Nicoya"
         },
         {
           "name": "Claude",
@@ -1743,6 +1986,18 @@
         {
           "name": "Félicie",
           "season": "Cambodge"
+        },
+        {
+          "name": "Guénaëlle",
+          "season": "Aventuriers de Koh-Lanta"
+        },
+        {
+          "name": "Inès",
+          "season": "Île des Héros"
+        },
+        {
+          "name": "Jimmy",
+          "season": "Nicoya"
         },
         {
           "name": "Jonathan",
@@ -1785,6 +2040,10 @@
           "season": "Totem Maudit"
         },
         {
+          "name": "Moundir",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Nathalie",
           "season": "Les Chasseurs d'Immunité"
         },
@@ -1813,10 +2072,14 @@
     "Pas-de-Calais": {
       "population_2023": 1457905,
       "population_percentage": 2.14,
-      "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": -1.44,
+      "candidate_count": 4,
+      "candidate_percentage": 0.76,
+      "gap_percentage": -1.38,
       "candidates": [
+        {
+          "name": "Françoise",
+          "season": "Aventuriers de Koh-Lanta"
+        },
         {
           "name": "Frédéric",
           "season": "Guerre des Chefs"
@@ -1834,9 +2097,9 @@
     "Puy-de-Dôme": {
       "population_2023": 664453,
       "population_percentage": 0.98,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.51,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.4,
       "candidates": [
         {
           "name": "Benoît",
@@ -1845,23 +2108,39 @@
         {
           "name": "Carole",
           "season": "Thaïlande"
+        },
+        {
+          "name": "Philippe",
+          "season": "Panama"
         }
       ]
     },
     "Pyrénées-Atlantiques": {
       "population_2023": 706564,
       "population_percentage": 1.04,
-      "candidate_count": 9,
-      "candidate_percentage": 2.11,
-      "gap_percentage": 1.08,
+      "candidate_count": 13,
+      "candidate_percentage": 2.48,
+      "gap_percentage": 1.44,
       "candidates": [
         {
           "name": "Alain",
           "season": "Thaïlande"
         },
         {
+          "name": "Antoine",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Brice",
           "season": "Guerre des Chefs"
+        },
+        {
+          "name": "Caroline",
+          "season": "Pacifique"
+        },
+        {
+          "name": "David",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Diane",
@@ -1884,6 +2163,10 @@
           "season": "Île au trésor"
         },
         {
+          "name": "Marianne",
+          "season": "Nicoya"
+        },
+        {
           "name": "Sébastien",
           "season": "Les Chasseurs d'Immunité"
         },
@@ -1897,8 +2180,8 @@
       "population_2023": 496855,
       "population_percentage": 0.73,
       "candidate_count": 6,
-      "candidate_percentage": 1.41,
-      "gap_percentage": 0.68,
+      "candidate_percentage": 1.15,
+      "gap_percentage": 0.42,
       "candidates": [
         {
           "name": "Bertrand",
@@ -1929,13 +2212,21 @@
     "Rhône": {
       "population_2023": 1914667,
       "population_percentage": 2.81,
-      "candidate_count": 8,
-      "candidate_percentage": 1.88,
-      "gap_percentage": -0.93,
+      "candidate_count": 12,
+      "candidate_percentage": 2.29,
+      "gap_percentage": -0.52,
       "candidates": [
+        {
+          "name": "Ahmad",
+          "season": "Île des Héros"
+        },
         {
           "name": "Alban",
           "season": "Johor"
+        },
+        {
+          "name": "Alexis",
+          "season": "Pacifique"
         },
         {
           "name": "Bastien",
@@ -1944,6 +2235,10 @@
         {
           "name": "Benoît",
           "season": "Johor"
+        },
+        {
+          "name": "Bernard",
+          "season": "Nicoya"
         },
         {
           "name": "Cassandre",
@@ -1964,6 +2259,10 @@
         {
           "name": "Setha",
           "season": "Totem Maudit"
+        },
+        {
+          "name": "Xavier",
+          "season": "Nicoya"
         }
       ]
     },
@@ -1979,8 +2278,8 @@
       "population_2023": 566733,
       "population_percentage": 0.83,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.36,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.45,
       "candidates": [
         {
           "name": "Catherine",
@@ -1996,8 +2295,8 @@
       "population_2023": 448226,
       "population_percentage": 0.66,
       "candidate_count": 4,
-      "candidate_percentage": 0.94,
-      "gap_percentage": 0.28,
+      "candidate_percentage": 0.76,
+      "gap_percentage": 0.11,
       "candidates": [
         {
           "name": "Adrien",
@@ -2020,17 +2319,22 @@
     "Saône-et-Loire": {
       "population_2023": 550310,
       "population_percentage": 0.81,
-      "candidate_count": 0,
-      "candidate_percentage": 0.0,
-      "gap_percentage": -0.81,
-      "candidates": []
+      "candidate_count": 1,
+      "candidate_percentage": 0.19,
+      "gap_percentage": -0.62,
+      "candidates": [
+        {
+          "name": "Raphaël",
+          "season": "Panama"
+        }
+      ]
     },
     "Seine-Maritime": {
       "population_2023": 1260964,
       "population_percentage": 1.85,
       "candidate_count": 9,
-      "candidate_percentage": 2.11,
-      "gap_percentage": 0.26,
+      "candidate_percentage": 1.72,
+      "gap_percentage": -0.13,
       "candidates": [
         {
           "name": "Alexandre",
@@ -2073,10 +2377,14 @@
     "Seine-Saint-Denis": {
       "population_2023": 1704316,
       "population_percentage": 2.5,
-      "candidate_count": 13,
-      "candidate_percentage": 3.05,
-      "gap_percentage": 0.55,
+      "candidate_count": 17,
+      "candidate_percentage": 3.24,
+      "gap_percentage": 0.74,
       "candidates": [
+        {
+          "name": "Adonis",
+          "season": "Nicoya"
+        },
         {
           "name": "Alexandre",
           "season": "Guerre des Chefs"
@@ -2088,6 +2396,10 @@
         {
           "name": "Amri",
           "season": "Les Chasseurs d'Immunité"
+        },
+        {
+          "name": "Charlotte",
+          "season": "Île des Héros"
         },
         {
           "name": "Céga",
@@ -2122,6 +2434,14 @@
           "season": "Caramoan"
         },
         {
+          "name": "Sophie",
+          "season": "Panama"
+        },
+        {
+          "name": "Sylvie",
+          "season": "Pacifique"
+        },
+        {
           "name": "Tania",
           "season": "Le Feu Sacré"
         },
@@ -2134,10 +2454,14 @@
     "Seine-et-Marne": {
       "population_2023": 1468108,
       "population_percentage": 2.16,
-      "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": -1.45,
+      "candidate_count": 5,
+      "candidate_percentage": 0.95,
+      "gap_percentage": -1.2,
       "candidates": [
+        {
+          "name": "Aude",
+          "season": "Pacifique"
+        },
         {
           "name": "Céline",
           "season": "Totem Maudit"
@@ -2149,6 +2473,10 @@
         {
           "name": "Mel",
           "season": "Fidji"
+        },
+        {
+          "name": "Valérie",
+          "season": "Bocas del Toro"
         }
       ]
     },
@@ -2164,8 +2492,8 @@
       "population_2023": 397352,
       "population_percentage": 0.58,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.11,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.2,
       "candidates": [
         {
           "name": "Carine",
@@ -2181,8 +2509,8 @@
       "population_2023": 265817,
       "population_percentage": 0.39,
       "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": 0.08,
+      "candidate_percentage": 0.38,
+      "gap_percentage": -0.01,
       "candidates": [
         {
           "name": "Cynthiana",
@@ -2205,10 +2533,14 @@
     "Val-d'Oise": {
       "population_2023": 1281653,
       "population_percentage": 1.88,
-      "candidate_count": 4,
-      "candidate_percentage": 0.94,
-      "gap_percentage": -0.94,
+      "candidate_count": 6,
+      "candidate_percentage": 1.15,
+      "gap_percentage": -0.74,
       "candidates": [
+        {
+          "name": "Alexandre",
+          "season": "Bocas del Toro"
+        },
         {
           "name": "Brahma",
           "season": "Cambodge"
@@ -2222,6 +2554,10 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Sébastien",
+          "season": "Bocas del Toro"
+        },
+        {
           "name": "Vivien",
           "season": "Viêtnam"
         }
@@ -2230,10 +2566,14 @@
     "Val-de-Marne": {
       "population_2023": 1426929,
       "population_percentage": 2.1,
-      "candidate_count": 14,
-      "candidate_percentage": 3.29,
-      "gap_percentage": 1.19,
+      "candidate_count": 16,
+      "candidate_percentage": 3.05,
+      "gap_percentage": 0.96,
       "candidates": [
+        {
+          "name": "Candice",
+          "season": "Bocas del Toro"
+        },
         {
           "name": "Christopher",
           "season": "Caramoan"
@@ -2289,23 +2629,47 @@
         {
           "name": "Rudy",
           "season": "Le Feu Sacré"
+        },
+        {
+          "name": "Sakhone",
+          "season": "Pacifique"
         }
       ]
     },
     "Var": {
       "population_2023": 1119307,
       "population_percentage": 1.64,
-      "candidate_count": 7,
-      "candidate_percentage": 1.64,
-      "gap_percentage": -0.0,
+      "candidate_count": 13,
+      "candidate_percentage": 2.48,
+      "gap_percentage": 0.84,
       "candidates": [
+        {
+          "name": "Béatrice",
+          "season": "Nicoya"
+        },
+        {
+          "name": "Christine",
+          "season": "Pacifique"
+        },
         {
           "name": "Corinne",
           "season": "Johor"
         },
         {
+          "name": "Eliane",
+          "season": "Pacifique"
+        },
+        {
+          "name": "Guillaume",
+          "season": "Panama"
+        },
+        {
           "name": "Jean-Luc",
           "season": "Île au trésor"
+        },
+        {
+          "name": "Jean-Luc",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Kevin",
@@ -2320,6 +2684,10 @@
           "season": "Thaïlande"
         },
         {
+          "name": "Pierre",
+          "season": "Nicoya"
+        },
+        {
           "name": "Sara",
           "season": "Malaisie"
         },
@@ -2332,13 +2700,17 @@
     "Vaucluse": {
       "population_2023": 572056,
       "population_percentage": 0.84,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.37,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.27,
       "candidates": [
         {
           "name": "Frédéric",
           "season": "Armes Secrètes"
+        },
+        {
+          "name": "Géraldine",
+          "season": "Aventuriers de Koh-Lanta"
         },
         {
           "name": "Mathieu",
@@ -2358,8 +2730,8 @@
       "population_2023": 438897,
       "population_percentage": 0.64,
       "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": 0.06,
+      "candidate_percentage": 0.57,
+      "gap_percentage": -0.07,
       "candidates": [
         {
           "name": "Aurélien",
@@ -2378,9 +2750,9 @@
     "Vosges": {
       "population_2023": 357248,
       "population_percentage": 0.52,
-      "candidate_count": 3,
-      "candidate_percentage": 0.7,
-      "gap_percentage": 0.18,
+      "candidate_count": 4,
+      "candidate_percentage": 0.76,
+      "gap_percentage": 0.24,
       "candidates": [
         {
           "name": "Marius",
@@ -2391,6 +2763,10 @@
           "season": "Revanche des 4 Terres"
         },
         {
+          "name": "Nathalie",
+          "season": "Panama"
+        },
+        {
           "name": "Théotime",
           "season": "Fidji"
         }
@@ -2399,9 +2775,9 @@
     "Yonne": {
       "population_2023": 332267,
       "population_percentage": 0.49,
-      "candidate_count": 2,
-      "candidate_percentage": 0.47,
-      "gap_percentage": -0.02,
+      "candidate_count": 3,
+      "candidate_percentage": 0.57,
+      "gap_percentage": 0.08,
       "candidates": [
         {
           "name": "Babeth",
@@ -2410,15 +2786,19 @@
         {
           "name": "Catherine",
           "season": "Malaisie"
+        },
+        {
+          "name": "Régis",
+          "season": "Île des Héros"
         }
       ]
     },
     "Yvelines": {
       "population_2023": 1485086,
       "population_percentage": 2.18,
-      "candidate_count": 8,
-      "candidate_percentage": 1.88,
-      "gap_percentage": -0.3,
+      "candidate_count": 10,
+      "candidate_percentage": 1.91,
+      "gap_percentage": -0.27,
       "candidates": [
         {
           "name": "Amir",
@@ -2433,12 +2813,20 @@
           "season": "Malaisie"
         },
         {
+          "name": "Delphine",
+          "season": "Île des Héros"
+        },
+        {
           "name": "Grégoire",
           "season": "Palawan"
         },
         {
           "name": "Isabelle",
           "season": "Palau"
+        },
+        {
+          "name": "Marie-Cécile",
+          "season": "Pacifique"
         },
         {
           "name": "Mika",

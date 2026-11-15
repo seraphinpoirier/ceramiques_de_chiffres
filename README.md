@@ -17,8 +17,19 @@ Internet. Pour régénérer uniquement les JSON après une modification directe 
 la base, exécuter seulement `python scripts/update_data.py`.
 
 Les lignes marquées `CB? = O` dans le fichier source sont exclues lors du
-chargement : les retours ne figurent ni dans la base reconstruite ni dans les
-analyses, y compris les cartes. Les autres participations restent incluses.
+chargement dans la table `Candidats` : ces retours restent exclus des analyses
+classiques, y compris les cartes. Les autres participations restent incluses.
+
+La catégorie « Les revenants » est distincte de ces analyses : elle compte les
+retours de `ALLSTARS` liés par nom et saison initiale, ainsi que les retours
+`CB? = O` des saisons classiques lorsque le nom identifie une seule personne.
+La comparaison ignore la casse, les accents et les espaces superflus ; les
+correspondances ambiguës ou de genre différent ne sont pas attribuées. Le
+fichier `candidats_non_identifies.txt` est régénéré au chargement et liste
+ces participations non liées, notamment les saisons initiales de `ALLSTARS`.
+Le classement montre les cinq premières personnes par genre et toutes les
+égalités à la cinquième place ; pour chacune, il indique le classement initial
+et celui de chaque retour lié. Les participations non liées en sont exclues.
 
 Les graphiques d'âge comptent les participations dont l'âge est connu ; leurs
 barres empilent les genres et leurs moyennes utilisent le même périmètre,

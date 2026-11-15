@@ -44,7 +44,7 @@ async function loadData() {
         candidateStats = await candidateResponse.json();
     } catch (error) {
         console.error('Error loading data:', error);
-        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts').forEach(container => {
+        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts, #returnee-charts').forEach(container => {
             container.textContent = 'Impossible de charger les données. Vérifiez que les fichiers JSON sont disponibles.';
         });
         throw error;
@@ -615,6 +615,7 @@ function renderCandidateCharts() {
     renderAgeChart(ages, "Âge des candidats ayant atteint l'épreuve d'orientation", candidateStats.ages.orientation, candidateStats.age_candidates.orientation);
     renderFinaleCharts();
     renderChoiceCharts();
+    renderReturnees();
 
     const firstOuts = candidateStats.first_outs;
     const charts = document.getElementById('first-out-charts');
@@ -640,6 +641,40 @@ function renderCandidateCharts() {
         charts.appendChild(section);
         renderPie(pair, gender === 'F' ? 'Premières éliminées' : 'Premiers éliminés', groupAges(firstOuts.ages[gender].counts), 'pie-comparison-chart');
         renderPie(pair, 'Toutes les participations', groupAges(candidateStats.ages.all[gender].counts), 'pie-comparison-chart');
+    }
+}
+
+function renderReturnees() {
+    const container = document.getElementById('returnee-charts');
+    for (const [gender, label] of [['F', 'Femmes'], ['H', 'Hommes']]) {
+        const group = document.createElement('section');
+        group.className = 'returnee-group';
+        const heading = document.createElement('h3');
+        heading.textContent = label;
+        group.appendChild(heading);
+        const candidates = candidateStats.returnees[gender];
+        if (!candidates.length) {
+            const empty = document.createElement('p');
+            empty.textContent = 'Aucun retour identifié.';
+            group.appendChild(empty);
+        }
+        for (const candidate of candidates) {
+            const card = document.createElement('article');
+            card.className = 'returnee-card';
+            const name = document.createElement('h4');
+            name.textContent = `${candidate.nom} — ${candidate.retours} retour${candidate.retours > 1 ? 's' : ''}`;
+            const appearances = document.createElement('ul');
+            for (const participation of candidate.participations) {
+                const item = document.createElement('li');
+                const place = participation.place == null ? 'classement inconnu' :
+                    participation.place === 1 ? (gender === 'F' ? '1re' : '1er') : `${participation.place}e`;
+                item.textContent = `${participation.saison}${participation.initiale ? ' (saison initiale)' : ''} : ${place}`;
+                appearances.appendChild(item);
+            }
+            card.append(name, appearances);
+            group.appendChild(card);
+        }
+        container.appendChild(group);
     }
 }
 

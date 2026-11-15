@@ -37,6 +37,18 @@ CREATE TABLE IF NOT EXISTS Candidats (
     FOREIGN KEY (id_dept) REFERENCES Departements(id_dept)
 );
 
+-- Return appearances are kept separate from the original-season analyses.
+CREATE TABLE IF NOT EXISTS Retours (
+    id_retour INTEGER PRIMARY KEY,
+    id_candidat INTEGER NOT NULL,
+    annee INTEGER,
+    saison TEXT NOT NULL,
+    place INTEGER,
+    source TEXT NOT NULL CHECK (source IN ('ALLSTARS', 'CLASSIQUES')),
+    UNIQUE (id_candidat, saison),
+    FOREIGN KEY (id_candidat) REFERENCES Candidats(id_candidat)
+);
+
 -- Statistics view: Department representation
 CREATE VIEW IF NOT EXISTS DeptRepresentation AS
 SELECT 
