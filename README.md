@@ -24,6 +24,16 @@ Les graphiques d'âge comptent les participations dont l'âge est connu ; leurs
 barres empilent les genres et leurs moyennes utilisent le même périmètre,
 globalement et par genre. Survoler ou sélectionner une barre affiche les noms,
 saisons et classements du groupe étudié ; cliquer verrouille la sélection.
+Le graphique récapitulatif compare les âges minimum, moyen et maximum de ces
+groupes sur une échelle commune.
+
+Les finales utilisent les participations classées 1 ou 2, sauf « Totem Maudit »
+dont la finale comptait trois personnes. Les égalités correspondent à deux
+premières places. Les comparaisons d'âge des finales mixtes excluent les âges
+inconnus ou égaux et utilisent le nombre de finales de chaque groupe comme
+dénominateur. Les graphiques d'élimination comptent les participations avec
+`ori = 1` et `pot != 1` (y compris les valeurs manquantes), celles classées
+troisièmes et celles avec `amb = 1`, respectivement.
 Pour les
 premiers éliminés, seules les saisons comptant deux ou trois valeurs de tribu
 sont retenues. Dans chaque tribu, le plus mauvais classement hors abandon est

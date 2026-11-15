@@ -44,7 +44,7 @@ async function loadData() {
         candidateStats = await candidateResponse.json();
     } catch (error) {
         console.error('Error loading data:', error);
-        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts').forEach(container => {
+        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts').forEach(container => {
             container.textContent = 'Impossible de charger les données. Vérifiez que les fichiers JSON sont disponibles.';
         });
         throw error;
@@ -550,7 +550,7 @@ function renderGenderCharts() {
         },
         {
             key: 'place',
-            title: 'Finalistes',
+            title: 'Gagnants',
             subtitle: '(où PLACE == 1)'
         }
     ];
@@ -613,6 +613,9 @@ function renderCandidateCharts() {
     const ages = document.getElementById('age-charts');
     renderAgeChart(ages, 'Âge de tous les candidats', candidateStats.ages.all, candidateStats.age_candidates.all);
     renderAgeChart(ages, "Âge des candidats ayant atteint l'épreuve d'orientation", candidateStats.ages.orientation, candidateStats.age_candidates.orientation);
+    renderAgeRanges(ages);
+    renderFinaleCharts();
+    renderChoiceCharts();
 
     const firstOuts = candidateStats.first_outs;
     const charts = document.getElementById('first-out-charts');
@@ -638,6 +641,161 @@ function renderCandidateCharts() {
         charts.appendChild(section);
         renderPie(pair, gender === 'F' ? 'Premières éliminées' : 'Premiers éliminés', groupAges(firstOuts.ages[gender].counts), 'pie-comparison-chart');
         renderPie(pair, 'Toutes les participations', groupAges(candidateStats.ages.all[gender].counts), 'pie-comparison-chart');
+    }
+}
+
+function renderAgeRanges(container) {
+    const card = chartCard(container, 'Âges minimum, moyen et maximum');
+    const groups = [
+        ['Tous les candidats', candidateStats.ages.all.all],
+        ['Tous — femmes', candidateStats.ages.all.F],
+        ['Tous — hommes', candidateStats.ages.all.H],
+        ['Orientation — ensemble', candidateStats.ages.orientation.all],
+        ['Orientation — femmes', candidateStats.ages.orientation.F],
+        ['Orientation — hommes', candidateStats.ages.orientation.H]
+    ];
+    const knownAges = groups.flatMap(([, stats]) => Object.keys(stats.counts).map(Number));
+    if (!knownAges.length) {
+        card.append('Aucun âge disponible.');
+        return;
+    }
+    const min = d3.min(knownAges), max = d3.max(knownAges);
+    const position = age => max === min ? 50 : (age - min) / (max - min) * 100;
+    const note = document.createElement('p');
+    note.className = 'chart-note';
+    note.textContent = `Échelle commune : ${min} à ${max} ans. Le point indique la moyenne ; les extrémités indiquent les âges minimum et maximum.`;
+    card.appendChild(note);
+    for (const [label, stats] of groups) {
+        const row = document.createElement('div');
+        row.className = 'age-range-row';
+        const name = document.createElement('strong');
+        name.textContent = label;
+        const ages = Object.keys(stats.counts).map(Number);
+        const value = document.createElement('span');
+        if (!ages.length) {
+            value.textContent = 'Aucun âge connu';
+            row.append(name, value);
+        } else {
+            const low = d3.min(ages), high = d3.max(ages);
+            const track = document.createElement('div');
+            track.className = 'age-range-track';
+            const line = document.createElement('div');
+            line.className = 'age-range-line';
+            line.style.left = `${position(low)}%`;
+            line.style.width = `${position(high) - position(low)}%`;
+            const dot = document.createElement('div');
+            dot.className = 'age-range-average';
+            dot.style.left = `${position(stats.average)}%`;
+            track.append(line, dot);
+            value.textContent = `${low} / ${stats.average.toFixed(1).replace('.', ',')} / ${high} ans (n = ${stats.total})`;
+            row.append(name, track, value);
+        }
+        card.appendChild(row);
+    }
+}
+
+function renderFinaleCharts() {
+    const container = document.getElementById('finale-charts');
+    const finals = candidateStats.finales;
+    const mixed = finals.filter(finale => finale.candidates.some(c => c.genre === 'F') &&
+        finale.candidates.some(c => c.genre === 'H'));
+    const outcome = finale => {
+        const winners = finale.candidates.filter(c => c.place === 1);
+        return winners.length === 2 ? 'tie' : winners[0].genre;
+    };
+    const outcomeGroups = subset => [
+        { label: 'Victoire féminine', color: GENDER_COLORS.F, finals: subset.filter(f => outcome(f) === 'F') },
+        { label: 'Victoire masculine', color: GENDER_COLORS.H, finals: subset.filter(f => outcome(f) === 'H') },
+        { label: 'Égalité', color: '#b67b22', finals: subset.filter(f => outcome(f) === 'tie') }
+    ];
+    const byGender = gender => finals.filter(finale => finale.candidates.every(c => c.genre === gender));
+    renderFinaleBars(container, 'Composition des finales', [
+        { label: 'H / H', color: GENDER_COLORS.H, finals: byGender('H') },
+        { label: 'F / F', color: GENDER_COLORS.F, finals: byGender('F') },
+        { label: 'F / H', color: '#b67b22', finals: mixed }
+    ], finals.length);
+    renderFinaleBars(container, 'Résultat des finales F / H', outcomeGroups(mixed), mixed.length);
+    const comparable = mixed.filter(finale => finale.candidates.every(c => c.age !== null));
+    const ageDifference = finale => finale.candidates.find(c => c.genre === 'F').age -
+        finale.candidates.find(c => c.genre === 'H').age;
+    const older = comparable.filter(finale => ageDifference(finale) > 0);
+    const younger = comparable.filter(finale => ageDifference(finale) < 0);
+    const note = document.createElement('p');
+    note.className = 'chart-note finale-note';
+    note.textContent = `Finales F / H selon l'âge : ${mixed.length - older.length - younger.length} finale(s) exclue(s) des deux graphiques suivants (âges égaux ou inconnus). Chaque graphique a son propre total.`;
+    container.appendChild(note);
+    renderFinaleBars(container, 'La femme est plus âgée', outcomeGroups(older), older.length);
+    renderFinaleBars(container, 'La femme est plus jeune', outcomeGroups(younger), younger.length);
+}
+
+function renderFinaleBars(container, title, groups, total) {
+    const card = chartCard(container, title);
+    const subtitle = document.createElement('p');
+    subtitle.className = 'chart-note';
+    subtitle.textContent = total ? `${total} finale(s) — survolez ou sélectionnez une catégorie.` : 'Aucune finale dans ce groupe.';
+    card.appendChild(subtitle);
+    const details = document.createElement('div');
+    details.className = 'finale-details';
+    details.setAttribute('aria-live', 'polite');
+    details.textContent = 'Les finalistes apparaîtront ici.';
+    for (const group of groups) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'percentage-row';
+        const percent = total ? group.finals.length / total * 100 : 0;
+        const label = document.createElement('span');
+        label.textContent = group.label;
+        const track = document.createElement('span');
+        track.className = 'percentage-track';
+        const bar = document.createElement('span');
+        bar.className = 'percentage-fill';
+        bar.style.width = `${percent}%`;
+        bar.style.backgroundColor = group.color;
+        track.appendChild(bar);
+        const count = document.createElement('span');
+        count.textContent = `${percent.toFixed(1).replace('.', ',')} % (${group.finals.length})`;
+        button.append(label, track, count);
+        const show = () => {
+            details.replaceChildren();
+            const heading = document.createElement('strong');
+            heading.textContent = group.label;
+            details.appendChild(heading);
+            if (!group.finals.length) {
+                details.append(' — aucune finale.');
+                return;
+            }
+            const list = document.createElement('ul');
+            for (const finale of group.finals) {
+                const item = document.createElement('li');
+                item.textContent = `${finale.saison} : ${finale.candidates.map(c =>
+                    `${c.place === 1 ? '🏅 ' : ''}${c.nom.trim()}${c.age === null ? '' : ` (${c.age} ans)`}`
+                ).join(' / ')}`;
+                list.appendChild(item);
+            }
+            details.appendChild(list);
+        };
+        button.addEventListener('pointerenter', show);
+        button.addEventListener('focus', show);
+        button.addEventListener('click', show);
+        card.appendChild(button);
+    }
+    card.appendChild(details);
+}
+
+function renderChoiceCharts() {
+    const container = document.getElementById('choice-charts');
+    for (const [key, title] of [
+        ['orientation', "Éliminés à l'orientation"],
+        ['third', 'Troisièmes au classement'],
+        ['ambassadors', 'Éliminés aux ambassadeurs']
+    ]) {
+        const stats = candidateStats.eliminations[key];
+        const entries = [
+            { label: 'Femmes', value: stats.F, color: GENDER_COLORS.F },
+            { label: 'Hommes', value: stats.H, color: GENDER_COLORS.H }
+        ];
+        if (stats.unknown) entries.push({ label: 'Non renseigné', value: stats.unknown, color: '#999999' });
+        renderPie(container, title, entries);
     }
 }
 

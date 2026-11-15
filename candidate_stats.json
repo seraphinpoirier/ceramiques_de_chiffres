@@ -3318,6 +3318,329 @@
       }
     ]
   },
+  "finales": [
+    {
+      "saison": "4 Terres",
+      "candidates": [
+        {
+          "saison": "4 Terres",
+          "nom": "Alexandra ",
+          "genre": "F",
+          "age": 32,
+          "place": 1
+        },
+        {
+          "saison": "4 Terres",
+          "nom": "Brice",
+          "genre": "H",
+          "age": 22,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Armes Secrètes",
+      "candidates": [
+        {
+          "saison": "Armes Secrètes",
+          "nom": "Maxine",
+          "genre": "F",
+          "age": 25,
+          "place": 1
+        },
+        {
+          "saison": "Armes Secrètes",
+          "nom": "Lucie",
+          "genre": "F",
+          "age": 35,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Cambodge",
+      "candidates": [
+        {
+          "saison": "Cambodge",
+          "nom": "Frédéric",
+          "genre": "H",
+          "age": 40,
+          "place": 1
+        },
+        {
+          "saison": "Cambodge",
+          "nom": "Clémentine",
+          "genre": "F",
+          "age": 25,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Fidji",
+      "candidates": [
+        {
+          "saison": "Fidji",
+          "nom": "André",
+          "genre": "H",
+          "age": 19,
+          "place": 1
+        },
+        {
+          "saison": "Fidji",
+          "nom": "Tiffany",
+          "genre": "F",
+          "age": 22,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Guerre des Chefs",
+      "candidates": [
+        {
+          "saison": "Guerre des Chefs",
+          "nom": "Maud",
+          "genre": "F",
+          "age": 50,
+          "place": 1
+        },
+        {
+          "saison": "Guerre des Chefs",
+          "nom": "Cindy",
+          "genre": "F",
+          "age": 31,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Johor",
+      "candidates": [
+        {
+          "saison": "Johor",
+          "nom": "Marc",
+          "genre": "H",
+          "age": 43,
+          "place": 1
+        },
+        {
+          "saison": "Johor",
+          "nom": "Chantel",
+          "genre": "F",
+          "age": 45,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "La Tribu Maudite",
+      "candidates": [
+        {
+          "saison": "La Tribu Maudite",
+          "nom": "Thibault",
+          "genre": "H",
+          "age": 34,
+          "place": 1
+        },
+        {
+          "saison": "La Tribu Maudite",
+          "nom": "Charlotte",
+          "genre": "F",
+          "age": 28,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Le Feu Sacré",
+      "candidates": [
+        {
+          "saison": "Le Feu Sacré",
+          "nom": "Frédéric",
+          "genre": "H",
+          "age": 33,
+          "place": 1
+        },
+        {
+          "saison": "Le Feu Sacré",
+          "nom": "Tania",
+          "genre": "F",
+          "age": 22,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Les Chasseurs d'Immunité",
+      "candidates": [
+        {
+          "saison": "Les Chasseurs d'Immunité",
+          "nom": "Léa",
+          "genre": "F",
+          "age": 40,
+          "place": 1
+        },
+        {
+          "saison": "Les Chasseurs d'Immunité",
+          "nom": "Meïssa",
+          "genre": "H",
+          "age": 29,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Malaisie",
+      "candidates": [
+        {
+          "saison": "Malaisie",
+          "nom": "Ugo",
+          "genre": "H",
+          "age": 30,
+          "place": 1
+        },
+        {
+          "saison": "Malaisie",
+          "nom": "Brice",
+          "genre": "H",
+          "age": 30,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Raja Ampat",
+      "candidates": [
+        {
+          "saison": "Raja Ampat",
+          "nom": "Gérard",
+          "genre": "H",
+          "age": 41,
+          "place": 1
+        },
+        {
+          "saison": "Raja Ampat",
+          "nom": "Teheiura",
+          "genre": "H",
+          "age": 33,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Reliques du destin",
+      "candidates": [
+        {
+          "saison": "Reliques du destin",
+          "nom": "Cynthia",
+          "genre": "F",
+          "age": 37,
+          "place": 1
+        },
+        {
+          "saison": "Reliques du destin",
+          "nom": "Clarisse",
+          "genre": "F",
+          "age": 22,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Revanche des 4 Terres",
+      "candidates": [
+        {
+          "saison": "Revanche des 4 Terres",
+          "nom": "Gaëlle",
+          "genre": "F",
+          "age": 34,
+          "place": 1
+        },
+        {
+          "saison": "Revanche des 4 Terres",
+          "nom": "Maël",
+          "genre": "H",
+          "age": 27,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Thaïlande",
+      "candidates": [
+        {
+          "saison": "Thaïlande",
+          "nom": "Wendy",
+          "genre": "F",
+          "age": 26,
+          "place": 1
+        },
+        {
+          "saison": "Thaïlande",
+          "nom": "Pascal",
+          "genre": "H",
+          "age": 48,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Viêtnam",
+      "candidates": [
+        {
+          "saison": "Viêtnam",
+          "nom": "Philippe",
+          "genre": "H",
+          "age": 41,
+          "place": 1
+        },
+        {
+          "saison": "Viêtnam",
+          "nom": "Claude",
+          "genre": "H",
+          "age": 30,
+          "place": 2
+        }
+      ]
+    },
+    {
+      "saison": "Île au trésor",
+      "candidates": [
+        {
+          "saison": "Île au trésor",
+          "nom": "Benoît",
+          "genre": "H",
+          "age": 22,
+          "place": 1
+        },
+        {
+          "saison": "Île au trésor",
+          "nom": "Jesta",
+          "genre": "F",
+          "age": 24,
+          "place": 2
+        }
+      ]
+    }
+  ],
+  "eliminations": {
+    "orientation": {
+      "F": 15,
+      "H": 12,
+      "unknown": 0
+    },
+    "third": {
+      "F": 6,
+      "H": 11,
+      "unknown": 0
+    },
+    "ambassadors": {
+      "F": 6,
+      "H": 11,
+      "unknown": 0
+    }
+  },
   "first_outs": {
     "gender": {
       "F": 26,

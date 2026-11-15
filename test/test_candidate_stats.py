@@ -10,7 +10,7 @@ import openpyxl
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'scripts'))
-from generate_candidate_stats import age_stats, first_outs
+from generate_candidate_stats import age_stats, elimination_stats, finale_stats, first_outs
 import load_data
 
 
@@ -19,11 +19,11 @@ class CandidateStatsTests(unittest.TestCase):
         self.conn = sqlite3.connect(':memory:')
         self.conn.execute('''CREATE TABLE Candidats
             (saison TEXT, tribu TEXT, nom TEXT, genre TEXT, age INTEGER,
-             place INTEGER, aban INTEGER)''')
+             place INTEGER, aban INTEGER, ori INTEGER, pot INTEGER, amb INTEGER)''')
         self.addCleanup(self.conn.close)
 
     def insert(self, season, team, name, gender, age, place, abandoned=0):
-        self.conn.execute('INSERT INTO Candidats VALUES (?, ?, ?, ?, ?, ?, ?)',
+        self.conn.execute('INSERT INTO Candidats (saison, tribu, nom, genre, age, place, aban) VALUES (?, ?, ?, ?, ?, ?, ?)',
                           (season, team, name, gender, age, place, abandoned))
 
     def test_selects_each_eligible_tribe_after_excluding_abandonments(self):
@@ -59,6 +59,37 @@ class CandidateStatsTests(unittest.TestCase):
         self.assertEqual(stats['H']['total'], 1)
         self.assertIsNone(age_stats([])['all']['average'])
 
+    def test_finales_include_ties_and_exclude_totem_and_third_places(self):
+        self.insert('mixed', 'a', 'winner', 'F', 40, 1)
+        self.insert('mixed', 'b', 'runner-up', 'H', 30, 2)
+        self.insert('mixed', 'a', 'third', 'H', 25, 3)
+        self.insert('tie', 'a', 'first', 'F', 30, 1)
+        self.insert('tie', 'b', 'second', 'H', None, 1)
+        self.insert('Totem Maudit', 'a', 'excluded', 'H', 30, 1)
+        self.insert('Totem Maudit', 'b', 'also excluded', 'H', 35, 1)
+        finales = finale_stats(self.conn)
+        self.assertEqual([f['saison'] for f in finales], ['mixed', 'tie'])
+        self.assertEqual([c['place'] for c in finales[0]['candidates']], [1, 2])
+        self.assertEqual([c['place'] for c in finales[1]['candidates']], [1, 1])
+        self.assertIsNone(finales[1]['candidates'][1]['age'])
+        self.insert('mixed', 'b', 'extra', 'F', 20, 2)
+        with self.assertRaises(ValueError):
+            finale_stats(self.conn)
+
+    def test_elimination_groups_follow_flags_and_include_unknown_gender(self):
+        for name, gender in [('ori', 'F'), ('poteaux', 'H'), ('third', 'H'),
+                             ('amb', None), ('unmarked', 'F')]:
+            self.insert('season', 'a', name, gender, 30, 4)
+        self.conn.execute("UPDATE Candidats SET ori=1, pot=NULL WHERE nom='ori'")
+        self.conn.execute("UPDATE Candidats SET ori=1, pot=1 WHERE nom='poteaux'")
+        self.conn.execute("UPDATE Candidats SET place=3 WHERE nom='third'")
+        self.conn.execute("UPDATE Candidats SET amb=1 WHERE nom='amb'")
+        self.assertEqual(elimination_stats(self.conn), {
+            'orientation': {'F': 1, 'H': 0, 'unknown': 0},
+            'third': {'F': 0, 'H': 1, 'unknown': 0},
+            'ambassadors': {'F': 0, 'H': 0, 'unknown': 1},
+        })
+
     def test_generated_data_matches_database(self):
         with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
             conn.row_factory = sqlite3.Row
@@ -72,6 +103,8 @@ class CandidateStatsTests(unittest.TestCase):
                 'orientation': [dict(row) for row in conn.execute(
                     'SELECT nom, saison, place, genre, age FROM Candidats WHERE age IS NOT NULL AND ori = 1 ORDER BY saison, nom')],
             }
+            expected_finales = finale_stats(conn)
+            expected_eliminations = elimination_stats(conn)
         with (ROOT / 'candidate_stats.json').open(encoding='utf-8') as f:
             actual = json.load(f)
         self.assertEqual(actual['first_outs']['candidates'], expected_first_outs)
@@ -83,6 +116,8 @@ class CandidateStatsTests(unittest.TestCase):
         self.assertEqual(actual['first_outs']['ages'],
                          json.loads(json.dumps(age_stats(expected_first_outs))))
         self.assertEqual(actual['age_candidates'], expected_details)
+        self.assertEqual(actual['finales'], expected_finales)
+        self.assertEqual(actual['eliminations'], expected_eliminations)
 
     def test_import_excludes_only_marked_comeback_appearances(self):
         workbook = ROOT / 'data' / 'donnees_kohlanta.xlsx'

@@ -416,6 +416,19 @@
         .age-details li { margin-bottom: 5px; }
         .age-hit-area { cursor: pointer; }
         .age-hit-area:hover, .age-hit-area:focus, .age-hit-area.selected { fill: rgba(0, 0, 0, 0.12); outline: none; }
+        .chart-note { color: #526457; font-size: 0.9em; margin: 10px 0 16px; }
+        .age-range-row { display: grid; grid-template-columns: minmax(150px, 1fr) 2fr minmax(190px, 1fr); align-items: center; gap: 15px; margin: 18px 0; text-align: left; font-size: 0.9em; }
+        .age-range-track { height: 20px; position: relative; background: #e6ece2; border-radius: 10px; }
+        .age-range-line { position: absolute; top: 8px; height: 4px; background: #2d7d4f; }
+        .age-range-average { position: absolute; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: #58355e; transform: translateX(-50%); }
+        .finale-note { grid-column: 1 / -1; margin: 0; }
+        .percentage-row { display: grid; grid-template-columns: minmax(110px, 1fr) 2fr auto; gap: 10px; align-items: center; width: 100%; padding: 8px 4px; border: 0; background: transparent; text-align: left; cursor: pointer; font: inherit; font-size: 0.85em; }
+        .percentage-row:hover, .percentage-row:focus { background: #e6ece2; outline: 2px solid #2d7d4f; }
+        .percentage-track { height: 20px; background: #e6ece2; border-radius: 3px; overflow: hidden; }
+        .percentage-fill { display: block; height: 100%; }
+        .finale-details { margin-top: 12px; padding: 10px; background: white; border-radius: 6px; text-align: left; font-size: 0.85em; max-height: 220px; overflow-y: auto; }
+        .finale-details ul { padding-left: 18px; margin-top: 8px; }
+        .finale-details li { margin-bottom: 5px; }
         #first-out-charts { display: flex; flex-direction: column; }
         .first-out-gender-chart { max-width: 500px; width: 100%; align-self: center; }
         .pie-comparison-section { background: #f8faf5; border: 1px solid #e1e9db; border-radius: 12px; padding: 24px; }
@@ -432,6 +445,7 @@
             .age-chart-graph, .age-details { width: 100%; }
             .pie-comparison { grid-template-columns: 1fr; }
             .pie-comparison-chart + .pie-comparison-chart { border-left: 0; border-top: 1px solid #dce7d7; padding-top: 24px; }
+            .age-range-row { grid-template-columns: 1fr; gap: 5px; }
         }
 
         .stats-svg { width: 100%; height: auto; font-size: 12px; }
@@ -781,6 +795,23 @@
             <p class="section-description">Analyse de la parité entre les candidats et candidates de Koh-Lanta</p>
             
             <div id="gender-charts" class="gender-charts-container"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Hommes et femmes en finale</h2>
+            <p class="section-description">Après l'épreuve des poteaux, il ne reste que deux candidat-e-s. Ceux précédemment éliminés votent pour déterminer le-a gagnant-e.</p>
+            <p class="section-description">Seuls les candidats classés 1er ou 2e sont retenus. La saison « Totem Maudit » est exclue car sa finale comptait trois personnes. 🏅 indique les gagnant-e-s ; les égalités sont comptées séparément.</p>
+            <div id="finale-charts" class="gender-charts-container"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Choix ou performance ?</h2>
+            <p class="section-description">À l'orientation, les candidats qui n'atteignent pas les poteaux sont éliminés sur une épreuve de performance. Les troisièmes au classement sont généralement éliminés par le choix d'un autre candidat, et les éliminations aux ambassadeurs résultent d'un choix entre candidats. Cela fait-il une différence ? Le classement inclut aussi « Totem Maudit », dont la finale comptait trois personnes.</p>
+            <div id="choice-charts" class="gender-charts-container"></div>
         </div>
     </div>
 
