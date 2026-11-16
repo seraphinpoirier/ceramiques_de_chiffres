@@ -13,7 +13,10 @@ import openpyxl
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'scripts'))
-from generate_candidate_stats import age_stats, elimination_stats, finale_stats, first_outs, returnee_stats
+from generate_candidate_stats import (
+    age_stats, elimination_candidate_names, elimination_stats, finale_stats, gender_counts,
+    first_outs, returnee_sankey, returnee_stats,
+)
 import load_data
 
 
@@ -122,6 +125,19 @@ class CandidateStatsTests(unittest.TestCase):
         self.assertEqual(actual['finales'], expected_finales)
         self.assertEqual(actual['eliminations'], expected_eliminations)
 
+    def test_generated_elimination_names_and_returnee_sankey_match_database(self):
+        with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
+            conn.row_factory = sqlite3.Row
+            expected_names = elimination_candidate_names(conn)
+            expected_sankey = returnee_sankey(conn)
+            expected_count = conn.execute('SELECT COUNT(*) FROM Candidats').fetchone()[0]
+        with (ROOT / 'candidate_stats.json').open(encoding='utf-8') as f:
+            actual = json.load(f)
+
+        self.assertEqual(actual['elimination_candidates'], expected_names)
+        self.assertEqual(actual['returnee_sankey'], expected_sankey)
+        self.assertEqual(actual['returnee_sankey']['total_candidates'], expected_count)
+
     def test_import_excludes_only_marked_comeback_appearances(self):
         temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(temp_dir.cleanup)
@@ -208,7 +224,10 @@ class ReturneeTests(unittest.TestCase):
                 source_rows = [r for r in load_data.load_return_data() if r['source'] == 'ALLSTARS']
         with sqlite3.connect(ROOT / 'Donnees_KL.db') as conn:
             conn.row_factory = sqlite3.Row
-            allstars = conn.execute('SELECT * FROM AllStars').fetchall()
+            allstars = conn.execute('''
+                SELECT nom, saison, place, genre, age, aban, ori
+                FROM AllStars ORDER BY saison, nom
+            ''').fetchall()
             freddy = conn.execute("SELECT place, aban FROM AllStars WHERE nom = 'Freddy' AND saison = 'La Légende'").fetchone()
             expected_outs = [dict(row) for row in first_outs(conn, 'AllStars')]
             expected_finales = finale_stats(conn, 'AllStars')
@@ -219,7 +238,16 @@ class ReturneeTests(unittest.TestCase):
         self.assertEqual(tuple(freddy), (21, 1))
         self.assertEqual(actual['first_outs']['candidates'], expected_outs)
         self.assertEqual(actual['first_outs']['ages'], json.loads(json.dumps(age_stats(expected_outs))))
+        self.assertEqual(actual['first_outs']['gender'], gender_counts(expected_outs))
         self.assertEqual(actual['finales'], expected_finales)
+        self.assertEqual(actual['candidates'], [dict(row) for row in allstars])
+        self.assertEqual(actual['ages'], json.loads(json.dumps(age_stats(allstars))))
+        self.assertEqual(actual['gender_overall'], gender_counts(allstars))
+        self.assertEqual(
+            actual['winners'],
+            [{'nom': row['nom'], 'saison': row['saison'], 'genre': row['genre']}
+             for row in allstars if row['place'] == 1],
+        )
         for key, predicate in [('orientation', lambda c: c['ori'] == 1), ('winners', lambda c: c['place'] == 1)]:
             for gender in ('F', 'H'):
                 self.assertEqual(actual['gender'][key][gender], sum(predicate(c) and c['genre'] == gender for c in allstars))

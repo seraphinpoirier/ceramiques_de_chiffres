@@ -6549,7 +6549,12 @@
           "place": 13,
           "aban": 0
         }
-      ]
+      ],
+      "gender": {
+        "F": 9,
+        "H": 4,
+        "unknown": 0
+      }
     },
     "gender": {
       "orientation": {
@@ -6687,6 +6692,1177 @@
             "aban": 0
           }
         ]
+      }
+    ],
+    "candidates": [
+      {
+        "nom": "Camille",
+        "saison": "All Stars",
+        "place": 10,
+        "genre": "F",
+        "age": 32,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Charlotte",
+        "saison": "All Stars",
+        "place": 13,
+        "genre": "F",
+        "age": 30,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Christina",
+        "saison": "All Stars",
+        "place": null,
+        "genre": "F",
+        "age": 40,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Clémentine",
+        "saison": "All Stars",
+        "place": 8,
+        "genre": "F",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Dorian",
+        "saison": "All Stars",
+        "place": 6,
+        "genre": "H",
+        "age": 36,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Freddy",
+        "saison": "All Stars",
+        "place": null,
+        "genre": "H",
+        "age": 41,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Jacques",
+        "saison": "All Stars",
+        "place": 15,
+        "genre": "H",
+        "age": 40,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Joana",
+        "saison": "All Stars",
+        "place": 18,
+        "genre": "F",
+        "age": 33,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Laure",
+        "saison": "All Stars",
+        "place": 14,
+        "genre": "F",
+        "age": 31,
+        "aban": 1,
+        "ori": 0
+      },
+      {
+        "nom": "Lola",
+        "saison": "All Stars",
+        "place": null,
+        "genre": "F",
+        "age": 30,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Maxime",
+        "saison": "All Stars",
+        "place": 4,
+        "genre": "H",
+        "age": 35,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Moussa",
+        "saison": "All Stars",
+        "place": 17,
+        "genre": "H",
+        "age": 44,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Naoil",
+        "saison": "All Stars",
+        "place": 16,
+        "genre": "F",
+        "age": 43,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Nicolas",
+        "saison": "All Stars",
+        "place": 5,
+        "genre": "H",
+        "age": 46,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Tania",
+        "saison": "All Stars",
+        "place": 12,
+        "genre": "F",
+        "age": 26,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Ugo",
+        "saison": "All Stars",
+        "place": 7,
+        "genre": "H",
+        "age": 45,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Vincent",
+        "saison": "All Stars",
+        "place": 9,
+        "genre": "H",
+        "age": 33,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Yassin",
+        "saison": "All Stars",
+        "place": 11,
+        "genre": "H",
+        "age": 48,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Betty-Lise",
+        "saison": "Choc des Héros",
+        "place": 14,
+        "genre": "F",
+        "age": 37,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Christina",
+        "saison": "Choc des Héros",
+        "place": 9,
+        "genre": "F",
+        "age": 23,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Christophe",
+        "saison": "Choc des Héros",
+        "place": 3,
+        "genre": "H",
+        "age": 41,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Coumba",
+        "saison": "Choc des Héros",
+        "place": 4,
+        "genre": "F",
+        "age": 27,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Djamel",
+        "saison": "Choc des Héros",
+        "place": 10,
+        "genre": "H",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Frank",
+        "saison": "Choc des Héros",
+        "place": 13,
+        "genre": "H",
+        "age": 42,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Freddy",
+        "saison": "Choc des Héros",
+        "place": 2,
+        "genre": "H",
+        "age": 24,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Frédérique",
+        "saison": "Choc des Héros",
+        "place": 8,
+        "genre": "F",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Grégoire",
+        "saison": "Choc des Héros",
+        "place": 1,
+        "genre": "H",
+        "age": 27,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Gwendal",
+        "saison": "Choc des Héros",
+        "place": 11,
+        "genre": "H",
+        "age": 37,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Linda",
+        "saison": "Choc des Héros",
+        "place": 5,
+        "genre": "F",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Mohamed",
+        "saison": "Choc des Héros",
+        "place": 12,
+        "genre": "H",
+        "age": 29,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Myriam",
+        "saison": "Choc des Héros",
+        "place": 6,
+        "genre": "F",
+        "age": 35,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Taïg",
+        "saison": "Choc des Héros",
+        "place": 7,
+        "genre": "H",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Alban",
+        "saison": "Combat des Héros",
+        "place": 8,
+        "genre": "H",
+        "age": 31,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Candice",
+        "saison": "Combat des Héros",
+        "place": 9,
+        "genre": "F",
+        "age": 21,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Cassandre",
+        "saison": "Combat des Héros",
+        "place": 6,
+        "genre": "F",
+        "age": 25,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Chantal",
+        "saison": "Combat des Héros",
+        "place": 18,
+        "genre": "F",
+        "age": 48,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Clémence",
+        "saison": "Combat des Héros",
+        "place": 1,
+        "genre": "F",
+        "age": 34,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Clémentine",
+        "saison": "Combat des Héros",
+        "place": 10,
+        "genre": "F",
+        "age": 26,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Cédric",
+        "saison": "Combat des Héros",
+        "place": 16,
+        "genre": "H",
+        "age": 39,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Dylan",
+        "saison": "Combat des Héros",
+        "place": 11,
+        "genre": "H",
+        "age": 23,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Javier",
+        "saison": "Combat des Héros",
+        "place": 4,
+        "genre": "H",
+        "age": 45,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Julie",
+        "saison": "Combat des Héros",
+        "place": 17,
+        "genre": "F",
+        "age": 39,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Jérémy",
+        "saison": "Combat des Héros",
+        "place": 3,
+        "genre": "H",
+        "age": 28,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Ludovic",
+        "saison": "Combat des Héros",
+        "place": 12,
+        "genre": "H",
+        "age": 40,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Nathalie",
+        "saison": "Combat des Héros",
+        "place": 5,
+        "genre": "F",
+        "age": 39,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Olivier",
+        "saison": "Combat des Héros",
+        "place": 15,
+        "genre": "H",
+        "age": 50,
+        "aban": 1,
+        "ori": 0
+      },
+      {
+        "nom": "Pascal",
+        "saison": "Combat des Héros",
+        "place": 2,
+        "genre": "H",
+        "age": 50,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Raphaële",
+        "saison": "Combat des Héros",
+        "place": 13,
+        "genre": "F",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Tiffany",
+        "saison": "Combat des Héros",
+        "place": 14,
+        "genre": "F",
+        "age": 23,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Yassin",
+        "saison": "Combat des Héros",
+        "place": 7,
+        "genre": "H",
+        "age": 40,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Alexandra",
+        "saison": "La Légende",
+        "place": 10,
+        "genre": "F",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Alix",
+        "saison": "La Légende",
+        "place": 7,
+        "genre": "F",
+        "age": 30,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Candice",
+        "saison": "La Légende",
+        "place": 16,
+        "genre": "F",
+        "age": 24,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Christelle",
+        "saison": "La Légende",
+        "place": 8,
+        "genre": "F",
+        "age": 41,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Cindy",
+        "saison": "La Légende",
+        "place": 19,
+        "genre": "F",
+        "age": 33,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Claude",
+        "saison": "La Légende",
+        "place": 1,
+        "genre": "H",
+        "age": 42,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Clémence",
+        "saison": "La Légende",
+        "place": 12,
+        "genre": "F",
+        "age": 36,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Clémentine",
+        "saison": "La Légende",
+        "place": 15,
+        "genre": "F",
+        "age": 29,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Coumba",
+        "saison": "La Légende",
+        "place": 13,
+        "genre": "F",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Freddy",
+        "saison": "La Légende",
+        "place": 21,
+        "genre": "H",
+        "age": 36,
+        "aban": 1,
+        "ori": 0
+      },
+      {
+        "nom": "Jade",
+        "saison": "La Légende",
+        "place": 4,
+        "genre": "F",
+        "age": 39,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Karima",
+        "saison": "La Légende",
+        "place": 18,
+        "genre": "F",
+        "age": 32,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Laurent",
+        "saison": "La Légende",
+        "place": 2,
+        "genre": "H",
+        "age": 39,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Loïc",
+        "saison": "La Légende",
+        "place": 9,
+        "genre": "H",
+        "age": 21,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Maxime",
+        "saison": "La Légende",
+        "place": 17,
+        "genre": "H",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Namadia",
+        "saison": "La Légende",
+        "place": 14,
+        "genre": "H",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Patrick",
+        "saison": "La Légende",
+        "place": 20,
+        "genre": "H",
+        "age": 51,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Phil",
+        "saison": "La Légende",
+        "place": 5,
+        "genre": "H",
+        "age": 50,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Sam",
+        "saison": "La Légende",
+        "place": 6,
+        "genre": "H",
+        "age": 23,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Teheiura",
+        "saison": "La Légende",
+        "place": 11,
+        "genre": "H",
+        "age": 43,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Ugo",
+        "saison": "La Légende",
+        "place": 3,
+        "genre": "H",
+        "age": 40,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Christina",
+        "saison": "Nouvelle Edition",
+        "place": 8,
+        "genre": "F",
+        "age": 28,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Florence",
+        "saison": "Nouvelle Edition",
+        "place": 9,
+        "genre": "F",
+        "age": 43,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Freddy",
+        "saison": "Nouvelle Edition",
+        "place": 7,
+        "genre": "H",
+        "age": 29,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Nouvelle Edition",
+        "place": 12,
+        "genre": "F",
+        "age": 41,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Laurence",
+        "saison": "Nouvelle Edition",
+        "place": 11,
+        "genre": "F",
+        "age": 37,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Laurent",
+        "saison": "Nouvelle Edition",
+        "place": 1,
+        "genre": "H",
+        "age": 32,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Martin ",
+        "saison": "Nouvelle Edition",
+        "place": 2,
+        "genre": "H",
+        "age": 26,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Moundir",
+        "saison": "Nouvelle Edition",
+        "place": 4,
+        "genre": "H",
+        "age": 41,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Phil",
+        "saison": "Nouvelle Edition",
+        "place": 3,
+        "genre": "H",
+        "age": 43,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Philippe",
+        "saison": "Nouvelle Edition",
+        "place": 5,
+        "genre": "H",
+        "age": 45,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Sandra",
+        "saison": "Nouvelle Edition",
+        "place": 13,
+        "genre": "F",
+        "age": 33,
+        "aban": 1,
+        "ori": 0
+      },
+      {
+        "nom": "Sara",
+        "saison": "Nouvelle Edition",
+        "place": 10,
+        "genre": "F",
+        "age": 45,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Teheiura",
+        "saison": "Nouvelle Edition",
+        "place": 6,
+        "genre": "H",
+        "age": 36,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Amel",
+        "saison": "Retour des Héros",
+        "place": 14,
+        "genre": "F",
+        "age": 34,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Antoine",
+        "saison": "Retour des Héros",
+        "place": 6,
+        "genre": "H",
+        "age": 64,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Catherine",
+        "saison": "Retour des Héros",
+        "place": 5,
+        "genre": "F",
+        "age": 40,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Christelle",
+        "saison": "Retour des Héros",
+        "place": 11,
+        "genre": "F",
+        "age": 26,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Clémence",
+        "saison": "Retour des Héros",
+        "place": 9,
+        "genre": "F",
+        "age": 24,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Emilie",
+        "saison": "Retour des Héros",
+        "place": 8,
+        "genre": "F",
+        "age": 27,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Filomène",
+        "saison": "Retour des Héros",
+        "place": 3,
+        "genre": "F",
+        "age": 37,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "François-David",
+        "saison": "Retour des Héros",
+        "place": 7,
+        "genre": "H",
+        "age": 24,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Jade",
+        "saison": "Retour des Héros",
+        "place": 2,
+        "genre": "F",
+        "age": 26,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Jean-Bernard",
+        "saison": "Retour des Héros",
+        "place": 4,
+        "genre": "H",
+        "age": 41,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Jean-Luc",
+        "saison": "Retour des Héros",
+        "place": 13,
+        "genre": "H",
+        "age": 58,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Moundir",
+        "saison": "Retour des Héros",
+        "place": 12,
+        "genre": "H",
+        "age": 35,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Philippe",
+        "saison": "Retour des Héros",
+        "place": 10,
+        "genre": "H",
+        "age": 42,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Romuald",
+        "saison": "Retour des Héros",
+        "place": 1,
+        "genre": "H",
+        "age": 31,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Bertrand",
+        "saison": "Revanche des Héros",
+        "place": 1,
+        "genre": "H",
+        "age": 36,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Claude",
+        "saison": "Revanche des Héros",
+        "place": 2,
+        "genre": "H",
+        "age": 32,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Coumba",
+        "saison": "Revanche des Héros",
+        "place": 4,
+        "genre": "F",
+        "age": 29,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Fabienne",
+        "saison": "Revanche des Héros",
+        "place": 16,
+        "genre": "F",
+        "age": 47,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Francis",
+        "saison": "Revanche des Héros",
+        "place": 11,
+        "genre": "H",
+        "age": 66,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Freddy",
+        "saison": "Revanche des Héros",
+        "place": 10,
+        "genre": "H",
+        "age": 27,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Guénaëlle",
+        "saison": "Revanche des Héros",
+        "place": 6,
+        "genre": "F",
+        "age": 36,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Revanche des Héros",
+        "place": 13,
+        "genre": "F",
+        "age": 38,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Marine",
+        "saison": "Revanche des Héros",
+        "place": 15,
+        "genre": "F",
+        "age": 37,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Maud",
+        "saison": "Revanche des Héros",
+        "place": 3,
+        "genre": "F",
+        "age": 35,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Moussa",
+        "saison": "Revanche des Héros",
+        "place": 7,
+        "genre": "H",
+        "age": 30,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Nicolas",
+        "saison": "Revanche des Héros",
+        "place": 14,
+        "genre": "H",
+        "age": 40,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Patricia",
+        "saison": "Revanche des Héros",
+        "place": 12,
+        "genre": "F",
+        "age": 37,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Patrick",
+        "saison": "Revanche des Héros",
+        "place": 5,
+        "genre": "H",
+        "age": 42,
+        "aban": 0,
+        "ori": 1
+      },
+      {
+        "nom": "Teheiura",
+        "saison": "Revanche des Héros",
+        "place": 8,
+        "genre": "H",
+        "age": 33,
+        "aban": 0,
+        "ori": 0
+      },
+      {
+        "nom": "Wafa",
+        "saison": "Revanche des Héros",
+        "place": 9,
+        "genre": "F",
+        "age": 28,
+        "aban": 0,
+        "ori": 0
+      }
+    ],
+    "ages": {
+      "all": {
+        "counts": {
+          "21": 2,
+          "23": 4,
+          "24": 4,
+          "25": 1,
+          "26": 5,
+          "27": 4,
+          "28": 3,
+          "29": 4,
+          "30": 4,
+          "31": 3,
+          "32": 4,
+          "33": 5,
+          "34": 7,
+          "35": 4,
+          "36": 6,
+          "37": 6,
+          "38": 6,
+          "39": 5,
+          "40": 7,
+          "41": 6,
+          "42": 4,
+          "43": 4,
+          "44": 1,
+          "45": 4,
+          "46": 1,
+          "47": 1,
+          "48": 2,
+          "50": 3,
+          "51": 1,
+          "58": 1,
+          "64": 1,
+          "66": 1
+        },
+        "total": 114,
+        "average": 36.01754385964912
+      },
+      "F": {
+        "counts": {
+          "21": 1,
+          "23": 2,
+          "24": 2,
+          "25": 1,
+          "26": 4,
+          "27": 2,
+          "28": 2,
+          "29": 2,
+          "30": 3,
+          "31": 1,
+          "32": 2,
+          "33": 3,
+          "34": 5,
+          "35": 2,
+          "36": 2,
+          "37": 5,
+          "38": 4,
+          "39": 3,
+          "40": 2,
+          "41": 2,
+          "43": 2,
+          "45": 1,
+          "47": 1,
+          "48": 1
+        },
+        "total": 55,
+        "average": 33.63636363636363
+      },
+      "H": {
+        "counts": {
+          "21": 1,
+          "23": 2,
+          "24": 2,
+          "26": 1,
+          "27": 2,
+          "28": 1,
+          "29": 2,
+          "30": 1,
+          "31": 2,
+          "32": 2,
+          "33": 2,
+          "34": 2,
+          "35": 2,
+          "36": 4,
+          "37": 1,
+          "38": 2,
+          "39": 2,
+          "40": 5,
+          "41": 4,
+          "42": 4,
+          "43": 2,
+          "44": 1,
+          "45": 3,
+          "46": 1,
+          "48": 1,
+          "50": 3,
+          "51": 1,
+          "58": 1,
+          "64": 1,
+          "66": 1
+        },
+        "total": 59,
+        "average": 38.23728813559322
+      }
+    },
+    "gender_overall": {
+      "F": 55,
+      "H": 59,
+      "unknown": 0
+    },
+    "winners": [
+      {
+        "nom": "Grégoire",
+        "saison": "Choc des Héros",
+        "genre": "H"
+      },
+      {
+        "nom": "Clémence",
+        "saison": "Combat des Héros",
+        "genre": "F"
+      },
+      {
+        "nom": "Claude",
+        "saison": "La Légende",
+        "genre": "H"
+      },
+      {
+        "nom": "Laurent",
+        "saison": "Nouvelle Edition",
+        "genre": "H"
+      },
+      {
+        "nom": "Romuald",
+        "saison": "Retour des Héros",
+        "genre": "H"
+      },
+      {
+        "nom": "Bertrand",
+        "saison": "Revanche des Héros",
+        "genre": "H"
       }
     ]
   },
@@ -7278,6 +8454,844 @@
         "age": "58 ",
         "place": 18,
         "aban": 0
+      }
+    ]
+  },
+  "elimination_candidates": {
+    "orientation": [
+      {
+        "nom": "Dorian",
+        "saison": "4 Terres",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Lola",
+        "saison": "4 Terres",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Arnaud",
+        "saison": "Armes Secrètes",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Laure",
+        "saison": "Armes Secrètes",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Romain",
+        "saison": "Aventuriers de Koh-Lanta",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Antoine",
+        "saison": "Bocas del Toro",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Mathilde",
+        "saison": "Cambodge",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Nathalie",
+        "saison": "Caramoan",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Sandrine",
+        "saison": "Fidji",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Aurélien",
+        "saison": "Guerre des Chefs",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Clo",
+        "saison": "Guerre des Chefs",
+        "genre": "F",
+        "place": 5
+      },
+      {
+        "nom": "Bruno",
+        "saison": "Johor",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Cécile",
+        "saison": "La Tribu Maudite",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Jacques",
+        "saison": "La Tribu Maudite",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Julie",
+        "saison": "Le Feu Sacré",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Quentin",
+        "saison": "Le Feu Sacré",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Amri",
+        "saison": "Les Chasseurs d'Immunité",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Pauline",
+        "saison": "Les Chasseurs d'Immunité",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Bernard",
+        "saison": "Malaisie",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Phil",
+        "saison": "Malaisie",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Marianne",
+        "saison": "Nicoya",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Alexis",
+        "saison": "Pacifique",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Fabienne",
+        "saison": "Palau",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Simon",
+        "saison": "Palawan",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Romuald",
+        "saison": "Panama",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Ella",
+        "saison": "Raja Ampat",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Caroline",
+        "saison": "Reliques du destin",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Hugo",
+        "saison": "Reliques du destin",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Claire",
+        "saison": "Revanche des 4 Terres",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Jérôme",
+        "saison": "Revanche des 4 Terres",
+        "genre": "H",
+        "place": 5
+      },
+      {
+        "nom": "Cécilia",
+        "saison": "Thaïlande",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Ambre",
+        "saison": "Totem Maudit",
+        "genre": "F",
+        "place": 5
+      },
+      {
+        "nom": "Ludovic",
+        "saison": "Vanuatu",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Véronique",
+        "saison": "Viêtnam",
+        "genre": "F",
+        "place": 4
+      },
+      {
+        "nom": "Bruno",
+        "saison": "Île au trésor",
+        "genre": "H",
+        "place": 4
+      },
+      {
+        "nom": "Candice",
+        "saison": "Île au trésor",
+        "genre": "F",
+        "place": 5
+      }
+    ],
+    "third": [
+      {
+        "nom": "Loïc ",
+        "saison": "4 Terres",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Jonathan",
+        "saison": "Armes Secrètes",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Patricia",
+        "saison": "Aventuriers de Koh-Lanta",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Moussa",
+        "saison": "Bocas del Toro",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Vincent",
+        "saison": "Cambodge",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Bertrand",
+        "saison": "Caramoan",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Magalie",
+        "saison": "Fidji",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Steeve",
+        "saison": "Guerre des Chefs",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Mélissa",
+        "saison": "Johor",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Ilyesse",
+        "saison": "La Tribu Maudite",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Nicolas",
+        "saison": "Le Feu Sacré",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Julie",
+        "saison": "Les Chasseurs d'Immunité",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Vanessa",
+        "saison": "Malaisie",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Bernard",
+        "saison": "Nicoya",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Mohamed",
+        "saison": "Pacifique",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Isabelle",
+        "saison": "Palau",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Marilyne",
+        "saison": "Palawan",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Raphaël",
+        "saison": "Panama",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Laurent",
+        "saison": "Raja Ampat",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Guillaume",
+        "saison": "Reliques du destin",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Jérôme",
+        "saison": "Revanche des 4 Terres",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Gabriel",
+        "saison": "Thaïlande",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Géraldine",
+        "saison": "Totem Maudit",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Sébastien",
+        "saison": "Vanuatu",
+        "genre": "H",
+        "place": 3
+      },
+      {
+        "nom": "Wafa",
+        "saison": "Viêtnam",
+        "genre": "F",
+        "place": 3
+      },
+      {
+        "nom": "Freddy",
+        "saison": "Île au trésor",
+        "genre": "H",
+        "place": 3
+      }
+    ],
+    "ambassadors": [
+      {
+        "nom": "Marie-France",
+        "saison": "4 Terres",
+        "genre": "F",
+        "place": 15
+      },
+      {
+        "nom": "Frédéric",
+        "saison": "Armes Secrètes",
+        "genre": "H",
+        "place": 15
+      },
+      {
+        "nom": "Yassin",
+        "saison": "Cambodge",
+        "genre": "H",
+        "place": 12
+      },
+      {
+        "nom": "Tugdual",
+        "saison": "Fidji",
+        "genre": "H",
+        "place": 12
+      },
+      {
+        "nom": "Frédéric",
+        "saison": "Guerre des Chefs",
+        "genre": "H",
+        "place": 15
+      },
+      {
+        "nom": "Alban",
+        "saison": "Johor",
+        "genre": "H",
+        "place": 13
+      },
+      {
+        "nom": "Emmanuelle",
+        "saison": "La Tribu Maudite",
+        "genre": "F",
+        "place": 15
+      },
+      {
+        "nom": "Grâce",
+        "saison": "Le Feu Sacré",
+        "genre": "F",
+        "place": 12
+      },
+      {
+        "nom": "Léa",
+        "saison": "Les Chasseurs d'Immunité",
+        "genre": "F",
+        "place": 13
+      },
+      {
+        "nom": "Anthony",
+        "saison": "Malaisie",
+        "genre": "H",
+        "place": 14
+      },
+      {
+        "nom": "Maxime",
+        "saison": "Raja Ampat",
+        "genre": "H",
+        "place": 12
+      },
+      {
+        "nom": "Jonathan",
+        "saison": "Reliques du destin",
+        "genre": "H",
+        "place": 15
+      },
+      {
+        "nom": "Adrien",
+        "saison": "Revanche des 4 Terres",
+        "genre": "H",
+        "place": 15
+      },
+      {
+        "nom": "Cassandre",
+        "saison": "Thaïlande",
+        "genre": "F",
+        "place": 13
+      },
+      {
+        "nom": "Setha",
+        "saison": "Totem Maudit",
+        "genre": "F",
+        "place": 15
+      },
+      {
+        "nom": "Boris",
+        "saison": "Viêtnam",
+        "genre": "H",
+        "place": 11
+      },
+      {
+        "nom": "Jérôme",
+        "saison": "Île au trésor",
+        "genre": "H",
+        "place": 14
+      },
+      {
+        "nom": "Delphine",
+        "saison": "Île des Héros",
+        "genre": "F",
+        "place": 14
+      }
+    ]
+  },
+  "returnee_sankey": {
+    "basis": "Unique Candidats.id_candidat records; returns are linked Retours rows.",
+    "total_candidates": 524,
+    "total_linked_returns": 114,
+    "links": [
+      {
+        "gender": "F",
+        "linked_returns": 0,
+        "candidates": 223
+      },
+      {
+        "gender": "F",
+        "linked_returns": 1,
+        "candidates": 32
+      },
+      {
+        "gender": "F",
+        "linked_returns": 2,
+        "candidates": 5
+      },
+      {
+        "gender": "F",
+        "linked_returns": 3,
+        "candidates": 4
+      },
+      {
+        "gender": "F",
+        "linked_returns": 4,
+        "candidates": 0
+      },
+      {
+        "gender": "F",
+        "linked_returns": 5,
+        "candidates": 0
+      },
+      {
+        "gender": "H",
+        "linked_returns": 0,
+        "candidates": 218
+      },
+      {
+        "gender": "H",
+        "linked_returns": 1,
+        "candidates": 32
+      },
+      {
+        "gender": "H",
+        "linked_returns": 2,
+        "candidates": 5
+      },
+      {
+        "gender": "H",
+        "linked_returns": 3,
+        "candidates": 3
+      },
+      {
+        "gender": "H",
+        "linked_returns": 4,
+        "candidates": 1
+      },
+      {
+        "gender": "H",
+        "linked_returns": 5,
+        "candidates": 1
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 0,
+        "candidates": 0
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 1,
+        "candidates": 0
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 2,
+        "candidates": 0
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 3,
+        "candidates": 0
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 4,
+        "candidates": 0
+      },
+      {
+        "gender": "unknown",
+        "linked_returns": 5,
+        "candidates": 0
+      }
+    ]
+  },
+  "returnee_ranking": {
+    "criteria_order": [
+      "wins",
+      "orientation_access_rate",
+      "orientation_count",
+      "orientation_span_days",
+      "best_comeback_place_when_orientation_count_is_below_two"
+    ],
+    "selection": "Top 10 candidates, including ties on all ranking criteria.",
+    "limitations": [
+      "Orientation access rate is orientation-flagged appearances divided by eligible appearances.",
+      "The workbook has no separate orientation date, so span uses season start dates from DATES.",
+      "A season with no end date yet is excluded from the rate denominator unless orientation is already flagged.",
+      "Blank ORI? values in completed seasons are treated as not reaching orientation.",
+      "Only linked Retours records are ranked; unlinked workbook appearances cannot be attributed to a candidate.",
+      "When fewer than two orientations are recorded, the best known comeback place breaks remaining ties; missing places are null and rank behind known places.",
+      "comeback_appearances_without_placement reports missing comeback results; a null best_comeback_place means no linked comeback had a known placement."
+    ],
+    "unmatched_linked_appearances": 0,
+    "appearances_without_timeline_dates": 0,
+    "candidates": [
+      {
+        "nom": "Clémence",
+        "saison_initiale": "Pacifique",
+        "genre": "F",
+        "linked_returns": 3,
+        "wins": 2,
+        "orientation_access_rate": 0.5,
+        "orientation_count": 2,
+        "eligible_appearances": 4,
+        "orientation_span_days": 4641,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Pacifique",
+          "date": "2005-07-01"
+        },
+        "last_orientation": {
+          "season": "Combat des Héros",
+          "date": "2018-03-16"
+        },
+        "rank": 1
+      },
+      {
+        "nom": "Claude",
+        "saison_initiale": "Viêtnam",
+        "genre": "H",
+        "linked_returns": 3,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 4,
+        "eligible_appearances": 4,
+        "orientation_span_days": 3991,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Viêtnam",
+          "date": "2010-09-17"
+        },
+        "last_orientation": {
+          "season": "La Légende",
+          "date": "2021-08-21"
+        },
+        "rank": 2
+      },
+      {
+        "nom": "Jade",
+        "saison_initiale": "Palawan",
+        "genre": "F",
+        "linked_returns": 2,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 3,
+        "eligible_appearances": 3,
+        "orientation_span_days": 5167,
+        "best_comeback_place": 2,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Palawan",
+          "date": "2007-06-29"
+        },
+        "last_orientation": {
+          "season": "La Légende",
+          "date": "2021-08-21"
+        },
+        "rank": 3
+      },
+      {
+        "nom": "Laurent",
+        "saison_initiale": "Raja Ampat",
+        "genre": "H",
+        "linked_returns": 2,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 3,
+        "eligible_appearances": 3,
+        "orientation_span_days": 3634,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Raja Ampat",
+          "date": "2011-09-09"
+        },
+        "last_orientation": {
+          "season": "La Légende",
+          "date": "2021-08-21"
+        },
+        "rank": 4
+      },
+      {
+        "nom": "Romuald",
+        "saison_initiale": "Panama",
+        "genre": "H",
+        "linked_returns": 1,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 2,
+        "eligible_appearances": 2,
+        "orientation_span_days": 1656,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Panama",
+          "date": "2004-07-02"
+        },
+        "last_orientation": {
+          "season": "Retour des Héros",
+          "date": "2009-01-13"
+        },
+        "rank": 5
+      },
+      {
+        "nom": "Bertrand",
+        "saison_initiale": "Caramoan",
+        "genre": "H",
+        "linked_returns": 1,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 2,
+        "eligible_appearances": 2,
+        "orientation_span_days": 1372,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Caramoan",
+          "date": "2008-07-04"
+        },
+        "last_orientation": {
+          "season": "Revanche des Héros",
+          "date": "2012-04-06"
+        },
+        "rank": 6
+      },
+      {
+        "nom": "Naoil",
+        "saison_initiale": "Île des Héros",
+        "genre": "F",
+        "linked_returns": 1,
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 1,
+        "eligible_appearances": 1,
+        "orientation_span_days": 0,
+        "best_comeback_place": 16,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": true,
+        "first_orientation": {
+          "season": "Île des Héros",
+          "date": "2020-02-21"
+        },
+        "last_orientation": {
+          "season": "Île des Héros",
+          "date": "2020-02-21"
+        },
+        "rank": 7
+      },
+      {
+        "nom": "Ugo",
+        "saison_initiale": "Malaisie",
+        "genre": "H",
+        "linked_returns": 3,
+        "wins": 1,
+        "orientation_access_rate": 0.6666666666666666,
+        "orientation_count": 2,
+        "eligible_appearances": 3,
+        "orientation_span_days": 3214,
+        "best_comeback_place": 3,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Malaisie",
+          "date": "2012-11-02"
+        },
+        "last_orientation": {
+          "season": "La Légende",
+          "date": "2021-08-21"
+        },
+        "rank": 8
+      },
+      {
+        "nom": "Christina",
+        "saison_initiale": "Palau",
+        "genre": "F",
+        "linked_returns": 3,
+        "wins": 1,
+        "orientation_access_rate": 0.5,
+        "orientation_count": 2,
+        "eligible_appearances": 4,
+        "orientation_span_days": 6206,
+        "best_comeback_place": 8,
+        "comeback_appearances_without_placement": 1,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Palau",
+          "date": "2009-08-28"
+        },
+        "last_orientation": {
+          "season": "All Stars",
+          "date": "2026-08-25"
+        },
+        "rank": 9
+      },
+      {
+        "nom": "Grégoire",
+        "saison_initiale": "Palawan",
+        "genre": "H",
+        "linked_returns": 1,
+        "wins": 1,
+        "orientation_access_rate": 0.5,
+        "orientation_count": 1,
+        "eligible_appearances": 2,
+        "orientation_span_days": 0,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": true,
+        "first_orientation": {
+          "season": "Choc des Héros",
+          "date": "2010-03-26"
+        },
+        "last_orientation": {
+          "season": "Choc des Héros",
+          "date": "2010-03-26"
+        },
+        "rank": 10
       }
     ]
   }

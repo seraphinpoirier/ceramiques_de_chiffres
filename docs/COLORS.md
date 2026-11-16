@@ -17,4 +17,4 @@
 | Âge : 36 à 45 ans | Vert | `#009E73` |
 | Âge : 46 ans et plus | Rose | `#CC79A7` |
 
-Les camemberts d'âge utilisent les mêmes couleurs par tranche pour les femmes et les hommes. Les cartes de représentation utilisent une échelle distincte pour les écarts.
+Les camemberts d'âge utilisent les mêmes couleurs par tranche pour les femmes et les hommes. Les cartes de représentation utilisent du vert pour la sur-représentation, du rouge pour la sous-représentation et du blanc pour les territoires sans candidat ; les signes indiquent aussi le sens et l'amplitude de l'écart.

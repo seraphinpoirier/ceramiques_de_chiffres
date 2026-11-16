@@ -1,6 +1,8 @@
 {
   "metadata": {
-    "generated": true
+    "generated": true,
+    "overall_source": "Candidats database table (classic initial entries; excludes CB? returns)",
+    "outcome_source": "All CLASSIQUES worksheet rows, including CB?=O returns; each appearance is counted once, including rows not linked in Retours."
   },
   "stats": {
     "overall": {
@@ -9,14 +11,14 @@
       "total": 524
     },
     "ori": {
-      "H": 62,
+      "H": 64,
       "F": 55,
-      "total": 117
+      "total": 119
     },
     "pot": {
-      "H": 44,
+      "H": 45,
       "F": 37,
-      "total": 81
+      "total": 82
     },
     "place": {
       "H": 15,

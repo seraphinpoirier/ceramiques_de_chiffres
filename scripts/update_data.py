@@ -30,6 +30,7 @@ def main():
         print("  - tribes_data.json")
         print("  - gender_stats.json")
         print("  - candidate_stats.json")
+        print("  - timeline_data.json")
     
     return result.returncode
 

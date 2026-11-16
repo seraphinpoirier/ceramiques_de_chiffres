@@ -3,6 +3,7 @@ let departmentsData = {};
 let regionsData = {};
 let genderStats = {};
 let candidateStats = {};
+let timelineData = [];
 let deptSortMode = 'gap-desc'; // 'gap-desc', 'gap-asc', 'alpha'
 let regionSortMode = 'gap-desc';
 let lockedDept = null;
@@ -34,17 +35,20 @@ async function loadData() {
         console.log(`Loaded ${Object.keys(regionsData).length} regions`);
 
         console.log('Loading gender stats...');
-        const genderResponse = await fetch('gender_stats.json');
+        const genderResponse = await fetch('gender_stats.json', { cache: 'no-store' });
         if (!genderResponse.ok) throw new Error(`HTTP ${genderResponse.status}`);
         genderStats = (await genderResponse.json()).stats;
         console.log('Loaded gender statistics');
 
-        const candidateResponse = await fetch('candidate_stats.json');
+        const candidateResponse = await fetch('candidate_stats.json', { cache: 'no-store' });
         if (!candidateResponse.ok) throw new Error(`HTTP ${candidateResponse.status}`);
         candidateStats = await candidateResponse.json();
+        const timelineResponse = await fetch('timeline_data.json', { cache: 'no-store' });
+        if (!timelineResponse.ok) throw new Error(`HTTP ${timelineResponse.status}`);
+        timelineData = (await timelineResponse.json()).seasons;
     } catch (error) {
         console.error('Error loading data:', error);
-        document.querySelectorAll('#gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts, #returnee-charts, #allstar-age-charts, #allstar-gender-charts, #allstar-finale-charts').forEach(container => {
+        document.querySelectorAll('#timeline, #ranking, #returnee-flow, #gender-charts, #age-charts, #first-out-charts, #finale-charts, #choice-charts, #returnee-charts, #allstar-age-charts, #allstar-gender-charts, #allstar-finale-charts').forEach(container => {
             container.textContent = 'Impossible de charger les données. Vérifiez que les fichiers JSON sont disponibles.';
         });
         throw error;
@@ -56,17 +60,17 @@ function getColor(gap, candidates, isRegion = false) {
     
     if (isRegion) {
         if (gap > 1.5) return '#1a9850';
-        if (gap > 0.75) return '#66bd63';
-        if (gap >= 0) return '#b1d582';
-        if (gap > -0.75) return '#d9ef8b';
-        if (gap > -1.5) return '#fee08b';
-        return '#d73027';
-    } else {
-        if (gap > 1) return '#1a9850';
         if (gap > 0.5) return '#66bd63';
         if (gap >= 0) return '#b1d582';
-        if (gap > -0.5) return '#d9ef8b';
-        if (gap > -1) return '#fee08b';
+        if (gap > -0.5) return '#fddbc7';
+        if (gap > -1.5) return '#ef8a62';
+        return '#d73027';
+    } else {
+        if (gap > 0.5) return '#1a9850';
+        if (gap > 0.2) return '#66bd63';
+        if (gap >= 0) return '#b1d582';
+        if (gap > -0.2) return '#fddbc7';
+        if (gap > -0.5) return '#ef8a62';
         return '#d73027';
     }
 }
@@ -215,7 +219,7 @@ function showDeptInfo(name) {
     const data = departmentsData[name];
     if (!data) return;
 
-    let html = `${lockedDept === name ? '<div class="locked-label">📌 VERROUILLÉ - Cliquer pour déverrouiller</div>' : ''}
+    let html = `${lockedDept === name ? '<div class="locked-label">VERROUILLÉ - Cliquer pour déverrouiller</div>' : ''}
         <div class="info-row">
             <span class="label">Département:</span>
             <span class="value"><strong>${name}</strong></span>
@@ -256,7 +260,7 @@ function showRegionInfo(name) {
     const data = regionsData[name];
     if (!data) return;
 
-    let html = `${lockedRegion === name ? '<div class="locked-label">📌 VERROUILLÉ - Cliquer pour déverrouiller</div>' : ''}
+    let html = `${lockedRegion === name ? '<div class="locked-label">VERROUILLÉ - Cliquer pour déverrouiller</div>' : ''}
         <div class="info-row">
             <span class="label">Région:</span>
             <span class="value"><strong>${name}</strong></span>
@@ -388,6 +392,9 @@ async function createTribeMaps() {
         });
     } catch (error) {
         console.error('Error loading tribe maps:', error);
+        for (const id of ['map-tribe-dept', 'map-tribe-region']) {
+            document.getElementById(id).textContent = 'Impossible de charger la carte géographique.';
+        }
     }
 }
 
@@ -399,7 +406,8 @@ function renderTribeMap(containerId, geojson, fillFn) {
     const svg = d3.select(`#${containerId}`)
         .append('svg')
         .attr('width', width)
-        .attr('height', height);
+        .attr('height', height)
+        .attr('viewBox', `0 0 ${width} ${height}`);
     const defs = ensureDefs(svg);
 
     const projection = d3.geoMercator().fitSize([width, height], geojson);
@@ -417,7 +425,23 @@ function renderTribeMap(containerId, geojson, fillFn) {
         .append('title')
         .text(d => d.properties.nom);
 
-    svg.call(d3.zoom().on('zoom', (event) => g.attr('transform', event.transform)));
+    addMapZoom(container, svg, g);
+}
+
+function addMapZoom(container, svg, group) {
+    const zoom = d3.zoom().scaleExtent([1, 8]).on('zoom', event => group.attr('transform', event.transform));
+    svg.call(zoom).on('wheel.zoom', null).on('dblclick.zoom', null);
+    const controls = document.createElement('div');
+    controls.className = 'map-zoom';
+    for (const [label, factor, title] of [['+', 1.5, 'Zoomer'], ['−', 1 / 1.5, 'Dézoomer']]) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = label;
+        button.setAttribute('aria-label', title);
+        button.addEventListener('click', () => svg.call(zoom.scaleBy, factor));
+        controls.appendChild(button);
+    }
+    container.appendChild(controls);
 }
 
 async function createDeptMap() {
@@ -427,6 +451,7 @@ async function createDeptMap() {
         renderMap('map-dept', geojson, 'department');
     } catch (error) {
         console.error('Error loading dept map:', error);
+        document.getElementById('map-dept').textContent = 'Impossible de charger la carte géographique.';
     }
 }
 
@@ -437,6 +462,7 @@ async function createRegionMap() {
         renderMap('map-region', geojson, 'region');
     } catch (error) {
         console.error('Error loading region map:', error);
+        document.getElementById('map-region').textContent = 'Impossible de charger la carte géographique.';
     }
 }
 
@@ -450,7 +476,8 @@ function renderMap(containerId, geojson, type) {
     const svg = d3.select(`#${containerId}`)
         .append('svg')
         .attr('width', width)
-        .attr('height', height);
+        .attr('height', height)
+        .attr('viewBox', `0 0 ${width} ${height}`);
 
     const projection = d3.geoMercator().fitSize([width, height], geojson);
     const pathGen = d3.geoPath().projection(projection);
@@ -516,13 +543,14 @@ function renderMap(containerId, geojson, type) {
             }
         });
 
+    const dataSource = type === 'department' ? departmentsData : regionsData;
+    g.selectAll('.map-sign').data(geojson.features.filter(d => dataSource[d.properties.nom]))
+        .join('text').attr('class', 'map-sign')
+        .attr('x', d => pathGen.centroid(d)[0]).attr('y', d => pathGen.centroid(d)[1])
+        .attr('font-size', d => Math.min(14, 6 + Math.sqrt(Math.abs(dataSource[d.properties.nom].gap_percentage)) * 4))
+        .text(d => dataSource[d.properties.nom].gap_percentage > 0 ? '+' : '−');
     console.log(`${type} map: ${coloredCount} colored, ${greyCount} grey`);
-
-    const zoom = d3.zoom().on('zoom', (event) => {
-        g.attr('transform', event.transform);
-    });
-
-    svg.call(zoom);
+    addMapZoom(container, svg, g);
 }
 
 function renderGenderCharts(container = document.getElementById('gender-charts'), statsData = genderStats, definitions = null) {
@@ -575,7 +603,6 @@ function renderGenderCharts(container = document.getElementById('gender-charts')
         
         chart.innerHTML = `
             <h3>${def.title}</h3>
-            <p style="font-size: 0.85em; color: #999; margin-bottom: 10px;">${def.subtitle}</p>
             <div class="chart-bars">
                 <div class="bar-container">
                     <div class="bar" style="height: ${hHeight}px;"></div>
@@ -603,6 +630,15 @@ function renderGenderCharts(container = document.getElementById('gender-charts')
                 </div>
             </div>
         `;
+        if (def.names) {
+            for (const [index, gender] of ['H', 'F'].entries()) {
+                const bar = chart.querySelectorAll('.bar')[index];
+                const names = def.names[gender].map(candidate => `${candidate.nom} (${candidate.saison})`).join(', ');
+                bar.title = names || 'Aucun candidat';
+                bar.tabIndex = 0;
+                bar.setAttribute('aria-label', `${gender === 'F' ? 'Femmes' : 'Hommes'} : ${names || 'aucun candidat'}`);
+            }
+        }
         
         container.appendChild(chart);
     });
@@ -612,6 +648,11 @@ function renderCandidateCharts() {
     const ages = document.getElementById('age-charts');
     renderAgeChart(ages, 'Âge de tous les candidats', candidateStats.ages.all, candidateStats.age_candidates.all);
     renderAgeChart(ages, "Âge des candidats ayant atteint l'épreuve d'orientation", candidateStats.ages.orientation, candidateStats.age_candidates.orientation);
+    renderAgeSummary(ages);
+    renderAgeRates(ages);
+    renderTimeline();
+    renderRanking();
+    renderReturneeFlow();
     renderFinaleCharts();
     renderChoiceCharts();
     renderReturnees();
@@ -644,9 +685,95 @@ function renderCandidateCharts() {
     }
 }
 
+function renderTimeline() {
+    const container = document.getElementById('timeline');
+    const years = d3.group(timelineData, season => season.start_date.slice(0, 4));
+    for (const [year, seasons] of years) {
+        const column = document.createElement('div');
+        column.className = 'timeline-year';
+        const heading = document.createElement('strong');
+        heading.textContent = year;
+        column.appendChild(heading);
+        for (const season of seasons) {
+            const item = document.createElement('div');
+            item.className = `timeline-season${season.series === 'all_stars' ? ' allstar' : ''}`;
+            item.textContent = season.name;
+            const count = document.createElement('small');
+            count.textContent = `${season.candidate_count} candidat${season.candidate_count === 1 ? '' : 's'} renseigné${season.candidate_count === 1 ? '' : 's'}`;
+            item.appendChild(count);
+            item.title = `${season.start_date} – ${season.end_date}`;
+            column.appendChild(item);
+        }
+        container.appendChild(column);
+    }
+}
+
+function renderRanking() {
+    const container = document.getElementById('ranking');
+    const candidates = candidateStats.returnee_ranking.candidates;
+    const note = document.createElement('p');
+    note.className = 'chart-note';
+    note.textContent = "Les retours non identifiés sont exclus. L'écart entre orientations utilise les dates de début des saisons, faute de dates d'épreuve. Les saisons non terminées sont exclues du dénominateur sauf si l'orientation est déjà renseignée ; les indicateurs vides des saisons terminées sont considérés comme négatifs. Pour les classements manquants lors d'un retour, seule la meilleure place connue est utilisée.";
+    container.appendChild(note);
+    const list = document.createElement('ol');
+    list.className = 'ranking';
+    for (const candidate of candidates) {
+        const item = document.createElement('li');
+        const heading = document.createElement('strong');
+        heading.className = 'ranking-name';
+        heading.textContent = `${candidate.rank}. ${candidate.nom.trim()} — ${candidate.saison_initiale}`;
+        const rate = candidate.orientation_access_rate === null ? 'non disponible' :
+            `${(100 * candidate.orientation_access_rate).toFixed(1).replace('.', ',')} %`;
+        const span = candidate.orientation_span_days === null ? 'non disponible' : `${candidate.orientation_span_days} jours`;
+        const metrics = document.createElement('div');
+        metrics.className = 'ranking-metrics';
+        const values = [
+            `${candidate.wins} victoire(s)`,
+            `Orientation : ${rate} (${candidate.orientation_count}/${candidate.eligible_appearances})`,
+            `Écart : ${span}`
+        ];
+        if (candidate.best_comeback_place_tiebreak_applied) {
+            const place = candidate.best_comeback_place === null ? 'inconnu' :
+                `${candidate.best_comeback_place === 1 ? '1re' : `${candidate.best_comeback_place}e`} place`;
+            const missing = candidate.comeback_appearances_without_placement ?
+                ` (${candidate.comeback_appearances_without_placement} classement(s) manquant(s))` : '';
+            values.push(`Meilleur retour : ${place}${missing}`);
+        }
+        for (const value of values) {
+            const metric = document.createElement('span');
+            metric.textContent = value;
+            metrics.appendChild(metric);
+        }
+        item.append(heading, metrics);
+        list.appendChild(item);
+    }
+    container.appendChild(list);
+    const counts = d3.rollup(candidates, values => values.length, candidate => candidate.genre);
+    const entries = [
+        { label: 'Femmes', value: counts.get('F') || 0, color: GENDER_COLORS.F },
+        { label: 'Hommes', value: counts.get('H') || 0, color: GENDER_COLORS.H }
+    ];
+    if (counts.get('unknown')) entries.push({ label: 'Non renseigné', value: counts.get('unknown'), color: '#999999' });
+    renderPie(container, 'Répartition par genre du classement', entries);
+}
+
+function renderReturneeFlow() {
+    const links = candidateStats.returnee_sankey.links;
+    const maxReturns = d3.max(links, link => link.linked_returns);
+    const stages = d3.range(maxReturns + 1).map(minimum => Object.fromEntries(
+        ['F', 'H', 'unknown'].map(gender => [gender,
+            d3.sum(links.filter(link => link.gender === gender && link.linked_returns >= minimum), link => link.candidates)])
+    ));
+    drawReturneeFlow(document.getElementById('returnee-flow'), stages);
+}
+
 function renderReturnees() {
     const container = document.getElementById('returnee-charts');
-    const candidates = [...candidateStats.returnees.F, ...candidateStats.returnees.H];
+    const topThree = group => {
+        const cutoff = group.length >= 3 ? group[2].retours : 0;
+        return group.filter(candidate => candidate.retours >= cutoff);
+    };
+    const candidates = [...topThree(candidateStats.returnees.F), ...topThree(candidateStats.returnees.H)];
     const counts = [...new Set(candidates.map(candidate => candidate.participations.length))].sort((a, b) => b - a);
     for (const count of counts) {
         const group = document.createElement('section');
@@ -674,27 +801,122 @@ function renderReturnees() {
     if (!counts.length) container.textContent = 'Aucun retour identifié.';
 }
 
+function drawReturneeFlow(container, stages) {
+    const card = chartCard(container, 'Retours identifiés par genre');
+    const width = Math.max(700, stages.length * 150), left = 110, right = 80;
+    const x = d3.scalePoint().domain(d3.range(stages.length)).range([left, width - right]);
+    const genders = [['F', 'Femmes'], ['H', 'Hommes']];
+    if (stages[0].unknown) genders.push(['unknown', 'Non renseigné']);
+    const height = 670, center = 330, maxBand = 135;
+    const colors = { ...GENDER_COLORS, unknown: '#999999' };
+    const scale = maxBand / Math.max(1, stages[0].F, stages[0].H + stages[0].unknown);
+    const svg = d3.select(card).append('svg').attr('viewBox', `0 0 ${width} ${height}`)
+        .attr('class', 'stats-svg').attr('role', 'img')
+        .attr('aria-label', 'Flux des candidats par genre et nombre minimum de retours');
+    stages.forEach((stage, index) => {
+        svg.append('text').attr('x', x(index)).attr('y', 20).attr('text-anchor', 'middle')
+            .text(index === 0 ? 'Tous' : `${index} retour${index > 1 ? 's' : ''} ou plus`);
+    });
+    const ribbon = (x1, y1, x2, y2, thickness) => {
+        const mid = (x1 + x2) / 2;
+        return `M${x1},${y1} C${mid},${y1} ${mid},${y2} ${x2},${y2} L${x2},${y2 + thickness} C${mid},${y2 + thickness} ${mid},${y1 + thickness} ${x1},${y1 + thickness} Z`;
+    };
+    genders.forEach(([gender, label]) => {
+        const labelY = gender === 'F' ? center - stages[0].F * scale / 2 :
+            center + (gender === 'unknown' ? stages[0].H * scale : 0) + stages[0][gender] * scale / 2;
+        svg.append('text').attr('x', 5).attr('y', labelY).attr('dominant-baseline', 'middle').text(label);
+        for (let index = 0; index < stages.length; index++) {
+            const count = stages[index][gender];
+            const nodeHeight = count * scale;
+            const y = gender === 'F' ? center - nodeHeight :
+                center + (gender === 'unknown' ? stages[index].H * scale : 0);
+            svg.append('rect').attr('x', x(index) - 6).attr('y', y).attr('width', 12)
+                .attr('height', nodeHeight).attr('fill', colors[gender])
+                .append('title').text(`${label} : ${count}`);
+            if (index + 1 === stages.length) continue;
+            const continuing = stages[index + 1][gender];
+            const stopped = count - continuing;
+            const nextY = gender === 'F' ? center - continuing * scale :
+                center + (gender === 'unknown' ? stages[index + 1].H * scale : 0);
+            if (continuing) {
+                const sourceY = gender === 'F' ? center - continuing * scale : y;
+                svg.append('path').attr('d', ribbon(x(index) + 6, sourceY, x(index + 1) - 6, nextY, continuing * scale))
+                    .attr('fill', colors[gender]).attr('opacity', 0.45)
+                    .append('title').text(`${label} : ${continuing} avec au moins ${index + 1} retour(s)`);
+            }
+            if (stopped) {
+                const exitY = gender === 'F' ? center - maxBand - 12 - stopped * scale :
+                    center + maxBand + 12 + (gender === 'unknown' ?
+                        (stages[index].H - stages[index + 1].H) * scale : 0);
+                const sourceY = gender === 'F' ? y : y + continuing * scale;
+                svg.append('path').attr('d', ribbon(x(index) + 6, sourceY, x(index + 1) - 6, exitY, stopped * scale))
+                    .attr('fill', colors[gender]).attr('opacity', 0.16)
+                    .append('title').text(`${label} : ${stopped} sans retour supplémentaire`);
+                svg.append('rect').attr('x', x(index + 1) - 6).attr('y', exitY)
+                    .attr('width', 12).attr('height', stopped * scale).attr('fill', colors[gender]).attr('opacity', 0.35)
+                    .append('title').text(`${label} : ${stopped} sans retour supplémentaire`);
+            }
+        }
+    });
+    const table = document.createElement('table');
+    table.className = 'data-table';
+    const header = table.createTHead().insertRow();
+    for (const label of ['Retours minimum', ...genders.map(([, label]) => label)]) {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        cell.textContent = label;
+        header.appendChild(cell);
+    }
+    const body = table.createTBody();
+    stages.forEach((stage, index) => {
+        const row = body.insertRow();
+        const heading = document.createElement('th');
+        heading.scope = 'row';
+        heading.textContent = index === 0 ? 'Tous' : String(index);
+        row.appendChild(heading);
+        genders.forEach(([gender]) => { row.insertCell().textContent = stage[gender]; });
+    });
+    card.appendChild(table);
+    const note = document.createElement('p');
+    note.className = 'chart-note';
+    note.textContent = 'Sarcelle : femmes ; violet : hommes ; gris : genre non renseigné. Les flux pâles représentent les personnes sans retour supplémentaire. Seuls les retours reliés à une première participation sont comptés.';
+    card.appendChild(note);
+}
+
 function formatPlacement(candidate) {
     const place = candidate.place == null ? 'classement inconnu' :
-        `${candidate.place === 1 ? '🏅 ' : ''}${candidate.place === 1 ? '1re' : `${candidate.place}e`} place`;
+        `${candidate.place === 1 ? '1re' : `${candidate.place}e`} place${candidate.place === 1 ? ' (gagnant-e)' : ''}`;
     return `${place}${candidate.aban ? ' (abandon)' : ''}`;
 }
 
 function renderAllStarCharts() {
     const stats = candidateStats.allstars;
     const ages = document.getElementById('allstar-age-charts');
+    const genderEntries = [
+        { label: 'Femmes', value: stats.first_outs.gender.F, color: GENDER_COLORS.F },
+        { label: 'Hommes', value: stats.first_outs.gender.H, color: GENDER_COLORS.H }
+    ];
+    if (stats.first_outs.gender.unknown) genderEntries.push({ label: 'Non renseigné', value: stats.first_outs.gender.unknown, color: '#999999' });
+    renderPie(ages, 'Genre des premiers éliminés', genderEntries);
     renderPie(ages, 'Âges des premières éliminées', groupAges(stats.first_outs.ages.F.counts));
     renderPie(ages, 'Âges des premiers éliminés', groupAges(stats.first_outs.ages.H.counts));
-    renderGenderCharts(document.getElementById('allstar-gender-charts'), stats.gender, [
-        { key: 'orientation', title: 'Orientation', subtitle: '(participations à l’orientation)' },
-        { key: 'winners', title: 'Gagnants', subtitle: '(premières places renseignées)' }
+    renderPie(ages, 'Âges de toutes les candidates', groupAges(stats.ages.F.counts));
+    renderPie(ages, 'Âges de tous les candidats hommes', groupAges(stats.ages.H.counts));
+    renderGenderCharts(document.getElementById('allstar-gender-charts'),
+        { ...stats.gender, overall: stats.gender_overall }, [
+        { key: 'overall', title: 'Ensemble des candidats' },
+        { key: 'orientation', title: 'Orientation' },
+        { key: 'winners', title: 'Gagnants', names: {
+            F: stats.winners.filter(candidate => candidate.genre === 'F'),
+            H: stats.winners.filter(candidate => candidate.genre === 'H')
+        } }
     ]);
     const finals = stats.finales;
     renderFinaleBars(document.getElementById('allstar-finale-charts'), 'Composition des finales', [
         { label: 'H / H', color: GENDER_COLORS.H, finals: finals.filter(f => f.candidates.every(c => c.genre === 'H')) },
         { label: 'F / F', color: GENDER_COLORS.F, finals: finals.filter(f => f.candidates.every(c => c.genre === 'F')) },
         { label: 'F / H', color: '#b67b22', finals: finals.filter(f => f.candidates.some(c => c.genre === 'F') && f.candidates.some(c => c.genre === 'H')) }
-    ], finals.length);
+    ], finals.length, true);
 }
 
 function renderFinaleCharts() {
@@ -731,7 +953,7 @@ function renderFinaleCharts() {
     renderFinaleBars(container, 'La femme est plus jeune', outcomeGroups(younger), younger.length);
 }
 
-function renderFinaleBars(container, title, groups, total) {
+function renderFinaleBars(container, title, groups, total, showMedals = false) {
     const card = chartCard(container, title);
     const subtitle = document.createElement('p');
     subtitle.className = 'chart-note';
@@ -771,7 +993,7 @@ function renderFinaleBars(container, title, groups, total) {
             for (const finale of group.finals) {
                 const item = document.createElement('li');
                 item.textContent = `${finale.saison} : ${finale.candidates.map(c =>
-                    `${c.place === 1 ? '🏅 ' : ''}${c.nom.trim()}${c.age === null ? '' : ` (${c.age} ans)`}`
+                    `${c.place === 1 && showMedals ? '🏅 ' : ''}${c.nom.trim()}${c.place === 1 ? ' (gagnant-e)' : ''}${c.age === null ? '' : ` (${c.age} ans)`}`
                 ).join(' / ')}`;
                 list.appendChild(item);
             }
@@ -840,9 +1062,10 @@ function renderAgeChart(container, title, stats, candidates) {
         return;
     }
     const width = 660, height = 300, margin = { top: 20, right: 20, bottom: 45, left: 45 };
-    const ages = d3.range(d3.min(allAges), d3.max(allAges) + 1);
+    const ages = d3.range(Math.floor(d3.min(allAges) / 3) * 3, d3.max(allAges) + 1, 3);
     const x = d3.scaleBand().domain(ages).range([margin.left, width - margin.right]).padding(0.1);
-    const y = d3.scaleLinear().domain([0, d3.max(Object.values(stats.all.counts))]).nice()
+    const sumGroup = (counts, age) => d3.sum([age, age + 1, age + 2], value => counts[value] || 0);
+    const y = d3.scaleLinear().domain([0, d3.max(ages, age => sumGroup(stats.all.counts, age))]).nice()
         .range([height - margin.bottom, margin.top]);
     const layout = document.createElement('div');
     layout.className = 'age-chart-layout';
@@ -851,21 +1074,20 @@ function renderAgeChart(container, title, stats, candidates) {
     const details = document.createElement('div');
     details.className = 'age-details';
     details.setAttribute('aria-live', 'polite');
-    details.textContent = 'Survolez ou sélectionnez un âge pour afficher les candidats.';
+    details.textContent = 'Survolez ou sélectionnez une tranche pour afficher les candidats.';
     layout.append(graph, details);
     card.appendChild(layout);
     const svg = d3.select(graph).append('svg').attr('viewBox', `0 0 ${width} ${height}`)
         .attr('class', 'stats-svg').attr('role', 'group').attr('aria-label', title);
-    const ticks = ages.filter(age => age % 5 === 0);
     svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).tickValues(ticks.length ? ticks : ages).tickFormat(d3.format('d')));
+        .call(d3.axisBottom(x).tickFormat(age => `${age}–${age + 2}`));
     svg.append('g').attr('transform', `translate(${margin.left},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(d3.format('d')));
     svg.append('text').attr('x', width / 2).attr('y', height - 5).attr('text-anchor', 'middle').text('Âge');
     svg.append('text').attr('x', margin.left).attr('y', 12).text('Candidats');
     const data = ages.map(age => {
-        const female = stats.F.counts[age] || 0;
-        const male = stats.H.counts[age] || 0;
-        return { age, F: female, H: male, unknown: (stats.all.counts[age] || 0) - female - male };
+        const female = sumGroup(stats.F.counts, age);
+        const male = sumGroup(stats.H.counts, age);
+        return { age, F: female, H: male, unknown: sumGroup(stats.all.counts, age) - female - male };
     });
     const colors = { ...GENDER_COLORS, unknown: '#999999' };
     const keys = ['F', 'H'];
@@ -879,14 +1101,14 @@ function renderAgeChart(container, title, stats, candidates) {
             .attr('height', segment => y(segment[0]) - y(segment[1]))
             .attr('width', x.bandwidth())
             .append('title')
-            .text(segment => `${segment.data.age} ans : ${segment.data[series.key]} ${series.key === 'F' ? 'femmes' : series.key === 'H' ? 'hommes' : 'genre non renseigné'}`);
+            .text(segment => `${segment.data.age}–${segment.data.age + 2} ans : ${segment.data[series.key]} ${series.key === 'F' ? 'femmes' : series.key === 'H' ? 'hommes' : 'genre non renseigné'}`);
     }
     let lockedAge = null;
     function showAge(age) {
-        const matches = candidates.filter(candidate => Number(candidate.age) === age);
+        const matches = candidates.filter(candidate => Number(candidate.age) >= age && Number(candidate.age) <= age + 2);
         details.replaceChildren();
         const heading = document.createElement('strong');
-        heading.textContent = `${age} ans — ${matches.length} candidat${matches.length > 1 ? 's' : ''}`;
+        heading.textContent = `${age}–${age + 2} ans — ${matches.length} candidat${matches.length > 1 ? 's' : ''}`;
         details.appendChild(heading);
         const list = document.createElement('ul');
         for (const candidate of matches) {
@@ -908,7 +1130,7 @@ function renderAgeChart(container, title, stats, candidates) {
         .attr('width', x.bandwidth()).attr('height', height - margin.bottom - margin.top)
         .attr('fill', 'transparent').attr('class', 'age-hit-area')
         .attr('tabindex', 0).attr('role', 'button').attr('aria-pressed', 'false')
-        .attr('aria-label', row => `${row.age} ans : afficher les candidats`)
+        .attr('aria-label', row => `${row.age} à ${row.age + 2} ans : afficher les candidats`)
         .on('pointerenter focus', (event, row) => { if (lockedAge === null) showAge(row.age); })
         .on('click', (event, row) => selectAge(row.age))
         .on('keydown', function(event, row) {
@@ -919,10 +1141,9 @@ function renderAgeChart(container, title, stats, candidates) {
         });
     const legend = document.createElement('div');
     legend.className = 'stats-legend';
-    for (const [key, label, color] of [['all', 'Ensemble', '#333333'], ['F', 'Femmes', GENDER_COLORS.F], ['H', 'Hommes', GENDER_COLORS.H]]) {
-        const average = stats[key].average === null ? 'non disponible' : `${stats[key].average.toFixed(1).replace('.', ',')} ans`;
+    for (const [key, label, color] of [['F', 'Femmes', GENDER_COLORS.F], ['H', 'Hommes', GENDER_COLORS.H]]) {
         const item = document.createElement('span');
-        item.innerHTML = `<i style="background:${color}"></i>${label} : ${average} (n = ${stats[key].total})`;
+        item.innerHTML = `<i style="background:${color}"></i>${label}`;
         legend.appendChild(item);
     }
     if (keys.includes('unknown')) {
@@ -931,6 +1152,81 @@ function renderAgeChart(container, title, stats, candidates) {
         legend.appendChild(item);
     }
     card.appendChild(legend);
+}
+
+function renderAgeSummary(container) {
+    const card = chartCard(container, 'Âges moyens');
+    const table = document.createElement('table');
+    table.className = 'data-table';
+    const header = table.createTHead().insertRow();
+    for (const label of ['Étape', 'Ensemble', 'Femmes', 'Hommes']) {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        cell.textContent = label;
+        header.appendChild(cell);
+    }
+    const body = table.createTBody();
+    for (const [group, label] of [['all', 'Tous les candidats'], ['orientation', "À l'orientation"]]) {
+        const row = body.insertRow();
+        const heading = document.createElement('th');
+        heading.scope = 'row';
+        heading.textContent = label;
+        row.appendChild(heading);
+        for (const gender of ['all', 'F', 'H']) {
+            const stats = candidateStats.ages[group][gender];
+            row.insertCell().textContent = `${stats.average === null ? 'non disponible' : `${stats.average.toFixed(1).replace('.', ',')} ans`} (n = ${stats.total})`;
+        }
+    }
+    const scroll = document.createElement('div');
+    scroll.className = 'chart-scroll';
+    scroll.appendChild(table);
+    card.appendChild(scroll);
+}
+
+function renderAgeRates(container) {
+    const card = chartCard(container, "Accès à l'orientation par tranche d'âge");
+    const all = candidateStats.age_candidates.all;
+    const orientation = candidateStats.age_candidates.orientation;
+    const bins = d3.rollup(all, rows => rows.length, candidate => Math.floor(candidate.age / 3) * 3);
+    const reached = d3.rollup(orientation, rows => rows.length, candidate => Math.floor(candidate.age / 3) * 3);
+    const data = [...bins].sort((a, b) => a[0] - b[0]).map(([age, total]) => ({
+        age, total, reached: reached.get(age) || 0
+    }));
+    if (!data.length) {
+        card.append('Aucun âge disponible.');
+        return;
+    }
+    data.forEach(row => {
+        row.ratio = row.reached / row.total;
+        row.rank = 1 + data.filter(other => other.reached * row.total > row.reached * other.total).length;
+    });
+    const width = 760, height = data.length * 30 + 70;
+    const margin = { top: 20, right: 180, bottom: 40, left: 85 };
+    const x = d3.scaleLinear().domain([0, 0.5]).range([margin.left, width - margin.right]);
+    const y = d3.scaleBand().domain(data.map(d => d.age)).range([margin.top, height - margin.bottom]).padding(0.2);
+    const scroll = document.createElement('div');
+    scroll.className = 'chart-scroll';
+    card.appendChild(scroll);
+    const svg = d3.select(scroll).append('svg').attr('viewBox', `0 0 ${width} ${height}`)
+        .attr('class', 'stats-svg').attr('role', 'img').attr('aria-label', "Taux d'accès à l'orientation par âge");
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x).tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5]).tickFormat(d3.format('.0%')));
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y).tickFormat(age => `${age}–${age + 2} ans`));
+    svg.selectAll('rect').data(data).join('rect').attr('x', x(0))
+        .attr('y', d => y(d.age)).attr('height', y.bandwidth())
+        .attr('width', d => x(Math.min(d.ratio, 0.5)) - x(0)).attr('fill', '#0B3954')
+        .attr('tabindex', 0).append('title')
+        .text(d => `${d.age}–${d.age + 2} ans : ${d.reached}/${d.total} (${(100 * d.reached / d.total).toFixed(1)} %)`);
+    const labels = { 1: 'Meilleur', 2: '2e place', 3: '3e place' };
+    svg.selectAll('.rate-label').data(data).join('text').attr('class', 'rate-label')
+        .attr('x', d => x(Math.min(d.ratio, 0.5)) + 6)
+        .attr('y', d => y(d.age) + y.bandwidth() / 2).attr('dominant-baseline', 'middle')
+        .text(d => `${(100 * d.ratio).toFixed(1).replace('.', ',')} %${labels[d.rank] ? ` — ${labels[d.rank]}` : ''}`);
+    const note = document.createElement('p');
+    note.className = 'chart-note';
+    note.textContent = "Nombre de participations ayant atteint l'orientation divisé par le nombre de participations de la tranche. L'axe horizontal s'arrête à 50 % ; les valeurs supérieures sont indiquées à droite de la barre.";
+    card.appendChild(note);
 }
 
 function renderPie(container, title, entries, className = 'gender-chart') {

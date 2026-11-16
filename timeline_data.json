@@ -1,0 +1,554 @@
+{
+  "metadata": {
+    "source": "data/donnees_kohlanta.xlsx (DATES worksheet)",
+    "season_count": 34,
+    "candidate_count_basis": "Workbook row counts: all CLASSIQUES participant rows including CB?=O, plus all ALLSTARS participant rows. Counts are not identity-deduplicated.",
+    "classification_note": "Seasons follow the two DATES sections; Île des Héros and La Tribu Maudite are classified as classic to match the candidate source data."
+  },
+  "seasons": [
+    {
+      "number": 1,
+      "name": "Aventuriers de Koh-Lanta",
+      "start_date": "2001-08-04",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2001-09-22",
+      "duration_days": 49,
+      "classification": "classic",
+      "id": "classic-1",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 16,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 2,
+      "name": "Nicoya",
+      "start_date": "2002-06-28",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2002-11-13",
+      "duration_days": 138,
+      "classification": "classic",
+      "id": "classic-2",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 16,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 3,
+      "name": "Bocas del Toro",
+      "start_date": "2003-06-06",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2003-10-29",
+      "duration_days": 145,
+      "classification": "classic",
+      "id": "classic-3",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 18,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 18
+    },
+    {
+      "number": 4,
+      "name": "Panama",
+      "start_date": "2004-07-02",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2004-08-31",
+      "duration_days": 60,
+      "classification": "classic",
+      "id": "classic-4",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 16,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 5,
+      "name": "Pacifique",
+      "start_date": "2005-07-01",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2005-09-06",
+      "duration_days": 67,
+      "classification": "classic",
+      "id": "classic-5",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 17,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 17
+    },
+    {
+      "number": 6,
+      "name": "Vanuatu",
+      "start_date": "2006-07-21",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2006-09-05",
+      "duration_days": 46,
+      "classification": "classic",
+      "id": "classic-6",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 16,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 7,
+      "name": "Palawan",
+      "start_date": "2007-06-29",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2007-09-11",
+      "duration_days": 74,
+      "classification": "classic",
+      "id": "classic-7",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 16,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 8,
+      "name": "Caramoan",
+      "start_date": "2008-07-04",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2008-09-20",
+      "duration_days": 78,
+      "classification": "classic",
+      "id": "classic-8",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 17,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 17
+    },
+    {
+      "number": 1,
+      "name": "Retour des Héros",
+      "start_date": "2009-01-13",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2009-02-13",
+      "duration_days": 31,
+      "classification": "All Stars",
+      "id": "all_stars-1",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 14
+      },
+      "candidate_count": 14
+    },
+    {
+      "number": 9,
+      "name": "Palau",
+      "start_date": "2009-08-28",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2009-10-30",
+      "duration_days": 63,
+      "classification": "classic",
+      "id": "classic-9",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 18,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 18
+    },
+    {
+      "number": 2,
+      "name": "Choc des Héros",
+      "start_date": "2010-03-26",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2010-05-21",
+      "duration_days": 56,
+      "classification": "All Stars",
+      "id": "all_stars-2",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 14
+      },
+      "candidate_count": 14
+    },
+    {
+      "number": 10,
+      "name": "Viêtnam",
+      "start_date": "2010-09-17",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2010-12-17",
+      "duration_days": 91,
+      "classification": "classic",
+      "id": "classic-10",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 18,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 18
+    },
+    {
+      "number": 11,
+      "name": "Raja Ampat",
+      "start_date": "2011-09-09",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2011-12-16",
+      "duration_days": 98,
+      "classification": "classic",
+      "id": "classic-11",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 3,
+      "name": "Revanche des Héros",
+      "start_date": "2012-04-06",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2012-06-01",
+      "duration_days": 56,
+      "classification": "All Stars",
+      "id": "all_stars-3",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 16
+      },
+      "candidate_count": 16
+    },
+    {
+      "number": 12,
+      "name": "Malaisie",
+      "start_date": "2012-11-02",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2013-02-01",
+      "duration_days": 91,
+      "classification": "classic",
+      "id": "classic-12",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 4,
+      "name": "Nouvelle Edition",
+      "start_date": "2014-09-12",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2014-11-21",
+      "duration_days": 70,
+      "classification": "All Stars",
+      "id": "all_stars-4",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 13
+      },
+      "candidate_count": 13
+    },
+    {
+      "number": 14,
+      "name": "Johor",
+      "start_date": "2015-04-24",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2015-07-24",
+      "duration_days": 91,
+      "classification": "classic",
+      "id": "classic-14",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 15,
+      "name": "Thaïlande",
+      "start_date": "2016-02-12",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2016-05-27",
+      "duration_days": 105,
+      "classification": "classic",
+      "id": "classic-15",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 21,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 16,
+      "name": "Île au trésor",
+      "start_date": "2016-08-26",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2016-12-09",
+      "duration_days": 105,
+      "classification": "classic",
+      "id": "classic-16",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 17,
+      "name": "Cambodge",
+      "start_date": "2017-03-10",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2017-06-16",
+      "duration_days": 98,
+      "classification": "classic",
+      "id": "classic-17",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 21,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 18,
+      "name": "Fidji",
+      "start_date": "2017-09-01",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2017-12-15",
+      "duration_days": 105,
+      "classification": "classic",
+      "id": "classic-18",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 21,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 5,
+      "name": "Combat des Héros",
+      "start_date": "2018-03-16",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2018-05-25",
+      "duration_days": 70,
+      "classification": "All Stars",
+      "id": "all_stars-5",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 18
+      },
+      "candidate_count": 18
+    },
+    {
+      "number": 20,
+      "name": "Guerre des chefs",
+      "start_date": "2019-03-15",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2019-06-21",
+      "duration_days": 98,
+      "classification": "classic",
+      "id": "classic-20",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 21,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 6,
+      "name": "Île des Héros",
+      "start_date": "2020-02-21",
+      "source_section": "all_stars",
+      "series": "classic",
+      "end_date": "2020-06-05",
+      "duration_days": 105,
+      "classification": "classic",
+      "id": "all_stars-6",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 21,
+      "name": "4 Terres",
+      "start_date": "2020-08-28",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2020-12-04",
+      "duration_days": 98,
+      "classification": "classic",
+      "id": "classic-21",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 24,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 24
+    },
+    {
+      "number": 22,
+      "name": "Armes Secrètes",
+      "start_date": "2021-03-12",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2021-06-04",
+      "duration_days": 84,
+      "classification": "classic",
+      "id": "classic-22",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 21,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 7,
+      "name": "La Légende",
+      "start_date": "2021-08-21",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2021-12-14",
+      "duration_days": 115,
+      "classification": "All Stars",
+      "id": "all_stars-7",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 21
+      },
+      "candidate_count": 21
+    },
+    {
+      "number": 23,
+      "name": "Totem Maudit",
+      "start_date": "2022-02-22",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2022-06-21",
+      "duration_days": 119,
+      "classification": "classic",
+      "id": "classic-23",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 24,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 24
+    },
+    {
+      "number": 24,
+      "name": "Le Feu Sacré",
+      "start_date": "2023-02-21",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2023-06-13",
+      "duration_days": 112,
+      "classification": "classic",
+      "id": "classic-24",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 25,
+      "name": "Les Chasseurs d'Immunité",
+      "start_date": "2024-02-13",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2024-06-04",
+      "duration_days": 112,
+      "classification": "classic",
+      "id": "classic-25",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 22,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 22
+    },
+    {
+      "number": 26,
+      "name": "La Tribu Maudite",
+      "start_date": "2024-08-20",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2024-12-03",
+      "duration_days": 105,
+      "classification": "classic",
+      "id": "classic-26",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 24,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 24
+    },
+    {
+      "number": 27,
+      "name": "Revanche des 4 Terres",
+      "start_date": "2025-02-25",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2025-06-24",
+      "duration_days": 119,
+      "classification": "classic",
+      "id": "classic-27",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 24,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 24
+    },
+    {
+      "number": 28,
+      "name": "Reliques du destin",
+      "start_date": "2026-03-03",
+      "source_section": "classic",
+      "series": "classic",
+      "end_date": "2026-06-23",
+      "duration_days": 112,
+      "classification": "classic",
+      "id": "classic-28",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 20,
+        "ALLSTARS": 0
+      },
+      "candidate_count": 20
+    },
+    {
+      "number": 8,
+      "name": "All Stars",
+      "start_date": "2026-08-25",
+      "source_section": "all_stars",
+      "series": "all_stars",
+      "end_date": "2026-11-17",
+      "duration_days": 84,
+      "classification": "All Stars",
+      "id": "all_stars-8",
+      "candidate_counts_by_source": {
+        "CLASSIQUES": 0,
+        "ALLSTARS": 18
+      },
+      "candidate_count": 18
+    }
+  ]
+}
