@@ -238,7 +238,7 @@ function showDeptInfo(name) {
         </div>
         <div class="info-row">
             <span class="label">Gap:</span>
-            <span class="value gap-value" style="color: ${getColor(data.gap_percentage, data.candidate_count)}; font-weight: bold;">
+            <span class="value gap-value" style="color: ${data.candidate_count === 0 ? '#555' : getColor(data.gap_percentage, data.candidate_count)}; font-weight: bold;">
                 ${data.gap_percentage > 0 ? '+' : ''}${data.gap_percentage}%
             </span>
         </div>
@@ -279,7 +279,7 @@ function showRegionInfo(name) {
         </div>
         <div class="info-row">
             <span class="label">Gap:</span>
-            <span class="value gap-value" style="color: ${getColor(data.gap_percentage, data.candidate_count, true)}; font-weight: bold;">
+            <span class="value gap-value" style="color: ${data.candidate_count === 0 ? '#555' : getColor(data.gap_percentage, data.candidate_count, true)}; font-weight: bold;">
                 ${data.gap_percentage > 0 ? '+' : ''}${data.gap_percentage}%
             </span>
         </div>

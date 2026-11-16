@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koh-Lanta en chiffres</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B4%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -32,10 +36,11 @@
         .header-text { position: relative; z-index: 1; padding: 30px 20px; }
 
         .header h1 {
+            font-family: 'Oi', Georgia, serif;
             font-size: 3em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: 1px;
         }
 
@@ -50,6 +55,9 @@
             margin: 0 auto;
             padding: 20px 20px;
         }
+        .landscape { margin: 0; }
+        .landscape img { display: block; width: 100%; max-height: 340px; object-fit: cover; border-radius: 12px; }
+        .landscape figcaption { color: #526457; font-size: 0.8em; margin-top: 6px; }
 
         .section {
             background: #fffefb;
@@ -95,7 +103,6 @@
         .ranking-metrics { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 8px; font-size: 0.9em; }
         .ranking-appearances { padding-left: 20px; margin-top: 10px; font-size: 0.9em; }
         #ranking > .gender-chart { margin-top: 30px; }
-        .gap-value { text-shadow: 0 0 2px #333; }
         .data-table { width: 100%; border-collapse: collapse; text-align: left; }
         .data-table th, .data-table td { border-bottom: 1px solid #dce7d7; padding: 10px; }
         .data-table th { color: #2d7d4f; }
@@ -537,7 +544,7 @@
             }
             @media (max-width: 700px) {
                 .header { min-height: 260px; }
-                .header h1 { font-size: 2.2em; }
+                .header h1 { font-size: clamp(1.35rem, 8vw, 2.2rem); }
                 .container { padding: 10px; }
                 .section { padding: 18px; margin-bottom: 10px; }
                 .section h2 { font-size: 1.4em; }
@@ -702,11 +709,18 @@
     </div>
 
     <div class="container">
+        <figure class="landscape">
+            <img src="pictures/Pana_Banaue_Rice_Terraces.jpg" alt="Rizières en terrasses de Banaue, aux Philippines" loading="lazy">
+            <figcaption>Rizières de Banaue — <a href="https://commons.wikimedia.org/wiki/Special:Redirect/page/3036218">Niro5 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</figcaption>
+        </figure>
+    </div>
+
+    <div class="container">
         <details class="section" open>
             <summary><h2>D'où viennent les candidats ?</h2></summary>
             <div class="section-description">
                 Les origines géographiques des candidats et candidates de l'émission ne reflètent pas forcément la réalité démographique française.
-                Les signes + et − indiquent le sens de l'écart, leur taille son amplitude. Utilisez les boutons pour zoomer.
+                Les signes + et − indiquent le sens de l'écart, leur taille son amplitude. Utilisez les boutons pour zoomer. Dans les informations, l'écart des zones sans candidat est indiqué en gris pour rester lisible.
             </div>
 
             <div class="maps-container">
@@ -919,6 +933,13 @@
     </div>
 
     <div class="container">
+        <figure class="landscape">
+            <img src="pictures/Koh_Ngai_07.jpg" alt="Paysage côtier de Koh Ngai, en Thaïlande" loading="lazy">
+            <figcaption>Koh Ngai — <a href="https://commons.wikimedia.org/wiki/Special:Redirect/page/41150001">Khunkay / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</figcaption>
+        </figure>
+    </div>
+
+    <div class="container">
         <details class="section" open>
             <summary><h2>Les revenants</h2></summary>
             <p class="section-description">Les trois femmes et les trois hommes ayant effectué le plus de retours sont présentés avec les ex æquo. Les participations non identifiées sont exclues.</p>
@@ -956,6 +977,7 @@
                 <li><a href="https://en.wikipedia.org/wiki/Koh-Lanta">Wikipédia (ENG)</a></li>
                 <li><a href="https://kohlanta.fandom.com/fr/wiki/Wiki_Koh_Lanta">Fandom</a></li>
             </ul>
+            <p>Photo de l'en-tête : <a href="https://commons.wikimedia.org/w/index.php?curid=1943651">Anton Leddin / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée et assombrie à l'affichage.</p>
         </details>
     </div>
 
