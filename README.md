@@ -54,7 +54,7 @@ sélectionner une barre affiche les noms, saisons et classements du groupe
 l'ensemble et par genre, avant et à l'orientation. Le taux d'accès à
 l'orientation d'une tranche divise le nombre de participations ayant atteint
 l'orientation par toutes les participations de cette tranche. Son axe est
-limité à 50 % ; les valeurs supérieures restent indiquées en toutes lettres.
+limité à 50 % ; les valeurs supérieures restent indiquées en toutes lettres au-dessus des barres.
 
 La chronologie utilise la feuille `DATES` du classeur ; le nombre de candidats
 par saison compte toutes les lignes correspondantes de `CLASSIQUES` et
@@ -66,9 +66,11 @@ moins de deux orientations, le meilleur classement lors d'un retour départage
 ensuite les égalités ; les ex æquo à la dixième place sont inclus. Les données
 manquantes ou les retours non liés peuvent
 limiter ces comparaisons. Faute de dates d'épreuve, l'écart est calculé entre
-les dates de début des saisons. Les saisons non terminées sont exclues du
-dénominateur du taux sauf si l'accès à l'orientation est déjà renseigné ;
-une indication vide dans une saison terminée est considérée comme négative.
+les dates de début des saisons. Les participations aux saisons non terminées
+sont exclues du dénominateur du taux sauf si l'accès à l'orientation ou
+la place est déjà renseigné ; une indication vide dans une saison terminée est considérée comme
+négative. Chaque personne du classement est accompagnée des saisons, âges et
+places de ses participations identifiées.
 Pour départager les retours, seule la meilleure place connue est utilisée ; une
 personne sans classement connu est placée après celles dont le classement est
 connu, à critères précédents égaux.

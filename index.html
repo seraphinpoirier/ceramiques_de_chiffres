@@ -88,10 +88,14 @@
         .timeline-season { padding: 8px; margin-top: 8px; border-radius: 5px; background: #0B3954; color: white; }
         .timeline-season.allstar { background: #F4B942; color: #222; }
         .timeline-season small { display: block; margin-top: 5px; }
+        .timeline-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }
         .ranking { list-style: none; padding: 0; display: grid; gap: 12px; }
-        .ranking li { text-align: left; background: #f8faf5; border: 1px solid #e1e9db; border-radius: 10px; padding: 14px; }
+        .ranking > li { text-align: left; background: #f8faf5; border: 1px solid #e1e9db; border-radius: 10px; padding: 14px; }
         .ranking-name { color: #2d7d4f; font-size: 1.05em; }
         .ranking-metrics { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 8px; font-size: 0.9em; }
+        .ranking-appearances { padding-left: 20px; margin-top: 10px; font-size: 0.9em; }
+        #ranking > .gender-chart { margin-top: 30px; }
+        .gap-value { text-shadow: 0 0 2px #333; }
         .data-table { width: 100%; border-collapse: collapse; text-align: left; }
         .data-table th, .data-table td { border-bottom: 1px solid #dce7d7; padding: 10px; }
         .data-table th { color: #2d7d4f; }
@@ -460,6 +464,7 @@
         .finale-details li { margin-bottom: 5px; }
         #first-out-charts { display: flex; flex-direction: column; }
         .first-out-gender-chart { max-width: 500px; width: 100%; align-self: center; }
+        #allstar-age-charts { display: flex; flex-direction: column; }
         .pie-comparison-section { background: #f8faf5; border: 1px solid #e1e9db; border-radius: 12px; padding: 24px; }
         .pie-comparison-section > h3 { color: #2d7d4f; text-align: center; margin-bottom: 20px; font-size: 1.15em; }
         .pie-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
@@ -691,7 +696,7 @@
         <details class="section" open>
             <summary><h2>Chronologie des saisons</h2></summary>
             <p class="section-description">Koh-Lanta est une émission diffusée depuis 25 ans. Il existe deux types de saisons : les saisons classiques, avec des candidats anonymes, et les saisons « All Stars », avec des candidats ayant déjà participé. Certaines saisons ont mélangé les deux : Le Choc des Héros (2010) mettait en concurrence des anciens de Koh-Lanta avec des sportifs de haut niveau. Cette saison est comptabilisée comme All Stars. Dans l'Île des Héros (2020) et dans La Tribu Maudite (2024), quelques anciens candidats reviennent. Puisqu'ils ne représentent pas la majorité des candidats, ces saisons sont comptabilisées comme classiques.</p>
-            <p>Bleu : saisons classiques ; jaune : saisons All Stars.</p>
+            <p class="timeline-legend"><i style="background:#0B3954"></i>Bleu : saisons classiques ; <i style="background:#F4B942"></i>jaune : saisons All Stars.</p>
             <div id="timeline" class="timeline"></div>
         </details>
     </div>
@@ -863,8 +868,8 @@
                 <span><i style="background:#FE7F2D"></i>Orange</span>
                 <span><i style="background:#6DA34D"></i>Vert</span>
                 <span><i style="background:#827191"></i>Violet</span>
-                <span>Hachuré : plusieurs tribus</span>
-                <span>Pointillé : aucun candidat (couleur dominante de la région)</span>
+                <span><i style="background:repeating-linear-gradient(45deg, #00C2D1 0 4px, #FE7F2D 4px 8px)"></i>Hachuré : plusieurs tribus</span>
+                <span><i style="background:radial-gradient(circle, #00C2D1 1.5px, white 1.5px); background-size:6px 6px; border:1px solid #ccc"></i>Pointillé : aucun candidat (couleur dominante de la région)</span>
             </div>
         </details>
     </div>
@@ -939,6 +944,18 @@
             <summary><h2>Alors, qui est le plus fort ? la plus forte ?</h2></summary>
             <p class="section-description">La question du meilleur aventurier de Koh-Lanta revient souvent. On classe les candidats revenus au moins une fois par nombre de victoires, puis par taux d'accès à l'orientation, nombre d'orientations et écart de temps entre la première et la dernière orientation. Pour les candidats ayant atteint moins de deux orientations, on départage ensuite selon leur meilleur classement lors d'un retour.</p>
             <div id="ranking"></div>
+        </details>
+    </div>
+
+    <div class="container">
+        <details class="section" open>
+            <summary><h2>Sources</h2></summary>
+            <p class="section-description">Les sources sont les pages Wikipédia de chaque saison. Si la page en français n’existe pas, on utilise celle en anglais. On complète les informations grâce aux pages <a href="http://fandom.com">Fandom.com</a> de chaque saison.</p>
+            <ul>
+                <li><a href="https://fr.wikipedia.org/wiki/Koh-Lanta">Wikipédia (FR)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Koh-Lanta">Wikipédia (ENG)</a></li>
+                <li><a href="https://kohlanta.fandom.com/fr/wiki/Wiki_Koh_Lanta">Fandom</a></li>
+            </ul>
         </details>
     </div>
 

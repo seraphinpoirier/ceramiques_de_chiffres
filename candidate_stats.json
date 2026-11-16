@@ -9054,7 +9054,7 @@
     "limitations": [
       "Orientation access rate is orientation-flagged appearances divided by eligible appearances.",
       "The workbook has no separate orientation date, so span uses season start dates from DATES.",
-      "A season with no end date yet is excluded from the rate denominator unless orientation is already flagged.",
+      "An unfinished season is excluded from the rate denominator only while placement and orientation are unknown.",
       "Blank ORI? values in completed seasons are treated as not reaching orientation.",
       "Only linked Retours records are ranked; unlinked workbook appearances cannot be attributed to a candidate.",
       "When fewer than two orientations are recorded, the best known comeback place breaks remaining ties; missing places are null and rank behind known places.",
@@ -9068,6 +9068,28 @@
         "saison_initiale": "Pacifique",
         "genre": "F",
         "linked_returns": 3,
+        "appearances": [
+          {
+            "season": "Pacifique",
+            "age": 20,
+            "place": 1
+          },
+          {
+            "season": "Retour des Héros",
+            "age": 24,
+            "place": 9
+          },
+          {
+            "season": "Combat des Héros",
+            "age": 34,
+            "place": 1
+          },
+          {
+            "season": "La Légende",
+            "age": "36 ",
+            "place": 12
+          }
+        ],
         "wins": 2,
         "orientation_access_rate": 0.5,
         "orientation_count": 2,
@@ -9091,6 +9113,28 @@
         "saison_initiale": "Viêtnam",
         "genre": "H",
         "linked_returns": 3,
+        "appearances": [
+          {
+            "season": "Viêtnam",
+            "age": 30,
+            "place": 2
+          },
+          {
+            "season": "Revanche des Héros",
+            "age": 32,
+            "place": 2
+          },
+          {
+            "season": "Île des Héros",
+            "age": "40 ",
+            "place": 3
+          },
+          {
+            "season": "La Légende",
+            "age": "42 ",
+            "place": 1
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 1.0,
         "orientation_count": 4,
@@ -9114,6 +9158,23 @@
         "saison_initiale": "Palawan",
         "genre": "F",
         "linked_returns": 2,
+        "appearances": [
+          {
+            "season": "Palawan",
+            "age": 24,
+            "place": 1
+          },
+          {
+            "season": "Retour des Héros",
+            "age": 26,
+            "place": 2
+          },
+          {
+            "season": "La Légende",
+            "age": "39 ",
+            "place": 4
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 1.0,
         "orientation_count": 3,
@@ -9137,6 +9198,23 @@
         "saison_initiale": "Raja Ampat",
         "genre": "H",
         "linked_returns": 2,
+        "appearances": [
+          {
+            "season": "Raja Ampat",
+            "age": 29,
+            "place": 3
+          },
+          {
+            "season": "Nouvelle Edition",
+            "age": 32,
+            "place": 1
+          },
+          {
+            "season": "La Légende",
+            "age": "39 ",
+            "place": 2
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 1.0,
         "orientation_count": 3,
@@ -9160,6 +9238,18 @@
         "saison_initiale": "Panama",
         "genre": "H",
         "linked_returns": 1,
+        "appearances": [
+          {
+            "season": "Panama",
+            "age": 26,
+            "place": 4
+          },
+          {
+            "season": "Retour des Héros",
+            "age": 31,
+            "place": 1
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 1.0,
         "orientation_count": 2,
@@ -9183,6 +9273,18 @@
         "saison_initiale": "Caramoan",
         "genre": "H",
         "linked_returns": 1,
+        "appearances": [
+          {
+            "season": "Caramoan",
+            "age": 32,
+            "place": 3
+          },
+          {
+            "season": "Revanche des Héros",
+            "age": 36,
+            "place": 1
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 1.0,
         "orientation_count": 2,
@@ -9202,56 +9304,32 @@
         "rank": 6
       },
       {
-        "nom": "Naoil",
-        "saison_initiale": "Île des Héros",
-        "genre": "F",
-        "linked_returns": 1,
-        "wins": 1,
-        "orientation_access_rate": 1.0,
-        "orientation_count": 1,
-        "eligible_appearances": 1,
-        "orientation_span_days": 0,
-        "best_comeback_place": 16,
-        "comeback_appearances_without_placement": 0,
-        "best_comeback_place_tiebreak_applied": true,
-        "first_orientation": {
-          "season": "Île des Héros",
-          "date": "2020-02-21"
-        },
-        "last_orientation": {
-          "season": "Île des Héros",
-          "date": "2020-02-21"
-        },
-        "rank": 7
-      },
-      {
-        "nom": "Ugo",
-        "saison_initiale": "Malaisie",
-        "genre": "H",
-        "linked_returns": 3,
-        "wins": 1,
-        "orientation_access_rate": 0.6666666666666666,
-        "orientation_count": 2,
-        "eligible_appearances": 3,
-        "orientation_span_days": 3214,
-        "best_comeback_place": 3,
-        "comeback_appearances_without_placement": 0,
-        "best_comeback_place_tiebreak_applied": false,
-        "first_orientation": {
-          "season": "Malaisie",
-          "date": "2012-11-02"
-        },
-        "last_orientation": {
-          "season": "La Légende",
-          "date": "2021-08-21"
-        },
-        "rank": 8
-      },
-      {
         "nom": "Christina",
         "saison_initiale": "Palau",
         "genre": "F",
         "linked_returns": 3,
+        "appearances": [
+          {
+            "season": "Palau",
+            "age": 23,
+            "place": 1
+          },
+          {
+            "season": "Choc des Héros",
+            "age": 23,
+            "place": 9
+          },
+          {
+            "season": "Nouvelle Edition",
+            "age": 28,
+            "place": 8
+          },
+          {
+            "season": "All Stars",
+            "age": 40,
+            "place": null
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 0.5,
         "orientation_count": 2,
@@ -9268,13 +9346,70 @@
           "season": "All Stars",
           "date": "2026-08-25"
         },
-        "rank": 9
+        "rank": 7
+      },
+      {
+        "nom": "Ugo",
+        "saison_initiale": "Malaisie",
+        "genre": "H",
+        "linked_returns": 3,
+        "appearances": [
+          {
+            "season": "Malaisie",
+            "age": 30,
+            "place": 1
+          },
+          {
+            "season": "La Légende",
+            "age": "40 ",
+            "place": 3
+          },
+          {
+            "season": "La Tribu Maudite",
+            "age": 42,
+            "place": 6
+          },
+          {
+            "season": "All Stars",
+            "age": 45,
+            "place": 7
+          }
+        ],
+        "wins": 1,
+        "orientation_access_rate": 0.5,
+        "orientation_count": 2,
+        "eligible_appearances": 4,
+        "orientation_span_days": 3214,
+        "best_comeback_place": 3,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "Malaisie",
+          "date": "2012-11-02"
+        },
+        "last_orientation": {
+          "season": "La Légende",
+          "date": "2021-08-21"
+        },
+        "rank": 8
       },
       {
         "nom": "Grégoire",
         "saison_initiale": "Palawan",
         "genre": "H",
         "linked_returns": 1,
+        "appearances": [
+          {
+            "season": "Palawan",
+            "age": 24,
+            "place": 7
+          },
+          {
+            "season": "Choc des Héros",
+            "age": 27,
+            "place": 1
+          }
+        ],
         "wins": 1,
         "orientation_access_rate": 0.5,
         "orientation_count": 1,
@@ -9290,6 +9425,41 @@
         "last_orientation": {
           "season": "Choc des Héros",
           "date": "2010-03-26"
+        },
+        "rank": 9
+      },
+      {
+        "nom": "Philippe",
+        "saison_initiale": "Viêtnam",
+        "genre": "H",
+        "linked_returns": 1,
+        "appearances": [
+          {
+            "season": "Viêtnam",
+            "age": 41,
+            "place": 1
+          },
+          {
+            "season": "Nouvelle Edition",
+            "age": 45,
+            "place": 5
+          }
+        ],
+        "wins": 1,
+        "orientation_access_rate": 0.5,
+        "orientation_count": 1,
+        "eligible_appearances": 2,
+        "orientation_span_days": 0,
+        "best_comeback_place": 5,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": true,
+        "first_orientation": {
+          "season": "Viêtnam",
+          "date": "2010-09-17"
+        },
+        "last_orientation": {
+          "season": "Viêtnam",
+          "date": "2010-09-17"
         },
         "rank": 10
       }

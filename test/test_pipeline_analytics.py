@@ -13,10 +13,20 @@ from generate_candidate_stats import (
     returnee_sankey,
 )
 from generate_gender_stats import calculate_gender_stats
-from workbook_data import season_candidate_counts, timeline_records
+from workbook_data import season_candidate_counts, source_return_appearances, timeline_records
 
 
 class TimelineTests(unittest.TestCase):
+    def test_return_source_preserves_age_and_unknown_placement(self):
+        rows = [
+            ('SAISON', 'NOM', 'INITIALE', 'AGE', 'PLACE', 'ORI?'),
+            ('All Stars', 'A', 'Initiale', 42, '?', 'O'),
+        ]
+        appearance = source_return_appearances([], rows)[0]
+        self.assertEqual(appearance['age'], 42)
+        self.assertIsNone(appearance['place'])
+        self.assertTrue(appearance['orientation'])
+
     def test_parses_sections_and_classifies_named_classic_seasons(self):
         rows = [
             (1, 'Saison classique', datetime(2020, 1, 1)),
@@ -121,7 +131,7 @@ class CandidateAnalyticsTests(unittest.TestCase):
         self.conn.executescript('''
             CREATE TABLE Candidats (
                 id_candidat INTEGER PRIMARY KEY, nom TEXT, saison TEXT, genre TEXT,
-                place INTEGER, ori INTEGER, amb INTEGER, pot INTEGER
+                place INTEGER, ori INTEGER, amb INTEGER, pot INTEGER, age INTEGER
             );
             CREATE TABLE Retours (
                 id_retour INTEGER PRIMARY KEY, id_candidat INTEGER, annee INTEGER,
@@ -184,7 +194,7 @@ class CandidateAnalyticsTests(unittest.TestCase):
             ''', (candidate_id, return_place))
             appearances.append({
                 'source': 'ALLSTARS', 'season': 'Retour', 'name': name,
-                'origin': 'Initiale', 'orientation': False, 'place': return_place,
+                'origin': 'Initiale', 'orientation': False, 'place': return_place, 'age': 35,
             })
 
         result = returnee_ranking(
@@ -230,7 +240,7 @@ class CandidateAnalyticsTests(unittest.TestCase):
                 )
                 appearances.append({
                     'source': 'ALLSTARS', 'season': season, 'name': name,
-                    'origin': 'Initiale', 'orientation': reached, 'place': place,
+                    'origin': 'Initiale', 'orientation': reached, 'place': place, 'age': 35,
                 })
         result = returnee_ranking(self.conn, timeline, appearances, today=datetime(2026, 1, 1))
         self.assertEqual([row['nom'] for row in result['candidates']],
@@ -249,9 +259,43 @@ class CandidateAnalyticsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'no source row'):
             returnee_ranking(self.conn, timeline, [], today=datetime(2026, 1, 1))
         appearances = [{'source': 'ALLSTARS', 'season': 'Retour', 'name': 'A',
-                        'origin': 'Initiale', 'orientation': False, 'place': 2}]
+                        'origin': 'Initiale', 'orientation': False, 'place': 2, 'age': 35}]
         with self.assertRaisesRegex(ValueError, 'Missing DATES entry'):
             returnee_ranking(self.conn, timeline, appearances, today=datetime(2026, 1, 1))
+
+    def test_in_progress_season_counts_recorded_results_and_preserves_appearances(self):
+        timeline = [
+            {'name': 'Initiale', 'start_date': '2000-01-01', 'end_date': '2000-02-01'},
+            {'name': 'All Stars', 'start_date': '2026-08-25', 'end_date': '2026-11-17'},
+        ]
+        appearances = []
+        for candidate_id, name, place, orientation in [
+            (1, 'Éliminée', 10, False), (2, 'En jeu', None, False),
+            (3, 'Orientation', None, True),
+        ]:
+            self.conn.execute(
+                "INSERT INTO Candidats (id_candidat, nom, saison, genre, place, ori, age) VALUES (?, ?, 'Initiale', 'F', 2, 0, 25)",
+                (candidate_id, name),
+            )
+            self.conn.execute(
+                "INSERT INTO Retours (id_candidat, saison, place, source) VALUES (?, 'All Stars', ?, 'ALLSTARS')",
+                (candidate_id, place),
+            )
+            appearances.append({
+                'source': 'ALLSTARS', 'season': 'All Stars', 'name': name,
+                'origin': 'Initiale', 'orientation': orientation, 'place': place, 'age': 40,
+            })
+
+        result = returnee_ranking(self.conn, timeline, appearances, today=datetime(2026, 11, 16))
+        ranked = {row['nom']: row for row in result['candidates']}
+        self.assertEqual(ranked['Éliminée']['eligible_appearances'], 2)
+        self.assertEqual(ranked['En jeu']['eligible_appearances'], 1)
+        self.assertEqual(ranked['Orientation']['eligible_appearances'], 2)
+        self.assertEqual(ranked['Éliminée']['appearances'], [
+            {'season': 'Initiale', 'age': 25, 'place': 2},
+            {'season': 'All Stars', 'age': 40, 'place': 10},
+        ])
+        self.assertIsNone(ranked['En jeu']['appearances'][1]['place'])
 
 
 if __name__ == '__main__':

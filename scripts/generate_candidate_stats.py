@@ -180,7 +180,7 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
         by_appearance.setdefault(key, []).append(appearance)
 
     candidates = conn.execute("""
-        SELECT c.id_candidat, c.nom, c.saison, c.genre, c.place, c.ori,
+        SELECT c.id_candidat, c.nom, c.saison, c.genre, c.place, c.ori, c.age,
                COUNT(r.id_retour) AS return_count
         FROM Candidats c JOIN Retours r ON r.id_candidat = c.id_candidat
         GROUP BY c.id_candidat
@@ -188,10 +188,11 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
     ranking = []
     unmatched_returns = 0
     incomplete_appearances = 0
-    for candidate_id, name, initial_season, gender, initial_place, initial_ori, return_count in candidates:
+    for candidate_id, name, initial_season, gender, initial_place, initial_ori, initial_age, return_count in candidates:
         appearances = [{
             'season': initial_season,
             'place': initial_place,
+            'age': initial_age,
             'orientation': bool(initial_ori),
             'source': 'Candidats',
         }]
@@ -210,6 +211,7 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
             appearances.append({
                 'season': season,
                 'place': source_row['place'],
+                'age': source_row['age'],
                 'orientation': source_row['orientation'],
                 'source': source,
             })
@@ -221,7 +223,7 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
             dates = season_dates.get(_normalized(appearance['season']))
             if dates is None:
                 raise ValueError(f"Missing DATES entry for ranking season: {appearance['season']}")
-            if dates['end'] <= today or appearance['orientation']:
+            if dates['end'] <= today or appearance['orientation'] or appearance['place'] is not None:
                 eligible_appearances += 1
             if appearance['orientation']:
                 orientation_seasons.append((dates['start'], appearance['season']))
@@ -269,6 +271,10 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
             'saison_initiale': initial_season,
             'genre': gender if gender in ('F', 'H') else 'unknown',
             'linked_returns': return_count,
+            'appearances': [
+                {'season': row['season'], 'age': row['age'], 'place': row['place']}
+                for row in appearances
+            ],
             'wins': score[0],
             'orientation_access_rate': rate,
             'orientation_count': orientation_count,
@@ -309,7 +315,7 @@ def returnee_ranking(conn, timeline, source_appearances, today=None):
         'limitations': [
             'Orientation access rate is orientation-flagged appearances divided by eligible appearances.',
             'The workbook has no separate orientation date, so span uses season start dates from DATES.',
-            'A season with no end date yet is excluded from the rate denominator unless orientation is already flagged.',
+            'An unfinished season is excluded from the rate denominator only while placement and orientation are unknown.',
             'Blank ORI? values in completed seasons are treated as not reaching orientation.',
             'Only linked Retours records are ranked; unlinked workbook appearances cannot be attributed to a candidate.',
             'When fewer than two orientations are recorded, the best known comeback place breaks remaining ties; missing places are null and rank behind known places.',

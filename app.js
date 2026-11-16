@@ -238,7 +238,7 @@ function showDeptInfo(name) {
         </div>
         <div class="info-row">
             <span class="label">Gap:</span>
-            <span class="value" style="color: ${data.gap_percentage > 0 ? '#d73027' : '#4575b4'}; font-weight: bold;">
+            <span class="value gap-value" style="color: ${getColor(data.gap_percentage, data.candidate_count)}; font-weight: bold;">
                 ${data.gap_percentage > 0 ? '+' : ''}${data.gap_percentage}%
             </span>
         </div>
@@ -279,7 +279,7 @@ function showRegionInfo(name) {
         </div>
         <div class="info-row">
             <span class="label">Gap:</span>
-            <span class="value" style="color: ${data.gap_percentage > 0 ? '#d73027' : '#4575b4'}; font-weight: bold;">
+            <span class="value gap-value" style="color: ${getColor(data.gap_percentage, data.candidate_count, true)}; font-weight: bold;">
                 ${data.gap_percentage > 0 ? '+' : ''}${data.gap_percentage}%
             </span>
         </div>
@@ -429,7 +429,12 @@ function renderTribeMap(containerId, geojson, fillFn) {
 }
 
 function addMapZoom(container, svg, group) {
-    const zoom = d3.zoom().scaleExtent([1, 8]).on('zoom', event => group.attr('transform', event.transform));
+    const zoom = d3.zoom().scaleExtent([1, 8]).on('zoom', event => {
+        group.attr('transform', event.transform);
+        group.selectAll('.map-sign')
+            .attr('font-size', d => d.signSize / Math.sqrt(event.transform.k))
+            .style('stroke-width', `${3 / Math.sqrt(event.transform.k)}px`);
+    });
     svg.call(zoom).on('wheel.zoom', null).on('dblclick.zoom', null);
     const controls = document.createElement('div');
     controls.className = 'map-zoom';
@@ -544,10 +549,13 @@ function renderMap(containerId, geojson, type) {
         });
 
     const dataSource = type === 'department' ? departmentsData : regionsData;
-    g.selectAll('.map-sign').data(geojson.features.filter(d => dataSource[d.properties.nom]))
+    g.selectAll('.map-sign').data(geojson.features.filter(d => dataSource[d.properties.nom]).map(d => ({
+        ...d,
+        signSize: Math.min(14, 6 + Math.sqrt(Math.abs(dataSource[d.properties.nom].gap_percentage)) * 4)
+    })))
         .join('text').attr('class', 'map-sign')
         .attr('x', d => pathGen.centroid(d)[0]).attr('y', d => pathGen.centroid(d)[1])
-        .attr('font-size', d => Math.min(14, 6 + Math.sqrt(Math.abs(dataSource[d.properties.nom].gap_percentage)) * 4))
+        .attr('font-size', d => d.signSize)
         .text(d => dataSource[d.properties.nom].gap_percentage > 0 ? '+' : '−');
     console.log(`${type} map: ${coloredCount} colored, ${greyCount} grey`);
     addMapZoom(container, svg, g);
@@ -699,7 +707,7 @@ function renderTimeline() {
             item.className = `timeline-season${season.series === 'all_stars' ? ' allstar' : ''}`;
             item.textContent = season.name;
             const count = document.createElement('small');
-            count.textContent = `${season.candidate_count} candidat${season.candidate_count === 1 ? '' : 's'} renseigné${season.candidate_count === 1 ? '' : 's'}`;
+            count.textContent = `${season.candidate_count} candidat${season.candidate_count === 1 ? '' : 's'}`;
             item.appendChild(count);
             item.title = `${season.start_date} – ${season.end_date}`;
             column.appendChild(item);
@@ -713,7 +721,7 @@ function renderRanking() {
     const candidates = candidateStats.returnee_ranking.candidates;
     const note = document.createElement('p');
     note.className = 'chart-note';
-    note.textContent = "Les retours non identifiés sont exclus. L'écart entre orientations utilise les dates de début des saisons, faute de dates d'épreuve. Les saisons non terminées sont exclues du dénominateur sauf si l'orientation est déjà renseignée ; les indicateurs vides des saisons terminées sont considérés comme négatifs. Pour les classements manquants lors d'un retour, seule la meilleure place connue est utilisée.";
+    note.textContent = "Les retours non identifiés sont exclus. L'écart entre orientations utilise les dates de début des saisons, faute de dates d'épreuve. Les participations aux saisons non terminées sont comptées dès que la place ou l'orientation est connue ; les indicateurs vides des saisons terminées sont considérés comme négatifs. Pour les classements manquants lors d'un retour, seule la meilleure place connue est utilisée.";
     container.appendChild(note);
     const list = document.createElement('ol');
     list.className = 'ranking';
@@ -721,20 +729,18 @@ function renderRanking() {
         const item = document.createElement('li');
         const heading = document.createElement('strong');
         heading.className = 'ranking-name';
-        heading.textContent = `${candidate.rank}. ${candidate.nom.trim()} — ${candidate.saison_initiale}`;
+        heading.textContent = `${candidate.rank === 1 ? '🏅 ' : ''}${candidate.rank}. ${candidate.nom.trim()}`;
         const rate = candidate.orientation_access_rate === null ? 'non disponible' :
             `${(100 * candidate.orientation_access_rate).toFixed(1).replace('.', ',')} %`;
-        const span = candidate.orientation_span_days === null ? 'non disponible' : `${candidate.orientation_span_days} jours`;
         const metrics = document.createElement('div');
         metrics.className = 'ranking-metrics';
         const values = [
             `${candidate.wins} victoire(s)`,
-            `Orientation : ${rate} (${candidate.orientation_count}/${candidate.eligible_appearances})`,
-            `Écart : ${span}`
+            `Orientation : ${rate} (${candidate.orientation_count}/${candidate.eligible_appearances})`
         ];
         if (candidate.best_comeback_place_tiebreak_applied) {
             const place = candidate.best_comeback_place === null ? 'inconnu' :
-                `${candidate.best_comeback_place === 1 ? '1re' : `${candidate.best_comeback_place}e`} place`;
+                formatPlacement({ place: candidate.best_comeback_place });
             const missing = candidate.comeback_appearances_without_placement ?
                 ` (${candidate.comeback_appearances_without_placement} classement(s) manquant(s))` : '';
             values.push(`Meilleur retour : ${place}${missing}`);
@@ -744,7 +750,15 @@ function renderRanking() {
             metric.textContent = value;
             metrics.appendChild(metric);
         }
-        item.append(heading, metrics);
+        const appearances = document.createElement('ul');
+        appearances.className = 'ranking-appearances';
+        for (const appearance of candidate.appearances) {
+            const detail = document.createElement('li');
+            const age = appearance.age == null ? 'âge inconnu' : `${appearance.age} ans`;
+            detail.textContent = `${appearance.season} — ${age} — ${formatPlacement(appearance)}`;
+            appearances.appendChild(detail);
+        }
+        item.append(heading, metrics, appearances);
         list.appendChild(item);
     }
     container.appendChild(list);
@@ -861,20 +875,20 @@ function drawReturneeFlow(container, stages) {
     const table = document.createElement('table');
     table.className = 'data-table';
     const header = table.createTHead().insertRow();
-    for (const label of ['Retours minimum', ...genders.map(([, label]) => label)]) {
+    for (const label of ['Retours minimum', ...stages.map((_, index) => index === 0 ? 'Tous' : String(index))]) {
         const cell = document.createElement('th');
         cell.scope = 'col';
         cell.textContent = label;
         header.appendChild(cell);
     }
     const body = table.createTBody();
-    stages.forEach((stage, index) => {
+    genders.forEach(([gender, label]) => {
         const row = body.insertRow();
         const heading = document.createElement('th');
         heading.scope = 'row';
-        heading.textContent = index === 0 ? 'Tous' : String(index);
+        heading.textContent = label;
         row.appendChild(heading);
-        genders.forEach(([gender]) => { row.insertCell().textContent = stage[gender]; });
+        stages.forEach(stage => { row.insertCell().textContent = stage[gender]; });
     });
     card.appendChild(table);
     const note = document.createElement('p');
@@ -885,7 +899,7 @@ function drawReturneeFlow(container, stages) {
 
 function formatPlacement(candidate) {
     const place = candidate.place == null ? 'classement inconnu' :
-        `${candidate.place === 1 ? '1re' : `${candidate.place}e`} place${candidate.place === 1 ? ' (gagnant-e)' : ''}`;
+        `${candidate.place === 1 ? '🏅 1re' : `${candidate.place}e`} place${candidate.place === 1 ? ' (gagnant-e)' : ''}`;
     return `${place}${candidate.aban ? ' (abandon)' : ''}`;
 }
 
@@ -897,11 +911,20 @@ function renderAllStarCharts() {
         { label: 'Hommes', value: stats.first_outs.gender.H, color: GENDER_COLORS.H }
     ];
     if (stats.first_outs.gender.unknown) genderEntries.push({ label: 'Non renseigné', value: stats.first_outs.gender.unknown, color: '#999999' });
-    renderPie(ages, 'Genre des premiers éliminés', genderEntries);
-    renderPie(ages, 'Âges des premières éliminées', groupAges(stats.first_outs.ages.F.counts));
-    renderPie(ages, 'Âges des premiers éliminés', groupAges(stats.first_outs.ages.H.counts));
-    renderPie(ages, 'Âges de toutes les candidates', groupAges(stats.ages.F.counts));
-    renderPie(ages, 'Âges de tous les candidats hommes', groupAges(stats.ages.H.counts));
+    const genderChart = document.createElement('div');
+    genderChart.className = 'first-out-gender-chart';
+    ages.appendChild(genderChart);
+    renderPie(genderChart, 'Genre des premiers éliminés', genderEntries);
+    for (const [gender, firstTitle, allTitle] of [
+        ['F', 'Âges des premières éliminées', 'Âges de toutes les candidates'],
+        ['H', 'Âges des premiers éliminés', 'Âges de tous les candidats hommes']
+    ]) {
+        const pair = document.createElement('div');
+        pair.className = 'pie-comparison';
+        ages.appendChild(pair);
+        renderPie(pair, firstTitle, groupAges(stats.first_outs.ages[gender].counts));
+        renderPie(pair, allTitle, groupAges(stats.ages[gender].counts));
+    }
     renderGenderCharts(document.getElementById('allstar-gender-charts'),
         { ...stats.gender, overall: stats.gender_overall }, [
         { key: 'overall', title: 'Ensemble des candidats' },
@@ -916,7 +939,7 @@ function renderAllStarCharts() {
         { label: 'H / H', color: GENDER_COLORS.H, finals: finals.filter(f => f.candidates.every(c => c.genre === 'H')) },
         { label: 'F / F', color: GENDER_COLORS.F, finals: finals.filter(f => f.candidates.every(c => c.genre === 'F')) },
         { label: 'F / H', color: '#b67b22', finals: finals.filter(f => f.candidates.some(c => c.genre === 'F') && f.candidates.some(c => c.genre === 'H')) }
-    ], finals.length, true);
+    ], finals.length);
 }
 
 function renderFinaleCharts() {
@@ -953,7 +976,7 @@ function renderFinaleCharts() {
     renderFinaleBars(container, 'La femme est plus jeune', outcomeGroups(younger), younger.length);
 }
 
-function renderFinaleBars(container, title, groups, total, showMedals = false) {
+function renderFinaleBars(container, title, groups, total) {
     const card = chartCard(container, title);
     const subtitle = document.createElement('p');
     subtitle.className = 'chart-note';
@@ -993,7 +1016,7 @@ function renderFinaleBars(container, title, groups, total, showMedals = false) {
             for (const finale of group.finals) {
                 const item = document.createElement('li');
                 item.textContent = `${finale.saison} : ${finale.candidates.map(c =>
-                    `${c.place === 1 && showMedals ? '🏅 ' : ''}${c.nom.trim()}${c.place === 1 ? ' (gagnant-e)' : ''}${c.age === null ? '' : ` (${c.age} ans)`}`
+                    `${c.place === 1 ? '🏅 ' : ''}${c.nom.trim()}${c.place === 1 ? ' (gagnant-e)' : ''}${c.age === null ? '' : ` (${c.age} ans)`}`
                 ).join(' / ')}`;
                 list.appendChild(item);
             }
@@ -1200,32 +1223,33 @@ function renderAgeRates(container) {
         row.ratio = row.reached / row.total;
         row.rank = 1 + data.filter(other => other.reached * row.total > row.reached * other.total).length;
     });
-    const width = 760, height = data.length * 30 + 70;
-    const margin = { top: 20, right: 180, bottom: 40, left: 85 };
-    const x = d3.scaleLinear().domain([0, 0.5]).range([margin.left, width - margin.right]);
-    const y = d3.scaleBand().domain(data.map(d => d.age)).range([margin.top, height - margin.bottom]).padding(0.2);
+    const width = Math.max(760, data.length * 48 + 80), height = 480;
+    const margin = { top: 160, right: 20, bottom: 60, left: 55 };
+    const x = d3.scaleBand().domain(data.map(d => d.age)).range([margin.left, width - margin.right]).padding(0.2);
+    const y = d3.scaleLinear().domain([0, 0.5]).range([height - margin.bottom, margin.top]);
     const scroll = document.createElement('div');
     scroll.className = 'chart-scroll';
     card.appendChild(scroll);
     const svg = d3.select(scroll).append('svg').attr('viewBox', `0 0 ${width} ${height}`)
         .attr('class', 'stats-svg').attr('role', 'img').attr('aria-label', "Taux d'accès à l'orientation par âge");
     svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5]).tickFormat(d3.format('.0%')));
+        .call(d3.axisBottom(x).tickFormat(age => `${age}–${age + 2}`));
     svg.append('g').attr('transform', `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y).tickFormat(age => `${age}–${age + 2} ans`));
-    svg.selectAll('rect').data(data).join('rect').attr('x', x(0))
-        .attr('y', d => y(d.age)).attr('height', y.bandwidth())
-        .attr('width', d => x(Math.min(d.ratio, 0.5)) - x(0)).attr('fill', '#0B3954')
+        .call(d3.axisLeft(y).tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5]).tickFormat(d3.format('.0%')));
+    svg.append('text').attr('x', width / 2).attr('y', height - 8).attr('text-anchor', 'middle').text('Âge');
+    svg.selectAll('rect').data(data).join('rect').attr('x', d => x(d.age))
+        .attr('y', d => y(Math.min(d.ratio, 0.5))).attr('width', x.bandwidth())
+        .attr('height', d => y(0) - y(Math.min(d.ratio, 0.5))).attr('fill', '#0B3954')
         .attr('tabindex', 0).append('title')
         .text(d => `${d.age}–${d.age + 2} ans : ${d.reached}/${d.total} (${(100 * d.reached / d.total).toFixed(1)} %)`);
-    const labels = { 1: 'Meilleur', 2: '2e place', 3: '3e place' };
+    const labels = { 1: '🏅 1re place', 2: '2e place', 3: '3e place' };
     svg.selectAll('.rate-label').data(data).join('text').attr('class', 'rate-label')
-        .attr('x', d => x(Math.min(d.ratio, 0.5)) + 6)
-        .attr('y', d => y(d.age) + y.bandwidth() / 2).attr('dominant-baseline', 'middle')
+        .attr('transform', d => `translate(${x(d.age) + x.bandwidth() / 2},${y(Math.min(d.ratio, 0.5)) - 6}) rotate(-55)`)
+        .attr('text-anchor', 'start')
         .text(d => `${(100 * d.ratio).toFixed(1).replace('.', ',')} %${labels[d.rank] ? ` — ${labels[d.rank]}` : ''}`);
     const note = document.createElement('p');
     note.className = 'chart-note';
-    note.textContent = "Nombre de participations ayant atteint l'orientation divisé par le nombre de participations de la tranche. L'axe horizontal s'arrête à 50 % ; les valeurs supérieures sont indiquées à droite de la barre.";
+    note.textContent = "Nombre de participations ayant atteint l'orientation divisé par le nombre de participations de la tranche. L'axe vertical s'arrête à 50 % ; les valeurs supérieures sont indiquées au-dessus de la barre.";
     card.appendChild(note);
 }
 

@@ -138,7 +138,7 @@ def source_return_appearances(classic_rows, all_stars_rows):
             continue
         headers = {name: index for index, name in enumerate(rows[0])}
         origin_column = 'SAISON ORIGINALE' if source == 'CLASSIQUES' else 'INITIALE'
-        required = ('SAISON', 'NOM', 'PLACE', 'ORI?', origin_column)
+        required = ('SAISON', 'NOM', 'AGE', 'PLACE', 'ORI?', origin_column)
         if source == 'CLASSIQUES':
             required += ('CB?',)
         missing = [column for column in required if column not in headers]
@@ -158,6 +158,7 @@ def source_return_appearances(classic_rows, all_stars_rows):
                 'season': row[headers['SAISON']],
                 'name': row[headers['NOM']],
                 'origin': row[headers[origin_column]],
+                'age': row[headers['AGE']],
                 'orientation': bool(row[headers['ORI?']]),
                 'place': row[headers['PLACE']] if isinstance(row[headers['PLACE']], int) else None,
             })
