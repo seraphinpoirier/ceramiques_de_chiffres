@@ -103,6 +103,10 @@
         .ranking-metrics { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 8px; font-size: 0.9em; }
         .ranking-appearances { padding-left: 20px; margin-top: 10px; font-size: 0.9em; }
         #ranking > .gender-chart { margin-top: 30px; }
+        .sources-list { padding-left: 24px; margin-bottom: 16px; }
+        .download-link { display: inline-block; margin: 16px 0; padding: 10px 16px; border-radius: 6px; background: #2d7d4f; color: white; text-decoration: none; font-weight: 600; }
+        .download-link:hover { background: #215e3b; }
+        .download-link:focus-visible { outline: 3px solid #247aa1; outline-offset: 3px; }
         .data-table { width: 100%; border-collapse: collapse; text-align: left; }
         .data-table th, .data-table td { border-bottom: 1px solid #dce7d7; padding: 10px; }
         .data-table th { color: #2d7d4f; }
@@ -972,11 +976,14 @@
         <details class="section" open>
             <summary><h2>Sources</h2></summary>
             <p class="section-description">Les sources sont les pages Wikipédia de chaque saison. Si la page en français n’existe pas, on utilise celle en anglais. On complète les informations grâce aux pages <a href="http://fandom.com">Fandom.com</a> de chaque saison.</p>
-            <ul>
+            <ul class="sources-list">
                 <li><a href="https://fr.wikipedia.org/wiki/Koh-Lanta">Wikipédia (FR)</a></li>
                 <li><a href="https://en.wikipedia.org/wiki/Koh-Lanta">Wikipédia (ENG)</a></li>
                 <li><a href="https://kohlanta.fandom.com/fr/wiki/Wiki_Koh_Lanta">Fandom</a></li>
+                <li><a href="https://www.data.gouv.fr/datasets/population-municipale-des-departements-france-entiere">Population municipale des départements — data.gouv.fr</a></li>
+                <li><a href="https://www.data.gouv.fr/datasets/departements-de-france">Départements et régions — data.gouv.fr</a></li>
             </ul>
+            <a class="download-link" href="data/donnees_kohlanta.xlsx" download>Télécharger les données Koh-Lanta (.xlsx)</a>
             <p>Photo de l'en-tête : <a href="https://commons.wikimedia.org/w/index.php?curid=1943651">Anton Leddin / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée et assombrie à l'affichage.</p>
         </details>
     </div>
