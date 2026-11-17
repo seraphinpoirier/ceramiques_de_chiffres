@@ -3,6 +3,21 @@
 La page d'accueil présente les projets disponibles. Le projet Koh-Lanta est
 accessible depuis cette page ou directement via `koh-lanta.html`.
 
+## Alès–Bessèges
+
+La page `des-rails-et-des-hommes.html` présente les huit gares de la relation
+Alès–Bessèges et les taux de chômage au sens du recensement dans les sept
+communes où elles se trouvent. Les taux Insee de 2013, 2015 et 2020 sont
+calculés à partir des actifs et des chômeurs de 15 à 64 ans ; ceux de 2023
+sont publiés directement par l'Insee. Ces données ne sont pas les effectifs
+d'inscrits à France Travail de la Dares et ne démontrent pas un effet de la
+suspension de la ligne. Les sources et limites figurent sur la page.
+Les données sont enregistrées localement dans `rail-data.js` : il s'agit d'un
+instantané des recensements Insee, des coordonnées Wikipédia et du tracé
+OpenStreetMap consultés en novembre 2026, et non d'une mise à jour automatique.
+La carte utilise Leaflet et les tuiles OpenStreetMap et nécessite une connexion
+Internet.
+
 ## Mettre à jour les données
 
 Après modification de `data/donnees_kohlanta.xlsx`, reconstruire la base puis

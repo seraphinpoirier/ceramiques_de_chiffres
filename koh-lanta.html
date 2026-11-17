@@ -596,6 +596,11 @@
             flex: 1;
         }
 
+        .sort-control {
+            position: relative;
+            flex: none;
+        }
+
         .sort-btn {
             background: #2d7d4f;
             color: white;
@@ -609,7 +614,6 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            position: relative;
         }
 
         .sort-btn:hover {
@@ -785,13 +789,15 @@
                             <div class="sidebar">
                                 <div class="sidebar-header">
                                     <h3>Liste des Départements</h3>
-                                    <div class="sort-btn" onclick="toggleDeptSortMenu(event)" title="Trier par">
-                                        ⇅ <span id="dept-sort-label">Gap ↓</span>
-                                    </div>
-                                    <div class="sort-menu" id="dept-sort-menu">
-                                        <button class="sort-item active" onclick="setDeptSort('gap-desc')">Gap (Plus → Moins)</button>
-                                        <button class="sort-item" onclick="setDeptSort('gap-asc')">Gap (Moins → Plus)</button>
-                                        <button class="sort-item" onclick="setDeptSort('alpha')">Alphabétique (A → Z)</button>
+                                    <div class="sort-control">
+                                        <button type="button" class="sort-btn" onclick="toggleDeptSortMenu(event)" title="Trier par" aria-controls="dept-sort-menu" aria-expanded="false">
+                                            ⇅ <span id="dept-sort-label">Gap ↓</span>
+                                        </button>
+                                        <div class="sort-menu" id="dept-sort-menu">
+                                            <button class="sort-item active" onclick="setDeptSort('gap-desc')">Gap (Plus → Moins)</button>
+                                            <button class="sort-item" onclick="setDeptSort('gap-asc')">Gap (Moins → Plus)</button>
+                                            <button class="sort-item" onclick="setDeptSort('alpha')">Alphabétique (A → Z)</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="dept-list" id="dept-list"></div>
@@ -856,13 +862,15 @@
                             <div class="sidebar">
                                 <div class="sidebar-header">
                                     <h3>Liste des Régions</h3>
-                                    <div class="sort-btn" onclick="toggleRegionSortMenu(event)" title="Trier par">
-                                        ⇅ <span id="region-sort-label">Gap ↓</span>
-                                    </div>
-                                    <div class="sort-menu" id="region-sort-menu">
-                                        <button class="sort-item active" onclick="setRegionSort('gap-desc')">Gap (Plus → Moins)</button>
-                                        <button class="sort-item" onclick="setRegionSort('gap-asc')">Gap (Moins → Plus)</button>
-                                        <button class="sort-item" onclick="setRegionSort('alpha')">Alphabétique (A → Z)</button>
+                                    <div class="sort-control">
+                                        <button type="button" class="sort-btn" onclick="toggleRegionSortMenu(event)" title="Trier par" aria-controls="region-sort-menu" aria-expanded="false">
+                                            ⇅ <span id="region-sort-label">Gap ↓</span>
+                                        </button>
+                                        <div class="sort-menu" id="region-sort-menu">
+                                            <button class="sort-item active" onclick="setRegionSort('gap-desc')">Gap (Plus → Moins)</button>
+                                            <button class="sort-item" onclick="setRegionSort('gap-asc')">Gap (Moins → Plus)</button>
+                                            <button class="sort-item" onclick="setRegionSort('alpha')">Alphabétique (A → Z)</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="dept-list" id="region-list"></div>

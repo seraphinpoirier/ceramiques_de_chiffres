@@ -79,12 +79,17 @@ function getColor(gap, candidates, isRegion = false) {
 function toggleDeptSortMenu(event) {
     event.stopPropagation();
     const menu = document.getElementById('dept-sort-menu');
-    menu.classList.toggle('open');
-    document.addEventListener('click', closeDeptSortMenu);
+    if (menu.classList.toggle('open')) {
+        event.currentTarget.setAttribute('aria-expanded', 'true');
+        document.addEventListener('click', closeDeptSortMenu);
+    } else {
+        closeDeptSortMenu();
+    }
 }
 
 function closeDeptSortMenu() {
     document.getElementById('dept-sort-menu').classList.remove('open');
+    document.querySelector('[aria-controls="dept-sort-menu"]').setAttribute('aria-expanded', 'false');
     document.removeEventListener('click', closeDeptSortMenu);
 }
 
@@ -112,12 +117,17 @@ function setDeptSort(mode) {
 function toggleRegionSortMenu(event) {
     event.stopPropagation();
     const menu = document.getElementById('region-sort-menu');
-    menu.classList.toggle('open');
-    document.addEventListener('click', closeRegionSortMenu);
+    if (menu.classList.toggle('open')) {
+        event.currentTarget.setAttribute('aria-expanded', 'true');
+        document.addEventListener('click', closeRegionSortMenu);
+    } else {
+        closeRegionSortMenu();
+    }
 }
 
 function closeRegionSortMenu() {
     document.getElementById('region-sort-menu').classList.remove('open');
+    document.querySelector('[aria-controls="region-sort-menu"]').setAttribute('aria-expanded', 'false');
     document.removeEventListener('click', closeRegionSortMenu);
 }
 
