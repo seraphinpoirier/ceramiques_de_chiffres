@@ -2,17 +2,14 @@
 
 ## ⚡ 30 Seconds to Start
 
-### Option 1: Direct Open (Simplest)
-1. Navigate to: `la_tele_en_data/`
-2. Double-click: `index.html`
-3. 🎉 Map opens in your browser!
-
-### Option 2: Local Server (Recommended)
+### Local Server
 ```bash
 cd la_tele_en_data
 python -m http.server 8000
 ```
-Then open: http://localhost:8000
+Then open http://localhost:8000 and select **Koh-Lanta**, or go directly to
+http://localhost:8000/koh-lanta.html. The local server allows the page to load
+its JSON data.
 
 ---
 

@@ -1,4 +1,7 @@
-# la_tele_en_data
+# Céramiques de chiffres
+
+La page d'accueil présente les projets disponibles. Le projet Koh-Lanta est
+accessible depuis cette page ou directement via `koh-lanta.html`.
 
 ## Mettre à jour les données
 

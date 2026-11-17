@@ -3,997 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koh-Lanta en chiffres</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B4%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="Des histoires et des données à explorer.">
+    <title>Céramiques de chiffres</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&family=Oi&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
+            margin: 0;
+            background: #f7f1e7;
+            color: #233d36;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(155deg, #eef7fa 0%, #e8f1e7 52%, #e4f2f8 100%);
-            min-height: 100vh;
-            color: #333;
         }
-
-        .header {
-            position: relative;
-            background: #0B3954;
-            color: white;
-            min-height: 340px;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .site-header {
+            padding: 32px clamp(22px, 6vw, 88px) 65px;
+            background: #d9684a;
+            color: #fff8e9;
         }
-        .header::after { content: ''; position: absolute; inset: 0; background: rgba(11, 57, 84, 0.55); }
-        .header-text { position: relative; z-index: 1; padding: 30px 20px; }
-
-        .header h1 {
-            font-family: 'Oi', Georgia, serif;
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 400;
-            letter-spacing: 1px;
+        .eyebrow {
+            margin: 0;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
-        .header img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-
-        .container {
-            max-width: 1800px;
+        .hero {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 20px;
+            padding-top: clamp(70px, 12vw, 150px);
         }
-        .landscape { margin: 0; }
-        .landscape img { display: block; width: 100%; max-height: 340px; object-fit: cover; border-radius: 12px; }
-        .landscape figcaption { color: #526457; font-size: 0.8em; margin-top: 6px; }
-
-        .section {
-            background: #fffefb;
-            border-radius: 16px;
-            box-shadow: 0 12px 32px rgba(34, 69, 46, 0.09);
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid #e1e9db;
-            border-top: 4px solid #739a68;
-        }
-        .section > summary { cursor: pointer; color: #2d7d4f; }
-        .section > summary::marker { font-size: 1.8em; }
-        .section > summary h2 { display: inline-flex; margin-left: 8px; }
-        .section > summary:focus-visible { outline: 3px solid #247aa1; outline-offset: 4px; }
-        .introduction p, .introduction li { line-height: 1.65; margin-bottom: 12px; }
-        .introduction ul { padding-left: 24px; }
-
-        .section h2 {
-            font-size: 1.8em;
-            color: #2d7d4f;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .introduction ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px; }
-        .introduction li { padding: 16px; border-radius: 8px; background: rgba(244, 185, 66, 0.2); color: #333; }
-        .introduction li:nth-child(even) { background: rgba(209, 29, 35, 0.12); color: #333; }
-        .map-zoom { position: absolute; top: 10px; left: 10px; z-index: 1; display: flex; gap: 4px; }
-        .map-zoom button { width: 36px; height: 36px; font-size: 1.4em; cursor: pointer; }
-        #map-dept, #map-region, .tribe-map { position: relative; overflow: hidden; }
-        .map-sign { pointer-events: none; font-weight: bold; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: white; stroke-width: 3px; stroke-linejoin: round; fill: #111; }
-        .timeline { display: flex; gap: 12px; overflow-x: auto; padding: 18px 0; }
-        .timeline-year { min-width: 155px; border-top: 3px solid #0B3954; padding-top: 10px; }
-        .timeline-season { padding: 8px; margin-top: 8px; border-radius: 5px; background: #0B3954; color: white; }
-        .timeline-season.allstar { background: #F4B942; color: #222; }
-        .timeline-season small { display: block; margin-top: 5px; }
-        .timeline-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }
-        .ranking { list-style: none; padding: 0; display: grid; gap: 12px; }
-        .ranking > li { text-align: left; background: #f8faf5; border: 1px solid #e1e9db; border-radius: 10px; padding: 14px; }
-        .ranking-name { color: #2d7d4f; font-size: 1.05em; }
-        .ranking-metrics { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 8px; font-size: 0.9em; }
-        .ranking-appearances { padding-left: 20px; margin-top: 10px; font-size: 0.9em; }
-        #ranking > .gender-chart { margin-top: 30px; }
-        .sources-list { padding-left: 24px; margin-bottom: 16px; }
-        .download-link { display: inline-block; margin: 16px 0; padding: 10px 16px; border-radius: 6px; background: #2d7d4f; color: white; text-decoration: none; font-weight: 600; }
-        .download-link:hover { background: #215e3b; }
-        .download-link:focus-visible { outline: 3px solid #247aa1; outline-offset: 3px; }
-        .data-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .data-table th, .data-table td { border-bottom: 1px solid #dce7d7; padding: 10px; }
-        .data-table th { color: #2d7d4f; }
-        .chart-scroll { overflow-x: auto; }
-        .chart-scroll > svg, .age-chart-graph svg { min-width: 550px; }
-        #returnee-flow .gender-chart { overflow-x: auto; }
-        #returnee-flow svg { min-width: 800px; }
-
-        .section-description {
-            color: #526457;
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            line-height: 1.65;
-            padding: 14px 18px;
-            background: #f2f7ef;
-            border-radius: 8px;
-            border-left: 3px solid #9bb883;
-        }
-
-        .maps-container {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .map-item {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tribe-maps {
-            display: flex;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .tribe-map-item {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .tribe-map-item h4 {
-            color: #2d7d4f;
-            margin-bottom: 8px;
-        }
-
-        .tribe-map {
-            height: 380px;
-            border-radius: 8px;
-            background: #f0f0f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .tribe-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 12px;
-            font-size: 0.9em;
-        }
-
-        .tribe-legend i {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            margin-right: 5px;
-            vertical-align: middle;
-            border-radius: 2px;
-        }
-
-        .subsection-title {
-            font-size: 1.4em;
-            color: #2d7d4f;
-            margin-top: 40px;
-        }
-
-        .map-item h3 {
-            font-size: 1.2em;
-            color: #2d7d4f;
-            margin-bottom: 10px;
-        }
-
-        .map-wrapper {
-            flex: 1;
-            display: flex;
-            gap: 20px;
-            min-height: 600px;
-        }
-
-        #map-dept, #map-region {
-            flex: 2;
-            border-radius: 8px;
-            background: #f0f0f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            min-height: 600px;
-            min-width: 400px;
-        }
-
-        #map-dept svg, #map-region svg, .tribe-map svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .department {
-            stroke: #999;
-            stroke-width: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .department:hover {
-            stroke: #2d7d4f;
-            stroke-width: 1.5px;
-            filter: brightness(0.95);
-        }
-
-        .region {
-            stroke: #999;
-            stroke-width: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .region:hover {
-            stroke: #2d7d4f;
-            stroke-width: 1.5px;
-            filter: brightness(0.95);
-        }
-
-        .sidebars {
-            flex: 0 0 900px;
-            display: flex;
-            flex-direction: row;
-            gap: 15px;
-            max-height: 600px;
-        }
-
-        .sidebar {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-            flex: 1 1 280px;
-            min-height: 200px;
-            max-height: 600px;
-            border-top: 3px solid #2d7d4f;
-        }
-
-        .sidebar h3 {
-            font-size: 1em;
-            color: #2d7d4f;
-            margin-bottom: 12px;
-            font-weight: 600;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .legend {
-            font-size: 0.85em;
-        }
-
-        .legend h4 {
-            font-size: 0.9em;
-            margin-top: 10px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 6px;
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 2px;
-            margin-right: 8px;
-            border: 1px solid #999;
-            flex-shrink: 0;
-        }
-
-        .legend-item span {
-            font-size: 0.85em;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid #e8e8e8;
-            gap: 10px;
-            font-size: 0.85em;
-        }
-
-        .info-row:last-of-type {
-            border-bottom: none;
-        }
-
-        .label {
-            font-weight: 600;
-            color: #555;
-            flex-shrink: 0;
-        }
-
-        .value {
-            color: #333;
-            text-align: right;
-        }
-
-        .candidates-list {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 2px solid #2d7d4f;
-        }
-
-        .candidates-list h4 {
-            color: #2d7d4f;
-            font-size: 0.85em;
-            margin-bottom: 6px;
-        }
-
-        .candidate-name {
-            padding: 2px 0;
-            font-size: 0.8em;
-            color: #555;
-        }
-
-        .placeholder {
-            color: #999;
-            font-style: italic;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        .dept-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-size: 0.8em;
-            overflow-y: visible;
-        }
-
-        .dept-item {
-            padding: 8px;
-            background: #f9f9f9;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 3px solid transparent;
-        }
-
-        .dept-item.locked {
-            background: #fff3e0;
-            border-left-color: #d73027;
-        }
-
-        .dept-item:hover {
-            background: #f0f8f5;
-            border-left-color: #2d7d4f;
-            padding-left: 12px;
-        }
-
-        .dept-name {
-            font-weight: 500;
-            color: #2d7d4f;
-        }
-
-        .dept-gap {
-            font-size: 0.75em;
-            color: #666;
-        }
-
-        .dept-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-            border: 1px solid #999;
-        }
-
-        .gender-charts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .gender-charts-container + .section-description { margin-top: 30px; }
-
-        .gender-chart {
-            min-width: 0;
-            background: #f8faf5;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e1e9db;
-        }
-
-        .gender-chart h3 {
-            font-size: 1.1em;
-            color: #2d7d4f;
-            margin-bottom: 15px;
-        }
-
-        .returnee-group h3 { color: #2d7d4f; margin-bottom: 12px; }
-        .returnee-card { background: #f8faf5; border: 1px solid #e1e9db; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
-        .returnee-card h4 { color: #2d7d4f; margin-bottom: 8px; }
-        .returnee-card p { line-height: 1.6; }
-
-        .chart-bars {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            height: 200px;
-            margin-bottom: 15px;
-            gap: 20px;
-        }
-
-        .bar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bar {
-            width: 50px;
-            background: #58355e;
-            border-radius: 4px 4px 0 0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .bar.female {
-            background: #1b998b;
-        }
-
-        .age-charts-container {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: 30px;
-        }
-
-        .age-chart-layout { display: flex; gap: 16px; align-items: flex-start; }
-        .age-chart-graph { flex: 2; min-width: 0; overflow-x: auto; }
-        .age-details { flex: 1; min-width: 180px; max-height: 300px; overflow-y: auto; text-align: left; background: white; border-radius: 6px; padding: 12px; font-size: 0.85em; }
-        .age-details ul { padding-left: 18px; margin: 8px 0 0; }
-        .age-details li { margin-bottom: 5px; }
-        .age-hit-area { cursor: pointer; }
-        .age-hit-area:hover, .age-hit-area:focus, .age-hit-area.selected { fill: rgba(0, 0, 0, 0.12); outline: none; }
-        .chart-note { color: #526457; font-size: 0.9em; margin: 10px 0 16px; }
-        .finale-note { grid-column: 1 / -1; margin: 0; }
-        .percentage-row { display: grid; grid-template-columns: minmax(110px, 1fr) 2fr auto; gap: 10px; align-items: center; width: 100%; padding: 8px 4px; border: 0; background: transparent; text-align: left; cursor: pointer; font: inherit; font-size: 0.85em; }
-        .percentage-row:hover, .percentage-row:focus { background: #e6ece2; outline: 2px solid #2d7d4f; }
-        .percentage-track { height: 20px; background: #e6ece2; border-radius: 3px; overflow: hidden; }
-        .percentage-fill { display: block; height: 100%; }
-        .finale-details { margin-top: 12px; padding: 10px; background: white; border-radius: 6px; text-align: left; font-size: 0.85em; max-height: 220px; overflow-y: auto; }
-        .finale-details ul { padding-left: 18px; margin-top: 8px; }
-        .finale-details li { margin-bottom: 5px; }
-        #first-out-charts { display: flex; flex-direction: column; }
-        .first-out-gender-chart { max-width: 500px; width: 100%; align-self: center; }
-        #allstar-age-charts { display: flex; flex-direction: column; }
-        .pie-comparison-section { background: #f8faf5; border: 1px solid #e1e9db; border-radius: 12px; padding: 24px; }
-        .pie-comparison-section > h3 { color: #2d7d4f; text-align: center; margin-bottom: 20px; font-size: 1.15em; }
-        .pie-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
-        .pie-comparison-chart { text-align: center; min-width: 0; }
-        .pie-comparison-chart h4 { color: #526457; font-size: 1em; margin-bottom: 12px; }
-        .pie-comparison-chart + .pie-comparison-chart { border-left: 1px solid #dce7d7; }
-        .pie-slice { cursor: pointer; }
-        .pie-slice:hover, .pie-slice:focus { filter: brightness(1.15); stroke: #333; outline: none; }
-        .pie-hover-info { min-height: 1.5em; font-size: 0.85em; margin: 5px 0 10px; }
-        @media (max-width: 700px) {
-            .age-chart-layout { flex-direction: column; }
-            .age-chart-graph, .age-details { width: 100%; }
-            .pie-comparison { grid-template-columns: 1fr; }
-            .pie-comparison-chart + .pie-comparison-chart { border-left: 0; border-top: 1px solid #dce7d7; padding-top: 24px; }
-        }
-
-        .stats-svg { width: 100%; height: auto; font-size: 12px; }
-        .pie-svg { width: min(100%, 240px); height: auto; }
-        .stats-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; font-size: 0.85em; }
-        .stats-legend span { display: inline-flex; align-items: center; gap: 5px; }
-        .stats-legend i { width: 12px; height: 12px; flex: none; border-radius: 2px; }
-
-        .bar:hover {
-            filter: brightness(1.1);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .bar-label {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.9em;
-        }
-
-        .bar-count {
-            font-size: 0.8em;
-            color: #666;
-        }
-
-        .chart-stats {
-            text-align: left;
-            background: white;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 0.85em;
-        }
-
-        .chart-stats div {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            color: #666;
-        }
-
-        .chart-stats strong {
-            color: #2d7d4f;
-        }
-
-        .footer {
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 40px;
-            padding: 20px;
+        h1 {
+            max-width: 1100px;
+            margin: 0;
+            font-family: 'Oi', Georgia, serif;
+            font-size: clamp(2.4rem, 7.8vw, 7rem);
+            font-weight: 400;
+            line-height: 1.17;
             overflow-wrap: anywhere;
         }
-
-        @media (max-width: 1400px) {
-            .maps-container {
-                flex-direction: column;
-            }
-            @media (max-width: 700px) {
-                .header { min-height: 260px; }
-                .header h1 { font-size: clamp(1.35rem, 8vw, 2.2rem); }
-                .container { padding: 10px; }
-                .section { padding: 18px; margin-bottom: 10px; }
-                .section h2 { font-size: 1.4em; }
-                .map-item, .map-wrapper { min-width: 0; }
-                .map-wrapper { min-height: 0; }
-                #map-dept, #map-region { min-width: 0; width: 100%; flex: none; height: 380px; min-height: 380px; }
-                .sidebars { flex: none; min-width: 0; max-height: none; display: grid; grid-template-columns: 1fr; }
-                .sidebar { min-width: 0; max-height: 320px; }
-                .tribe-maps { flex-direction: column; }
-                .tribe-map-item { width: 100%; }
-                .percentage-row { grid-template-columns: minmax(70px, 1fr) minmax(50px, 1fr) auto; gap: 5px; }
-                .gender-chart { min-width: 0; padding: 14px; }
-                .data-table th, .data-table td { padding: 6px; font-size: 0.85em; }
-            }
-
-            .map-wrapper {
-                flex-direction: column;
-            }
-
-            #map-dept, #map-region {
-                min-height: 400px;
-            }
-
-            .sidebars {
-                min-width: 100%;
-                flex-direction: row;
-                flex: none;
-                flex-wrap: wrap;
-                max-height: none;
-            }
-            .sidebar { flex: 1 1 240px; min-width: 0; }
+        .hero p {
+            max-width: 560px;
+            margin: 30px 0 0;
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            line-height: 1.6;
         }
-
-        .sidebar-header {
+        main {
+            max-width: 1376px;
+            margin: 0 auto;
+            padding: 72px clamp(22px, 6vw, 88px) 100px;
+        }
+        .section-heading {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 12px;
-            gap: 8px;
+            gap: 20px;
+            border-bottom: 1px solid #aeb8a9;
+            padding-bottom: 18px;
+            margin-bottom: 28px;
         }
-
-        .sidebar h3 {
-            flex: 1;
+        .section-heading h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+        .section-heading span { font-size: 0.85rem; color: #566d60; }
+        .project {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            overflow: hidden;
+            border-radius: 12px;
+            background: #e6e9d8;
+            color: inherit;
+            text-decoration: none;
         }
-
-        .sort-btn {
-            background: #2d7d4f;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85em;
-            font-weight: 600;
-            transition: all 0.2s ease;
+        .project:focus-visible { outline: 4px solid #233d36; outline-offset: 5px; }
+        .project-image {
+            min-height: 300px;
+            background: #0b3954 url('pictures/BureNavala2.jpg') center / cover;
+        }
+        .project-content {
             display: flex;
-            align-items: center;
-            gap: 4px;
-            position: relative;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: clamp(30px, 5vw, 70px);
         }
-
-        .sort-btn:hover {
-            background: #1b5e3f;
-            transform: scale(1.05);
+        .project-content h3 { margin: 18px 0; font-size: clamp(2rem, 4vw, 3.2rem); }
+        .project-content p:not(.eyebrow) { margin: 0; line-height: 1.65; }
+        .project-action {
+            margin-top: 32px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid currentColor;
+            font-weight: 700;
         }
-
-        .sort-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border: 1px solid #2d7d4f;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            min-width: 200px;
-        }
-
-        .sort-menu.open {
-            display: block;
-        }
-
-        .sort-item {
-            padding: 10px 16px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            font-size: 0.9em;
-            color: #333;
-            transition: background 0.2s ease;
-        }
-
-        .sort-item:first-child {
-            border-radius: 4px 4px 0 0;
-        }
-
-        .sort-item:last-child {
-            border-radius: 0 0 4px 4px;
-        }
-
-        .sort-item:hover {
-            background: #f0f8f5;
-        }
-
-        .sort-item.active {
-            background: #e0f2ec;
-            color: #2d7d4f;
-            font-weight: 600;
-        }
-
-        .highlighted-region {
-            stroke: #1f77b4 !important;
-            stroke-width: 2.5px !important;
-            filter: brightness(1.1) !important;
-        }
-
-        .locked-label {
-            font-size: 0.75em;
-            color: #d73027;
-            margin-top: 4px;
-            font-weight: 600;
+        .project:hover .project-action { color: #a3412b; }
+        .image-credit { margin: 10px 0 0; color: #566d60; font-size: 0.78rem; line-height: 1.5; }
+        .image-credit a { color: inherit; }
+        @media (max-width: 700px) {
+            .project { grid-template-columns: 1fr; }
+            .project-image { min-height: 220px; }
+            .section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="pictures/BureNavala2.jpg" alt="Paysage de Bure Navala">
-        <div class="header-text">
-            <h1>KOH-LANTA</h1>
-            <p>Biais sociaux au soleil</p>
+    <header class="site-header">
+        <p class="eyebrow">Des histoires façonnées par les données</p>
+        <div class="hero">
+            <h1>Céramiques de chiffres</h1>
+            <p>Explorer les chiffres, découvrir les histoires qu'ils racontent.</p>
         </div>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Koh-Lanta, c'est quoi ?</h2></summary>
-            <div class="introduction">
-                <p>Koh-Lanta est une émission de télé-réalité diffusée par TF1 où une vingtaine de candidats sont envoyés sur une île déserte pour y survivre pendant environ 40 jours. Au cours de ces quarante jours, ils devront relever différentes épreuves physiques pour garder leur place dans l'aventure.</p>
-                <p>Les épreuves sont généralement divisées en deux types: des épreuves de confort, qui permettent de gagner un avantage dans l'aventure (nourriture, outils,...) et les épreuves d'immunité qui permettent de se protéger de l'élimination.</p>
-                <p>Après une épreuve d'immunité a lieu un Conseil, dans lequel les aventuriers décident de qui éliminer.</p>
-                <p>L'émission se décompose en plusieurs étapes.</p>
-                <ul>
-                    <li><strong>Les équipes :</strong> Au début de l'émission, les candidats sont divisés en équipes (aussi appelées tribus), souvent deux (jaunes et rouges) mais parfois plus (jusqu'à 4). Pendant cette phase, les épreuves sont disputées en groupe. La victoire à l'épreuve d'immunité permet de n'éliminer personne dans son équipe, la défaite force l'équipe à se séparer de l'un de ses membres.</li>
-                    <li><strong>La réunification :</strong> Au milieu de la saison, les candidats restants fusionnent en une seule équipe, la tribu blanche. Avant cela, chaque tribu envoie un ambassadeur pour se mettre d'accord sur l'élimination de l'un des candidats restants.</li>
-                    <li><strong>L'orientation :</strong> Quand il ne reste plus que 4 ou 5 candidats, l'épreuve d'orientation a lieu pour l'accès à la finale. Trois poignards sont cachés dans la nature et les plus rapides à les trouver gagnent le droit d'accéder à la finale.</li>
-                    <li><strong>La finale :</strong> décomposée en deux parties. La première est l'épreuve des poteaux: les candidats restants doivent tenir le plus longtemps possible sur des poteaux. La personne gagnant les poteaux a le droit de choisir qui elle veut affronter pour le dernier conseil, qui déterminera le gagnant. Les candidats éliminés sont les seuls à voter. La personne recevant le plus de voix est déclarée gagnante.</li>
-                </ul>
+    </header>
+    <main>
+        <div class="section-heading">
+            <h2>À explorer</h2>
+            <span>Des données, des regards</span>
+        </div>
+        <a class="project" href="koh-lanta.html">
+            <div class="project-image" aria-hidden="true"></div>
+            <div class="project-content">
+                <p class="eyebrow">Télévision &amp; société</p>
+                <h3>Koh-Lanta</h3>
+                <p>Biais sociaux au soleil : découvrez les candidats, les saisons et leurs histoires en chiffres.</p>
+                <span class="project-action">Explorer le projet →</span>
             </div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Chronologie des saisons</h2></summary>
-            <p class="section-description">Koh-Lanta est une émission diffusée depuis 25 ans. Il existe deux types de saisons : les saisons classiques, avec des candidats anonymes, et les saisons « All Stars », avec des candidats ayant déjà participé. Certaines saisons ont mélangé les deux : Le Choc des Héros (2010) mettait en concurrence des anciens de Koh-Lanta avec des sportifs de haut niveau. Cette saison est comptabilisée comme All Stars. Dans l'Île des Héros (2020) et dans La Tribu Maudite (2024), quelques anciens candidats reviennent. Puisqu'ils ne représentent pas la majorité des candidats, ces saisons sont comptabilisées comme classiques.</p>
-            <p class="timeline-legend"><i style="background:#0B3954"></i>Bleu : saisons classiques ; <i style="background:#F4B942"></i>jaune : saisons All Stars.</p>
-            <div id="timeline" class="timeline"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <figure class="landscape">
-            <img src="pictures/Pana_Banaue_Rice_Terraces.jpg" alt="Rizières en terrasses de Banaue, aux Philippines" loading="lazy">
-            <figcaption>Rizières de Banaue — <a href="https://commons.wikimedia.org/wiki/Special:Redirect/page/3036218">Niro5 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</figcaption>
-        </figure>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>D'où viennent les candidats ?</h2></summary>
-            <div class="section-description">
-                Les origines géographiques des candidats et candidates de l'émission ne reflètent pas forcément la réalité démographique française.
-                Les signes + et − indiquent le sens de l'écart, leur taille son amplitude. Utilisez les boutons pour zoomer. Dans les informations, l'écart des zones sans candidat est indiqué en gris pour rester lisible.
-            </div>
-
-            <div class="maps-container">
-                <!-- Departments Map -->
-                <div class="map-item">
-                    <h3>Par Département</h3>
-                    <div class="map-wrapper">
-                        <div id="map-dept"></div>
-                        <div class="sidebars">
-                            <div class="sidebar">
-                                <h3>Légende</h3>
-                                <div class="legend">
-                                    <h4 style="color: #1a9850;">Sur-représentés</h4>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #1a9850;"></div>
-                                        <span>Très (écart &gt; 0,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #66bd63;"></div>
-                                        <span>Modérément (0,2 à 0,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #b1d582;"></div>
-                                        <span>Légèrement (0 à 0,2 point)</span>
-                                    </div>
-
-                                    <div class="legend-item" style="margin-top: 10px;">
-                                        <div class="legend-color" style="background: #ffffff; border: 1px solid #ccc;"></div>
-                                        <span>Aucun candidat</span>
-                                    </div>
-
-                                    <h4 style="color: #d73027; margin-top: 10px;">Sous-représentés</h4>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #fddbc7;"></div>
-                                        <span>Légèrement (0 à -0,2 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #ef8a62;"></div>
-                                        <span>Modérément (-0,2 à -0,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #d73027;"></div>
-                                        <span>Très (écart ≤ -0,5 point)</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sidebar">
-                                <h3>Infos Département</h3>
-                                <div class="info-content" id="dept-info">
-                                    <p class="placeholder">Survolez un département</p>
-                                </div>
-                            </div>
-
-                            <div class="sidebar">
-                                <div class="sidebar-header">
-                                    <h3>Liste des Départements</h3>
-                                    <div class="sort-btn" onclick="toggleDeptSortMenu(event)" title="Trier par">
-                                        ⇅ <span id="dept-sort-label">Gap ↓</span>
-                                    </div>
-                                    <div class="sort-menu" id="dept-sort-menu">
-                                        <button class="sort-item active" onclick="setDeptSort('gap-desc')">Gap (Plus → Moins)</button>
-                                        <button class="sort-item" onclick="setDeptSort('gap-asc')">Gap (Moins → Plus)</button>
-                                        <button class="sort-item" onclick="setDeptSort('alpha')">Alphabétique (A → Z)</button>
-                                    </div>
-                                </div>
-                                <div class="dept-list" id="dept-list"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="maps-container" style="margin-top: 40px;">
-                <!-- Regions Map -->
-                <div class="map-item">
-                    <h3>Par Région</h3>
-                    <div class="map-wrapper">
-                        <div id="map-region"></div>
-                        <div class="sidebars">
-                            <div class="sidebar">
-                                <h3>Légende</h3>
-                                <div class="legend">
-                                    <h4 style="color: #1a9850;">Sur-représentés</h4>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #1a9850;"></div>
-                                        <span>Très (écart &gt; 1,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #66bd63;"></div>
-                                        <span>Modérément (0,5 à 1,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #b1d582;"></div>
-                                        <span>Légèrement (0 à 0,5 point)</span>
-                                    </div>
-
-                                    <div class="legend-item" style="margin-top: 10px;">
-                                        <div class="legend-color" style="background: #ffffff; border: 1px solid #ccc;"></div>
-                                        <span>Aucun candidat</span>
-                                    </div>
-
-                                    <h4 style="color: #d73027; margin-top: 10px;">Sous-représentés</h4>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #fddbc7;"></div>
-                                        <span>Légèrement (0 à -0,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #ef8a62;"></div>
-                                        <span>Modérément (-0,5 à -1,5 point)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background: #d73027;"></div>
-                                        <span>Très (écart ≤ -1,5 point)</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sidebar">
-                                <h3>Infos Région</h3>
-                                <div class="info-content" id="region-info">
-                                    <p class="placeholder">Survolez une région</p>
-                                </div>
-                            </div>
-
-                            <div class="sidebar">
-                                <div class="sidebar-header">
-                                    <h3>Liste des Régions</h3>
-                                    <div class="sort-btn" onclick="toggleRegionSortMenu(event)" title="Trier par">
-                                        ⇅ <span id="region-sort-label">Gap ↓</span>
-                                    </div>
-                                    <div class="sort-menu" id="region-sort-menu">
-                                        <button class="sort-item active" onclick="setRegionSort('gap-desc')">Gap (Plus → Moins)</button>
-                                        <button class="sort-item" onclick="setRegionSort('gap-asc')">Gap (Moins → Plus)</button>
-                                        <button class="sort-item" onclick="setRegionSort('alpha')">Alphabétique (A → Z)</button>
-                                    </div>
-                                </div>
-                                <div class="dept-list" id="region-list"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Les Quatre Terres</h3>
-            <p class="section-description">Deux éditions ont vu leurs candidats être séparés en tribus selon leur lieu d'origine. Cette séparation révèle les différences de densité entre les origines. Le Nord et le Sud, très denses, regroupent peu de départements, tandis que l'Est et l'Ouest doivent s'étendre sur de plus grandes zones.</p>
-            <div class="tribe-maps">
-                <div class="tribe-map-item">
-                    <h4>Par Département</h4>
-                    <div id="map-tribe-dept" class="tribe-map"></div>
-                </div>
-                <div class="tribe-map-item">
-                    <h4>Par Région</h4>
-                    <div id="map-tribe-region" class="tribe-map"></div>
-                </div>
-            </div>
-            <div class="tribe-legend">
-                <span><i style="background:#00C2D1"></i>Bleu</span>
-                <span><i style="background:#FE7F2D"></i>Orange</span>
-                <span><i style="background:#6DA34D"></i>Vert</span>
-                <span><i style="background:#827191"></i>Violet</span>
-                <span><i style="background:repeating-linear-gradient(45deg, #00C2D1 0 4px, #FE7F2D 4px 8px)"></i>Hachuré : plusieurs tribus</span>
-                <span><i style="background:radial-gradient(circle, #00C2D1 1.5px, white 1.5px); background-size:6px 6px; border:1px solid #ccc"></i>Pointillé : aucun candidat (couleur dominante de la région)</span>
-            </div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Le jeu de l'âge</h2></summary>
-            <p class="section-description">Les barres empilées regroupent les âges par tranches de trois ans et par genre. Survolez ou sélectionnez une tranche pour afficher les candidats. Les moyennes et les taux portent sur les participations dont l'âge est connu.</p>
-            <div id="age-charts" class="age-charts-container"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Qui part en premier ?</h2></summary>
-            <p class="section-description">Concentrons-nous sur les premiers éliminés de l'aventure. Est considéré comme premier éliminé tout aventurier qui a été éliminé au premier conseil de son équipe (donc pas sur un abandon). On ne prend pas en compte les saisons avec 4 équipes initiales. Pour chaque équipe des saisons à deux ou trois tribus, on retient le candidat non-abandonnant le moins bien classé. Les répartitions par tranche d'âge excluent les âges inconnus. Pour chaque genre, les premiers éliminés sont comparés à l'ensemble des participations de ce genre. Ces répartitions ne représentent pas directement une probabilité d'élimination.</p>
-            <div id="first-out-charts" class="gender-charts-container"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Et les femmes ?</h2></summary>
-            <p class="section-description">Ici on regarde la répartition genrée des candidats aux étapes clé du jeu. On ne regarde que les saisons classiques pour l'instant. Les candidats de retour ne sont pas pris en compte dans les données sur l'ensemble des candidats. Cependant, ils sont pris en compte dans les données sur l'orientation, les poteaux et les gagnants.</p>
-            
-            <div id="gender-charts" class="gender-charts-container"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Choix ou performance ?</h2></summary>
-            <p class="section-description">À l'orientation, les candidats qui n'atteignent pas les poteaux sont éliminés sur une épreuve de performance. Les troisièmes au classement sont généralement éliminés par le choix d'un autre candidat, et les éliminations aux ambassadeurs résultent d'un choix entre candidats. Cela fait-il une différence ? Le classement inclut aussi « Totem Maudit », dont la finale comptait trois personnes.</p>
-            <div id="choice-charts" class="gender-charts-container"></div>
-            <p class="section-description">Les éliminations par épreuves sont paritaires, tandis que celles sur choix ciblent plutôt des hommes. Cela peut s'expliquer par une volonté stratégique de cibler des personnes perçues comme « plus fortes ».</p>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Hommes et femmes en finale</h2></summary>
-            <p class="section-description">Après l'épreuve des poteaux, il ne reste que deux candidat-e-s. Ceux précédemment éliminés votent pour déterminer le-a gagnant-e.</p>
-            <p class="section-description">Seuls les candidats classés 1er ou 2e sont retenus. La saison « Totem Maudit » est exclue car sa finale comptait trois personnes. Les gagnant-e-s sont indiqués ; les égalités sont comptées séparément.</p>
-            <div id="finale-charts" class="gender-charts-container"></div>
-            <p class="section-description">Malgré les biais liés à l’âge lors de la première élimination, ils ne se reproduisent pas forcément à la finale. Une explication peut être que, les candidats ayant eu l’occasion de faire leur preuve, les biais sociaux reculent.</p>
-        </details>
-    </div>
-
-    <div class="container">
-        <figure class="landscape">
-            <img src="pictures/Koh_Ngai_07.jpg" alt="Paysage côtier de Koh Ngai, en Thaïlande" loading="lazy">
-            <figcaption>Koh Ngai — <a href="https://commons.wikimedia.org/wiki/Special:Redirect/page/41150001">Khunkay / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</figcaption>
-        </figure>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Les revenants</h2></summary>
-            <p class="section-description">Les trois femmes et les trois hommes ayant effectué le plus de retours sont présentés avec les ex æquo. Les participations non identifiées sont exclues.</p>
-            <div id="returnee-flow"></div>
-            <div id="returnee-charts" class="gender-charts-container"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Statistiques des All Stars</h2></summary>
-            <p class="section-description">Maintenant intéressons-nous aux statistiques des All Stars : puisque les candidats se connaissent déjà entre eux, les dynamiques peuvent différer.</p>
-            <p class="section-description">Pour les premières personnes éliminées, les femmes sont encore une fois beaucoup plus visées que les hommes.</p>
-            <div id="allstar-age-charts" class="gender-charts-container"></div>
-            <p class="section-description">Quand on s'intéresse à l'accès à l'orientation, les hommes sont ultra-majoritaires, de même pour les gagnants. Cependant, puisqu'il y a eu moins de saisons (et donc de participations), ces données sont moins fiables que pour les saisons classiques.</p>
-            <div id="allstar-gender-charts" class="gender-charts-container"></div>
-            <div id="allstar-finale-charts" class="gender-charts-container"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Alors, qui est le plus fort ? la plus forte ?</h2></summary>
-            <p class="section-description">La question du meilleur aventurier de Koh-Lanta revient souvent. On classe les candidats revenus au moins une fois par nombre de victoires, puis par taux d'accès à l'orientation, nombre d'orientations et écart de temps entre la première et la dernière orientation. Pour les candidats ayant atteint moins de deux orientations, on départage ensuite selon leur meilleur classement lors d'un retour.</p>
-            <div id="ranking"></div>
-        </details>
-    </div>
-
-    <div class="container">
-        <details class="section" open>
-            <summary><h2>Sources</h2></summary>
-            <p class="section-description">Les sources sont les pages Wikipédia de chaque saison. Si la page en français n’existe pas, on utilise celle en anglais. On complète les informations grâce aux pages <a href="http://fandom.com">Fandom.com</a> de chaque saison.</p>
-            <ul class="sources-list">
-                <li><a href="https://fr.wikipedia.org/wiki/Koh-Lanta">Wikipédia (FR)</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Koh-Lanta">Wikipédia (ENG)</a></li>
-                <li><a href="https://kohlanta.fandom.com/fr/wiki/Wiki_Koh_Lanta">Fandom</a></li>
-                <li><a href="https://www.data.gouv.fr/datasets/population-municipale-des-departements-france-entiere">Population municipale des départements — data.gouv.fr</a></li>
-                <li><a href="https://www.data.gouv.fr/datasets/departements-de-france">Départements et régions — data.gouv.fr</a></li>
-            </ul>
-            <a class="download-link" href="data/donnees_kohlanta.xlsx" download>Télécharger les données Koh-Lanta (.xlsx)</a>
-            <p>Photo de l'en-tête : <a href="https://commons.wikimedia.org/w/index.php?curid=1943651">Anton Leddin / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée et assombrie à l'affichage.</p>
-        </details>
-    </div>
-
-    <div class="footer">
-        <p>Source: POPULATION_MUNICIPALE_DEPARTEMENT_FRANCE.xlsx (2023) + donnees_kohlanta.xlsx</p>
-    </div>
-
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="app.js"></script>
-
+        </a>
+        <p class="image-credit">Bure Navala — <a href="https://commons.wikimedia.org/w/index.php?curid=1943651">Anton Leddin / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</p>
+    </main>
 </body>
 </html>
