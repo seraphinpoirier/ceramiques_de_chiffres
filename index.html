@@ -36,9 +36,11 @@
         h1 {
             max-width: 1100px;
             margin: 0;
-            font-family: 'Oi', Georgia, serif;
+            font-family: "Foldit", sans-serif;
+            font-optical-sizing: auto;
             font-size: clamp(2.4rem, 7.8vw, 7rem);
-            font-weight: 400;
+            font-weight: 500;
+            font-style: normal;
             line-height: 1.17;
             overflow-wrap: anywhere;
         }
@@ -77,6 +79,13 @@
         .project-image {
             min-height: 300px;
             background: #0b3954 url('pictures/BureNavala2.jpg') center / cover;
+        }
+        .project-image--rails {
+            background:
+                linear-gradient(78deg, transparent 44%, #e8d9ad 45% 46%, transparent 47%),
+                linear-gradient(102deg, transparent 44%, #e8d9ad 45% 46%, transparent 47%),
+                repeating-linear-gradient(0deg, transparent 0 25px, rgba(232, 217, 173, 0.8) 26px 30px, transparent 31px 48px),
+                linear-gradient(145deg, #0b3954, #28695b);
         }
         .project-content {
             display: flex;
@@ -126,6 +135,15 @@
             </div>
         </a>
         <p class="image-credit">Bure Navala — <a href="https://commons.wikimedia.org/w/index.php?curid=1943651">Anton Leddin / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Recadrée à l'affichage.</p>
+        <a class="project" href="des-rails-et-des-hommes.html">
+            <div class="project-image project-image--rails" aria-hidden="true"></div>
+            <div class="project-content">
+                <p class="eyebrow">Transport &amp; société</p>
+                <h3>Des rails et des hommes</h3>
+                <p>Un regard sur le monde ferroviaire, ses lignes et les personnes qui le font vivre.</p>
+                <span class="project-action">Explorer le projet →</span>
+            </div>
+        </a>
     </main>
 </body>
 </html>

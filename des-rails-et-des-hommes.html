@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un regard sur le monde ferroviaire, ses lignes et les personnes qui le font vivre.">
+    <title>Des rails et des hommes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #f7f1e7;
+            color: #233d36;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .site-header {
+            min-height: 460px;
+            padding: 32px clamp(22px, 6vw, 88px) 65px;
+            background:
+                linear-gradient(145deg, rgba(11, 57, 84, 0.94), rgba(35, 91, 77, 0.9)),
+                repeating-linear-gradient(0deg, transparent 0 25px, rgba(232, 217, 173, 0.5) 26px 30px, transparent 31px 48px);
+            color: #fff8e9;
+        }
+        .home-link {
+            display: inline-block;
+            color: inherit;
+            font-weight: 700;
+            text-underline-offset: 4px;
+        }
+        .home-link:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: clamp(70px, 12vw, 150px);
+        }
+        h1 {
+            max-width: 1100px;
+            margin: 0;
+            font-family: "Foldit", sans-serif;
+            font-optical-sizing: auto;
+            font-size: clamp(2.4rem, 7.8vw, 7rem);
+            font-weight: 500;
+            font-style: normal;
+            line-height: 1.17;
+            overflow-wrap: anywhere;
+        }
+        .hero p {
+            max-width: 650px;
+            margin: 30px 0 0;
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            line-height: 1.6;
+        }
+        main {
+            max-width: 1376px;
+            margin: 0 auto;
+            padding: 72px clamp(22px, 6vw, 88px) 100px;
+        }
+        .section-heading {
+            margin: 0 0 28px;
+            border-bottom: 1px solid #aeb8a9;
+            padding-bottom: 18px;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+        }
+        .themes {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .theme {
+            min-height: 170px;
+            padding: 26px;
+            border-radius: 12px;
+            background: #e6e9d8;
+        }
+        .theme h3 { margin: 0 0 12px; font-size: 1.35rem; }
+        .theme p { margin: 0; line-height: 1.65; }
+        @media (max-width: 700px) {
+            .themes { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="home-link" href="index.html">← Céramiques de chiffres</a>
+        <div class="hero">
+            <h1>Des rails et des hommes</h1>
+            <p>Un regard sur le monde ferroviaire, ses lignes et les personnes qui le font vivre.</p>
+        </div>
+    </header>
+    <main>
+        <h2 class="section-heading">Un monde à parcourir</h2>
+        <div class="themes">
+            <section class="theme">
+                <h3>Les lignes</h3>
+                <p>Découvrir les réseaux et les territoires qu’ils relient.</p>
+            </section>
+            <section class="theme">
+                <h3>Les métiers</h3>
+                <p>Rencontrer les personnes qui rendent le chemin de fer possible.</p>
+            </section>
+            <section class="theme">
+                <h3>Les voyages</h3>
+                <p>Explorer les façons dont le train accompagne les déplacements du quotidien.</p>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
