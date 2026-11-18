@@ -9234,6 +9234,41 @@
         "rank": 4
       },
       {
+        "nom": "Lola",
+        "saison_initiale": "4 Terres",
+        "genre": "F",
+        "linked_returns": 1,
+        "appearances": [
+          {
+            "season": "4 Terres",
+            "age": "23 ",
+            "place": 4
+          },
+          {
+            "season": "All Stars",
+            "age": 30,
+            "place": 1
+          }
+        ],
+        "wins": 1,
+        "orientation_access_rate": 1.0,
+        "orientation_count": 2,
+        "eligible_appearances": 2,
+        "orientation_span_days": 2188,
+        "best_comeback_place": 1,
+        "comeback_appearances_without_placement": 0,
+        "best_comeback_place_tiebreak_applied": false,
+        "first_orientation": {
+          "season": "4 Terres",
+          "date": "2020-08-28"
+        },
+        "last_orientation": {
+          "season": "All Stars",
+          "date": "2026-08-25"
+        },
+        "rank": 5
+      },
+      {
         "nom": "Romuald",
         "saison_initiale": "Panama",
         "genre": "H",
@@ -9266,7 +9301,7 @@
           "season": "Retour des Héros",
           "date": "2009-01-13"
         },
-        "rank": 5
+        "rank": 6
       },
       {
         "nom": "Bertrand",
@@ -9301,7 +9336,7 @@
           "season": "Revanche des Héros",
           "date": "2012-04-06"
         },
-        "rank": 6
+        "rank": 7
       },
       {
         "nom": "Christina",
@@ -9327,7 +9362,7 @@
           {
             "season": "All Stars",
             "age": 40,
-            "place": null
+            "place": 3
           }
         ],
         "wins": 1,
@@ -9335,8 +9370,8 @@
         "orientation_count": 2,
         "eligible_appearances": 4,
         "orientation_span_days": 6206,
-        "best_comeback_place": 8,
-        "comeback_appearances_without_placement": 1,
+        "best_comeback_place": 3,
+        "comeback_appearances_without_placement": 0,
         "best_comeback_place_tiebreak_applied": false,
         "first_orientation": {
           "season": "Palau",
@@ -9346,7 +9381,7 @@
           "season": "All Stars",
           "date": "2026-08-25"
         },
-        "rank": 7
+        "rank": 8
       },
       {
         "nom": "Ugo",
@@ -9391,7 +9426,7 @@
           "season": "La Légende",
           "date": "2021-08-21"
         },
-        "rank": 8
+        "rank": 9
       },
       {
         "nom": "Grégoire",
@@ -9425,41 +9460,6 @@
         "last_orientation": {
           "season": "Choc des Héros",
           "date": "2010-03-26"
-        },
-        "rank": 9
-      },
-      {
-        "nom": "Philippe",
-        "saison_initiale": "Viêtnam",
-        "genre": "H",
-        "linked_returns": 1,
-        "appearances": [
-          {
-            "season": "Viêtnam",
-            "age": 41,
-            "place": 1
-          },
-          {
-            "season": "Nouvelle Edition",
-            "age": 45,
-            "place": 5
-          }
-        ],
-        "wins": 1,
-        "orientation_access_rate": 0.5,
-        "orientation_count": 1,
-        "eligible_appearances": 2,
-        "orientation_span_days": 0,
-        "best_comeback_place": 5,
-        "comeback_appearances_without_placement": 0,
-        "best_comeback_place_tiebreak_applied": true,
-        "first_orientation": {
-          "season": "Viêtnam",
-          "date": "2010-09-17"
-        },
-        "last_orientation": {
-          "season": "Viêtnam",
-          "date": "2010-09-17"
         },
         "rank": 10
       }
