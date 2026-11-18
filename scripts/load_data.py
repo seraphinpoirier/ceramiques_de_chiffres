@@ -7,15 +7,15 @@ Handles OneDrive lock issues by using temp directory.
 import sqlite3
 import openpyxl
 import csv
-import os
 import sys
+import tempfile
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
 # Paths
-TEMP_DIR = Path(r"C:\Temp\kl_data")
-PROJECT_DIR = Path(r"C:\Users\caren\OneDrive\Bureau\projet_kl\la_tele_en_data")
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+TEMP_DIR = Path(tempfile.gettempdir()) / "kl_data"
 DATA_DIR = PROJECT_DIR / "data"
 DB_PATH = PROJECT_DIR / "Donnees_KL.db"
 SQL_SCHEMA_PATH = PROJECT_DIR / "Donnees_KL.sql"

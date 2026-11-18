@@ -5995,7 +5995,7 @@
           },
           {
             "saison": "All Stars",
-            "place": null,
+            "place": 3,
             "aban": 0,
             "initiale": false
           }
@@ -6249,7 +6249,7 @@
           },
           {
             "saison": "All Stars",
-            "place": null,
+            "place": 2,
             "aban": 0,
             "initiale": false
           }
@@ -6562,11 +6562,32 @@
         "H": 22
       },
       "winners": {
-        "F": 1,
+        "F": 2,
         "H": 5
       }
     },
     "finales": [
+      {
+        "saison": "All Stars",
+        "candidates": [
+          {
+            "saison": "All Stars",
+            "nom": "Lola",
+            "genre": "F",
+            "age": 30,
+            "place": 1,
+            "aban": 0
+          },
+          {
+            "saison": "All Stars",
+            "nom": "Freddy",
+            "genre": "H",
+            "age": 41,
+            "place": 2,
+            "aban": 0
+          }
+        ]
+      },
       {
         "saison": "Choc des Héros",
         "candidates": [
@@ -6716,7 +6737,7 @@
       {
         "nom": "Christina",
         "saison": "All Stars",
-        "place": null,
+        "place": 3,
         "genre": "F",
         "age": 40,
         "aban": 0,
@@ -6743,7 +6764,7 @@
       {
         "nom": "Freddy",
         "saison": "All Stars",
-        "place": null,
+        "place": 2,
         "genre": "H",
         "age": 41,
         "aban": 0,
@@ -6779,7 +6800,7 @@
       {
         "nom": "Lola",
         "saison": "All Stars",
-        "place": null,
+        "place": 1,
         "genre": "F",
         "age": 30,
         "aban": 0,
@@ -7834,6 +7855,11 @@
       "unknown": 0
     },
     "winners": [
+      {
+        "nom": "Lola",
+        "saison": "All Stars",
+        "genre": "F"
+      },
       {
         "nom": "Grégoire",
         "saison": "Choc des Héros",

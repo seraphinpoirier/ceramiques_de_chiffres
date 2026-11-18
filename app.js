@@ -23,13 +23,13 @@ async function init() {
 async function loadData() {
     try {
         console.log('Loading departments data...');
-        const deptResponse = await fetch('departments_data.json');
+        const deptResponse = await fetch('departments_data.json', { cache: 'no-store' });
         if (!deptResponse.ok) throw new Error(`HTTP ${deptResponse.status}`);
         departmentsData = (await deptResponse.json()).departments;
         console.log(`Loaded ${Object.keys(departmentsData).length} departments`);
 
         console.log('Loading regions data...');
-        const regResponse = await fetch('regions_data.json');
+        const regResponse = await fetch('regions_data.json', { cache: 'no-store' });
         if (!regResponse.ok) throw new Error(`HTTP ${regResponse.status}`);
         regionsData = (await regResponse.json()).regions;
         console.log(`Loaded ${Object.keys(regionsData).length} regions`);
@@ -381,7 +381,7 @@ function dotPattern(defs, color) {
 async function createTribeMaps() {
     try {
         const [tribes, deptGeo, regGeo] = await Promise.all([
-            fetch('tribes_data.json').then(r => r.json()),
+            fetch('tribes_data.json', { cache: 'no-store' }).then(r => r.json()),
             fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements.geojson').then(r => r.json()),
             fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions.geojson').then(r => r.json())
         ]);
